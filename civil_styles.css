@@ -1,0 +1,795 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* navigation bar                                ------------------>*/
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: background-color .5s ease;
+    z-index: 1000;
+}
+
+.nav {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: height .5s ease;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+nav img {
+    margin-left: 60px;
+    height: 47px;
+    width: auto;
+}
+
+.nav-list {
+    margin-right: 60px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-link {
+    color: #fff;        
+    margin: 0 8px;
+    position: relative;
+}
+
+.active { /*linia de sub text*/
+    border-bottom: 1px solid #FCBC04;
+}
+
+/*RO | EN effects*/
+.language-style1 {
+    margin-right: 2px;
+    margin-left: 8px;
+}
+
+.language-style2 {
+    margin-left: 2px;
+    margin-right: 10px;
+}
+
+.language-bar {
+    margin: 0 2px;
+    pointer-events: none;
+}
+
+.lg-active {
+    color: #FCBC04;
+}
+/*RO | EN effects END*/
+
+.nav-link:hover {
+    color: #FCBC04;
+    transition-duration: .5s;
+}
+
+/*Apply styles after scroll*/
+.scrolling-active {
+    background-color: #242021;
+    /*box-shadow: 0 3px 1rem rgba(219, 222, 4, 0.1);*/
+}
+
+.scrolling-active .nav {
+    height: 80px; 
+    border-bottom: #FCBC04 1px solid;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.scrolling-active nav img {
+    width: 220px;
+    height: auto;
+    transition: .5s ease;
+}
+
+.scrolling-active .nav a {
+    font-size: 14px;
+    transition: .5s ease;
+}
+
+/*Apply styles after scroll END*/
+
+/* RERSPONSIVE NAV-BAR */
+nav .fa {
+    display: none;
+}
+
+nav .fa-bars {
+    position: absolute;
+    right: 30px;
+}
+
+nav .fa-bars:hover {
+    color: #FCBC04;
+    transition: 0.5s;
+}
+
+nav .fa-times:hover {
+    color: #242021;
+    transition: 0.5s;
+}
+
+.roww {
+    display: flex;
+    flex-direction: row;
+}
+
+@media(max-width: 1200px) {
+    nav img {
+        margin-left: 30px;
+        height: 40px;
+    }
+
+    .scrolling-active nav img {
+        width: auto;
+        height: 35px;
+        margin-left: 30px;
+        transition: .5s ease;
+    }
+
+    .nav-links li {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        background: #FCBC04;
+        height: 100vh;
+        width: 300px;
+        top: 0;
+        right: -300px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+
+    nav .fa {
+        display: block;
+        color:#ffffff;
+        margin: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .scrolling-active .nav a {
+        font-size: 18px;
+        transition: .5s ease;
+    }
+
+    .nav a {
+        font-size: 18px;
+    }
+
+    .nav-links ul {
+        padding: 30px;
+    }
+
+    .nav-links ul .roww {
+        padding: 0;
+    }
+
+    .nav-list {
+        margin: 0;
+        float: left;
+        align-items: unset;
+        flex-direction: column;
+    }
+
+    .nav-list li {
+        font-size: 30px;
+    }
+
+    .active { /*linia de sub text*/
+        color: #242021;
+    }
+
+    .lg-active {
+        color: #242021;
+    }
+
+    .nav-link:hover {
+        color: #242021;
+    }
+}
+
+@media(max-width: 400px) {
+    nav .fa-bars {
+        font-size: 16px;
+    }
+
+    nav img {
+        height: 25px;
+    }
+
+    .scrolling-active nav img {
+        width: auto;
+        height: 25px;
+        margin-left: 30px;
+        transition: .5s ease;
+    }
+
+    .nav-links {
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+    }
+
+    .nav a {
+        font-size: 12px;
+    }
+
+    .scrolling-active .nav a {
+        font-size: 12px;
+        transition: .5s ease;
+    }
+
+    .nav-list li {
+        font-size: 25px;
+    }
+}
+/* RERSPONSIVE NAV-BAR END*/
+/* navigation bar END    
+
+/* Sub Header Content*/
+.sub-header {
+    width: 100%;
+    height: 350px;
+    background: url("images/civil-bg.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.sub-header::after {
+    content: '';
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #242021 0%, rgba(36, 32, 33, 0.47) 99.94%, #242021 99.95%, rgba(36, 32, 33, 0.47) 99.96%, #242021 99.97%);
+}
+
+.title {
+    position: relative;
+    color: #fff;
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+    z-index: 500;
+}
+
+@media only screen and (max-width: 1150px) {
+    .title { 
+        padding-top: 120px;
+        font-size: 50px; 
+    }
+
+    .sub-header {
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .title { 
+        font-size: 40px; 
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+    .title { 
+        font-size: 30px; 
+        padding-top: 100px;
+    }
+    .sub-header {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .title { 
+        font-size: 25px; 
+        padding-top: 100px;
+    }
+    .sub-header {
+        height: 200px;
+    }
+}
+/* Hero Sub Header END*/
+
+/* DREPTUL CIVIL CONTENT */
+.dreptul-content {
+    height: 1160px;
+}
+.dreptul-position {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+/* PRACTICE AREAS */
+
+.arii-de-practica h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #242021;
+    margin-bottom: 30px;
+}
+
+.area-boxes {
+    display: flex;
+    flex-direction: column;
+}
+
+.area-boxes a {
+    text-decoration: none;
+}
+
+.area-row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.area-row h2 {
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: medium;
+    color: #242021;
+}
+
+.area-row h2::before {
+    content: "\f30b";
+    font-family: "Font Awesome 5 Free";
+    font-size: 18px;
+    color: #FCBC04;
+    opacity: 0;
+    left: -20px;
+    transition: 0.3s;
+}
+
+.up-line {
+    width: 0px;
+    height: 30px;
+    border: 2px solid #dcdcdc;
+}
+
+.hr-line {
+    width: 350px;
+    height: 0;
+    border: 1px solid #dcdcdc;
+    margin-bottom: 15px;
+}
+
+.area-active h2{
+    color: #FCBC04;
+}
+
+.area-active .up-line {
+    border: 2px solid #FCBC04;
+}
+
+.area-active h2::before {
+    opacity: 1;
+    margin-right: 15px;
+}
+
+.area-row:hover h2 {
+    color: #FCBC04;
+    transition: 0.1s;
+}
+
+.area-row:hover h2::before {
+    opacity: 1;
+    left: 0;
+    margin-right: 15px;
+}
+
+.area-row:hover .up-line {
+    border: 2px solid #FCBC04;
+    transition: 0.1s;
+}
+/* PRACTICE AREAS END */
+.civil-box {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin-left: 150px;
+}
+
+.civil-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 50px;
+}
+
+.civil-box h1 {
+    color: #FCBC04;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.civil-box p {
+    color: #242021;
+    font-size: 16px;
+    font-weight: medium;
+    margin-bottom: 20px;
+}
+
+.civil-box ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.civil-box li::before {
+    content: "\f30b";
+    font-family: "Font Awesome 5 Free";
+    font-size: 16px;
+    font-weight: bold;
+    color: #242021;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 1600px) {
+    .dreptul-content {
+        height: 970px;
+    }
+
+    .civil-box {
+        width: 820px;
+        margin-left: 80px;
+    }
+
+    .area-row h2 {
+        margin-left: 15px;
+        font-size: 14px;
+    }
+    
+    .area-row h2::before {
+        font-size: 14px;
+        left: -20px;
+    }
+    
+    .up-line {
+        height: 30px;
+    }
+    
+    .hr-line {
+        width: 300px;
+        margin-bottom: 15px;
+    }
+
+    .arii-de-practica h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .dreptul-content {
+        height: 1230px;
+    }
+
+    .civil-box {
+        width: 600px;
+        margin-left: 80px;
+    }
+
+    .civil-box p, .civil-box li, .civil-box h3 {
+        font-size: 14px;
+    }
+
+    .civil-box h1 {
+        font-size: 20px;
+    }
+
+    .area-row h2 {
+        font-size: 14px;
+    }
+    
+    .area-row h2::before {
+        font-size: 14px;
+    }
+    
+    .up-line {
+        height: 30px;
+    }
+    
+    .hr-line {
+        width: 300px;
+        margin-bottom: 15px;
+    }
+
+    .arii-de-practica h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 983px) {
+    .dreptul-content {
+        height: 1660px;
+    }
+
+    .civil-box {
+        width: 600px;
+        margin-left: 0px;
+    }
+
+    .dreptul-position {
+        flex-wrap: wrap-reverse;
+    }
+
+    .area-row h2 {
+        font-size: 14px;
+    }
+    
+    .up-line {
+        height: 20px;
+    }
+
+    .arii-de-practica {
+        margin-top: 50px;
+    }
+    
+    .hr-line {
+        width: 600px;
+        margin-bottom: 15px;
+    }
+
+    .arii-de-practica h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .dreptul-content {
+        height: 1590px;
+    }
+
+    .civil-box {
+        width: 350px;
+    }
+
+    .civil-box img {
+        height: 100px;
+        margin-bottom: 30px;
+        margin-top: -20px;
+    }
+
+    .civil-box p, .civil-box li, .civil-box h3 {
+        font-size: 12px;
+    }
+
+    .civil-box h1 {
+        font-size: 16px;
+    }
+
+    .area-row h2 {
+        font-size: 12px;
+    }
+
+    .area-row h2::before {
+        font-size: 12px;
+    }
+    
+    .up-line {
+        height: 20px;
+    }
+
+    .arii-de-practica {
+        margin-top: 50px;
+    }
+    
+    .hr-line {
+        width: 350px;
+        margin-bottom: 15px;
+    }
+
+    .arii-de-practica h1 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .dreptul-content {
+        height: 1930px;
+    }
+
+    .civil-box {
+        width: 250px;
+    }
+    
+    .hr-line {
+        width: 250px;
+    }
+}
+/* DREPTUL CIVIL CONTENT END */
+
+
+/* Footer                               ------------------>*/ 
+.footer-about {
+    background: #242021;
+    background-size: cover;     
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-box {
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-logo-patrat {
+    width: 170px;
+    height: 170px;
+}
+
+.footer-logo-text {
+    width: auto;
+    height: 80px;
+}
+
+.footer-info {
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.contact-info-header {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.contact-info-header h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.underline {
+    width: 200px;
+    height: 0;
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+
+.contact-info-items {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: auto;
+}
+
+.contact-info-items h1 {
+    margin-top: -9px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+.contact-info-items a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: normal;
+    color: #fff;
+    margin-top: -9px;
+}
+
+.contact-info-items a:hover {
+    color: #FCBC04;
+    transition: 0.5s;
+}
+
+.contact-info-items i {
+    margin-right: 10px; 
+}
+
+@media only screen and (max-width: 1200px) {
+    .footer-logo-text {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .footer-logo-patrat {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #arii-practica {
+        display: none;
+    }
+}
+/*Footer END*/
+
+/*bottom navigation bar*/
+.bottom-nav-bar {
+    width: 100%;
+    height: 50px;
+    background-color: #FCBC04;
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom-nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bottom-nav div {
+    text-align: center;
+	float: right;
+	width: 35px;
+	height: 35px;
+	border-radius: 100%;
+    background: #242021;
+    margin-right: 100px;
+}
+
+.bottom-nav div i{
+    line-height: 35px;
+	color: #fff;
+}
+
+.bottom-nav h1 {
+    font-size: 18px;
+    color: #242021;
+    margin-left: 100px;
+    float: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .bottom-nav h1 {
+        font-size: 12px;
+        margin-left: 20px;
+    }
+
+    .bottom-nav div {
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+    }
+    
+    .bottom-nav div i{
+        line-height: 30px;
+    }
+}
+/*bottom navigation bar END                                ------------------>*/

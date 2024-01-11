@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="contact_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <title>VLĂDUCĂ & PARTENERS</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="indexRO.html" class="logo"><img src="images/logo_text.png"></a>
+                <div class="nav-links" id="navLinks">
+                    <i class="fa fa-times" onclick="hideMenu()"></i>
+                    <ul class="nav-list">
+                        <li><a href="indexRO.html" class="nav-link">ACASA</a></li>
+                        <li><a href="aboutRO.html" class="nav-link">DESPRE NOI</a></li>
+                        <li><a href="parteneriRO.html" class="nav-link">PARTENERI</a></li>
+                        <li><a href="servicii_juridiceRO.html" class="nav-link">SERVICII JURIDICE</a></li>
+                        <li><a href="contactRO.html" class="nav-link active">CONTACT</a></li>
+                        <ul class="roww">
+                            <li><a href="aboutRO.html" class="nav-link language-style1 lg-active">RO</a></li>
+                            <li><a class="nav-link language-bar">/</a></li>
+                            <li><a href="contactRO.html" class="nav-link language-style2">EN</a></li>
+                        </ul>
+                    </ul>
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()"></i>
+            </nav>
+        </div>
+    </header>
+    <section class="sub-header" id="up">
+        <h1 class="title">CONTACT</h1>
+    </section>
+
+    <section class="harta">
+        <div class="line"></div>
+        <h1>LOCATIA PE HARTA</h1>
+        <div class="line"></div>
+    </section>
+
+    <section class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.211787882105!2d26.1
+        343419!3d44.428817699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1fed977882c
+        31%3A0xa8fca3993a01da6c!2sBulevardul%20Decebal%2014%2C%20Bucure%C8%99ti!5e0!3m2!1sen!2sro!4v166
+        1265004953!5m2!1sen!2sro" width="80%" height="350px" style="border:0;" allowfullscreen="" loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="contact-content">
+        <div class="content-col">
+            <i class="fa-solid fa-home fa-2xl"></i>
+            <div class="col-text">
+                <h1>Sector 3, Bulevardul Decebal 14</h1>
+                <h2>Bloc S6, Scara 4, Etaj 4, Interfon 79, Apartament 79</h2>
+            </div>
+        </div>
+        <div class="content-col">
+            <i class="fa-solid fa-phone fa-2xl"></i>
+            <div class="col-text">
+                <h1>Numar de Telefon : 0726286228</h1>
+                <h2>Disponibil de luni - vineri intre orele 10:00 - 16:00</h2>
+            </div>
+        </div>
+        <div class="content-col">
+            <i class="fa-solid fa-envelope fa-2xl"></i>
+            <div class="col-text">
+                <h1>Email : infoavocati@yahoo.com</h1>
+                <h2>Al doilea email : officeinfoavocati@gmail.com</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="submit-content">
+        <div class="submit">
+            <h1>LASATI UN MESAJ</h1>
+            <form action="contact.php" method="post">
+                <input type="text" id="name" name="name" placeholder="Nume*">
+                <input type="text" id="mail" name="mail" placeholder="Email*">
+                <input type="text" id="phone" name="phone" placeholder="Telefon*">
+                <input type="text" id="subject" name="subject" placeholder="Subiect*">
+                <textarea id="text" name="message" placeholder="Mesaj*"></textarea>
+                <button onclick="myalert()" type="submit" name="submit">TRIMITETI MESAJUL</button>
+            </form>   
+        </div>
+    </section>
+
+
+<section class="footer-about">
+    <div class="footer-box">
+        <img src="images/logo_patrat.png" class="footer-logo-patrat">
+        <div class="footer-info">
+            <div class="contact-info-header">
+                <h1>Contact Info</h1>   
+                <div class="underline"></div>
+            </div>
+            <div class="contact-info-items">
+                <i class="fa-solid fa-phone fa-sm"></i>
+                <h1>0756 286 228</h1>   
+            </div>
+            <div class="contact-info-items">
+                <i class="fa-solid fa-envelope fa-sm"></i>
+                <h1>
+                    avocatlaura@yahoo.com <br>
+                    infoavocati@gmail.com
+                </h1>
+            </div>
+            <div class="contact-info-items">
+                <i class="fa-solid fa-location-arrow fa-sm"></i>
+                <h1>
+                    Strada iuliu maniu <br> 
+                    Bloc 5A scara 1 <br>
+                    Interfon 5 aprtament 2
+                </h1>
+            </div>
+        </div>
+        <div class="footer-info" id="arii-practica">
+            <div class="contact-info-header">
+                <h1>Arii de Practica</h1>   
+                <div class="underline"></div>
+            </div>
+            <div class="contact-info-items"><a href="dreptul_civilRO.html">Dreptul Civil</a></div>
+            <div class="contact-info-items"><a href="dreptul_medicalRO.html">Dreptul Medical sau Malpraxis</a></div>
+            <div class="contact-info-items"><a href="dreptul_munciiRO.html">Dreptul Muncii</a></div>
+            <div class="contact-info-items"><a href="dreptul_familieiRO.html">Dreptul Familiei</a></div>
+            <div class="contact-info-items"><a href="dreptul_societarRO.html">Dreptul Societar</a></div>
+            <div class="contact-info-items"><a href="dreptul_contraventionalRO.html">Dreptul Contraventional</a></div>
+        </div>
+        <img src="images/logo_text.png" class="footer-logo-text">
+    </div>
+</section>
+
+<section class="bottom-nav-bar">
+    <nav class="bottom-nav">
+        <h1>Copyright © Vladuca & Partners</h1>    
+        <a href="#up"><div><i class="fa-solid fa-angle-up fa-lg"></i></div></a>
+    </nav>
+</section>
+
+<script>
+    function myalert() {
+        alert("Mesajul a fost trimis!\n" + "Va vom contacta noi inapoi cat se poate de rapid.")
+    }
+</script>
+<script>
+    document.getElementById("pf").addEventListener("click", newDivHere1);
+    document.getElementById("pj").addEventListener("click", newDivHere2);
+    function newDivHere1() {
+        document.getElementById("persoane-fizice").style.display="block";
+        document.getElementById("persoane-juridice").style.display="none";
+        document.getElementById("pf").classList.add('act');
+        document.getElementById("pj").classList.remove('act');
+    }
+    function newDivHere2() {
+        document.getElementById("persoane-fizice").style.display="none";
+        document.getElementById("persoane-juridice").style.display="block";
+        document.getElementById("pj").classList.add('act');
+        document.getElementById("pf").classList.remove('act');
+    }
+</script>
+<script> 
+    window.addEventListener('scroll', function () {
+        let header = document.querySelector('header');
+        let windowPosition = window.scrollY > 0;
+        header.classList.toggle('scrolling-active', windowPosition);
+    })
+</script>
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+    function hideMenu() {
+        navLinks.style.right = "-300px";  
+    }
+</script>
+</body>
+</html>
