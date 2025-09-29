@@ -2,6 +2,7 @@
 
 A professional website built for a law firm during my internship at **RSTDEV S.R.L.** (Aug–Sep 2023).  
 I was responsible for both the **design** and the **full implementation**, managing the project independently with guidance from mentors.  
+You can access it [here](https://davidvladuca.github.io/indexRO.html)
 
 ---
 
