@@ -330,7 +330,7 @@ nav .fa-times:hover {
 }
 
 .dc-noi h1::after {
-    content: ' SA NE ALEGETI PE NOI ?';
+    content: ' SĂ NE ALEGEȚI PE NOI?';
     color: #242021;
 }
 
@@ -486,7 +486,7 @@ nav .fa-times:hover {
 }
 
 .mm-noi h1::after {
-    content: ' detalii despre noi :';
+    content: ' detalii despre noi:';
     color: #fff;
 }
 
