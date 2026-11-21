@@ -1,0 +1,942 @@
+/* Shared reading sizes and layouts for the interior pages. */
+body.content-page {
+    --page-width: 1280px;
+    --page-gutter: 20px;
+    --section-space: clamp(40px, 5vw, 64px);
+    overflow-wrap: anywhere;
+}
+
+.content-page section,
+.content-page article {
+    box-sizing: border-box;
+}
+
+body.content-page :is(p, li) {
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.content-page .sub-header {
+    position: relative;
+    isolation: isolate;
+    height: auto;
+    min-height: 350px;
+    padding: 150px var(--page-gutter) 56px;
+}
+
+.content-page .sub-header::after {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content-page .title {
+    display: block;
+    padding: 0;
+    margin: 0;
+    font-size: clamp(1.75rem, 4.5vw, 4rem);
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.content-page .sub-header-box {
+    width: min(100%, 80ch);
+    margin: 24px auto 0;
+    gap: 20px;
+    align-items: center;
+}
+
+.content-page .sub-header-box h2 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.content-page .sub-header-line {
+    flex: 0 1 100px;
+    margin-top: 0;
+}
+
+.content-page :is(.sub-header-box, .consiliere > h1) br {
+    display: none;
+}
+
+.content-page :is(.dc-content, .servicii-content, .consiliere, .atestarea-curea, .rezolv-prob) {
+    position: relative;
+}
+
+.content-page :is(.icon-box, .icon-box2) {
+    width: min(300px, 100%);
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.content-page :is(.icon-box, .icon-box2) .line {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+}
+
+.content-page .arrow-down {
+    top: 100%;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+    border-left-width: 32px;
+    border-right-width: 32px;
+    border-top-width: 16px;
+    z-index: 2;
+}
+
+/* Practice articles keep their sidebar on wide screens. */
+.practice-page .dreptul-content {
+    height: auto;
+    padding: var(--section-space) var(--page-gutter);
+}
+
+.practice-page .dreptul-position {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(32px, 4vw, 80px);
+    max-width: var(--page-width);
+    margin: 0 auto;
+}
+
+.practice-page .civil-box {
+    width: 100%;
+    min-width: 0;
+    max-width: 75ch;
+    margin: 0;
+}
+
+.practice-page .civil-box > img {
+    width: 100%;
+    height: clamp(160px, 22vw, 300px);
+    object-fit: cover;
+    margin: 0 0 32px;
+}
+
+.practice-page .civil-box h1 {
+    margin: 24px 0 12px;
+    font-size: 1.5rem;
+    line-height: 1.35;
+}
+
+.practice-page .civil-box > img + h1 {
+    margin-top: 0;
+}
+
+.practice-page .civil-box :is(p, ul) {
+    margin: 0 0 20px;
+}
+
+.practice-page .civil-box h3 {
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.practice-page .civil-box ul {
+    padding-inline-start: 1.35rem;
+    list-style: disc outside;
+}
+
+.practice-page .civil-box li {
+    padding-inline-start: 0.2rem;
+    margin-block: 0.5rem;
+}
+
+.practice-page .civil-box li::before {
+    content: none;
+}
+
+.practice-page .arii-de-practica {
+    width: 100%;
+    min-width: 0;
+    max-width: 75ch;
+    margin: 0;
+}
+
+.practice-page .arii-de-practica h1 {
+    margin: 0 0 24px;
+    font-size: 1.5rem;
+    line-height: 1.35;
+}
+
+.practice-page .area-row {
+    min-height: 44px;
+    padding: 12px 0;
+    margin: 0;
+}
+
+.practice-page .area-row h2 {
+    min-width: 0;
+    margin-left: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.practice-page .area-row h2::before {
+    font-size: 1rem;
+}
+
+.practice-page .hr-line {
+    width: 100%;
+    margin: 0;
+}
+
+/* About Us retains its imagery, split colour panels and values. */
+.about-page .dc-content {
+    height: auto;
+    min-height: 0;
+    padding: var(--section-space) var(--page-gutter);
+}
+
+.about-page .dc-noi {
+    margin-top: 32px;
+}
+
+.about-page .dc-noi h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.35;
+    text-align: center;
+}
+
+.about-page .dc-noi-box,
+.about-page .rezolv-prob-box {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 40px;
+    align-items: center;
+    width: min(var(--page-width), 100%);
+    margin: 40px auto 0;
+}
+
+.about-page :is(.dc-noi-box, .rezolv-prob-box) > img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.about-page .about-copy {
+    min-width: 0;
+    max-width: 75ch;
+}
+
+.about-page .about-copy p {
+    width: auto;
+    height: auto;
+    margin: 0 0 16px;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.about-page .about-copy p:last-child {
+    margin-bottom: 0;
+}
+
+.about-page .dc-noi-box p {
+    color: #685E61;
+    font-weight: normal;
+}
+
+.about-page .mai-multe {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    height: auto;
+}
+
+.about-page :is(.bg-cover-left, .bg-cover-right) {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 430px;
+    padding: 48px 32px;
+    box-sizing: border-box;
+}
+
+.about-page .mm-noi h1 {
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.about-page .mm-noi {
+    position: relative;
+    width: 100%;
+    max-width: 558px;
+}
+
+.about-page .mai-multe-box {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    gap: 24px;
+}
+
+.about-page .mai-multe-box .about-copy {
+    max-width: 65ch;
+}
+
+.about-page .mai-multe-box p {
+    color: #fff;
+    font-weight: 700;
+}
+
+.about-page .rezolv-prob {
+    height: auto;
+    padding: var(--section-space) var(--page-gutter);
+}
+
+.about-page .rezolv-prob > h1 {
+    width: min(var(--page-width), 100%);
+    margin: 0 auto 32px;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.4;
+    text-align: center;
+}
+
+.about-page .rezolv-prob-box {
+    margin-top: 0;
+}
+
+.about-page .prob-list {
+    width: 100%;
+    margin: 0;
+    gap: 20px;
+}
+
+.about-page .prob-item {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    margin: 0;
+    align-items: start;
+}
+
+.about-page .prob-item p {
+    margin: 0;
+}
+
+/* Service descriptions and fee cards expand to hold their text. */
+.services-page :is(.servicii-content, .consiliere, .rezolv-prob, .onorarii) {
+    height: auto;
+    padding: var(--section-space) var(--page-gutter);
+}
+
+.services-page .serviciile-noastre {
+    margin-top: 32px;
+}
+
+.services-page :is(.serviciile-noastre, .onorarii-percepute) h1 {
+    width: auto;
+    margin: 0;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.35;
+    text-align: center;
+}
+
+.services-page .servicii-boxes-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    width: min(var(--page-width), 100%);
+    margin: 32px auto 0;
+}
+
+.services-page :is(.servicii-box1, .servicii-box2, .servicii-box3) {
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    min-height: 450px;
+    margin: 0;
+    padding: 24px 20px;
+}
+
+.services-page :is(.servicii-box1, .servicii-box2, .servicii-box3)::after,
+.services-page .consiliere::after {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.services-page .servicii-item {
+    min-width: 0;
+    margin: 0;
+}
+
+.services-page .servicii-item p {
+    width: auto;
+    max-width: 65ch;
+}
+
+.services-page .circle-icon {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.services-page .servicii-item-title {
+    width: 100%;
+    margin: 24px 0 20px;
+    gap: 12px;
+    justify-content: center;
+}
+
+.services-page .servicii-item-title h1 {
+    min-width: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.35;
+}
+
+.services-page .servicii-item-title .line {
+    width: 32px;
+    min-width: 0;
+    margin: 0;
+}
+
+.services-page .consiliere {
+    display: block;
+}
+
+.services-page .consiliere > h1 {
+    position: relative;
+    display: block;
+    width: min(var(--page-width), 100%);
+    margin: 0 auto;
+    font-size: clamp(1.25rem, 2.8vw, 2.5rem);
+    line-height: 1.4;
+}
+
+.services-page .button-box {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: var(--page-width);
+    margin: 32px auto 0;
+}
+
+.services-page .button-box > a {
+    min-width: 0;
+}
+
+.services-page .consiliere-button {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) 40px;
+    height: 100%;
+    margin: 0;
+}
+
+.services-page :is(.patrat-icon, .dreptunghi-icon) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.services-page .patrat-icon i {
+    font-size: 1.5rem;
+}
+
+.services-page .consiliere-text-box {
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 80px;
+    padding: 12px 8px;
+}
+
+.services-page .consiliere-text-box > h2 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.services-page .mai-multe-button {
+    margin-top: 6px;
+}
+
+.services-page .mai-multe-button h2 {
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.services-page .mai-multe-button .line {
+    width: 20px;
+    min-width: 0;
+}
+
+.services-page .atestarea-curea {
+    height: auto;
+    min-height: 90px;
+    gap: 16px;
+    padding: 24px var(--page-gutter);
+}
+
+.services-page .atestarea-curea h1 {
+    font-size: clamp(1.125rem, 2.2vw, 2rem);
+    line-height: 1.35;
+    text-align: center;
+}
+
+.services-page .atestarea-curea .line {
+    flex: 0 1 70px;
+    min-width: 12px;
+    margin: 0;
+}
+
+.services-page .rezolv-prob > h1 {
+    width: min(var(--page-width), 100%);
+    margin: 24px auto 0;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    text-align: center;
+}
+
+.services-page .rezolv-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 24px;
+    width: min(var(--page-width), 100%);
+    margin: 32px auto 0;
+}
+
+.services-page .rezolv-item {
+    min-width: 0;
+    margin: 0;
+    align-items: stretch;
+}
+
+.services-page .rezolv-item > i {
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.services-page .rezolv-item-text {
+    box-sizing: border-box;
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    height: auto;
+    min-height: 100px;
+    margin: 0;
+    padding: 20px;
+}
+
+.services-page .rezolv-item-text h2 {
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+.services-page .onorarii > h1 {
+    width: min(75ch, 100%);
+    margin: 24px auto 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.services-page .tipuri-persoane {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin: 32px 0;
+}
+
+.services-page .tipuri-persoane li {
+    margin: 0;
+    padding: 8px 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.services-page :is(#persoane-fizice, #persoane-juridice) {
+    width: min(var(--page-width), 100%);
+}
+
+.services-page .pf-box-content,
+.services-page .pj-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+}
+
+.services-page :is(.pf-box, .pj-box) {
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 24px;
+}
+
+.services-page .pf-box {
+    min-height: 170px;
+}
+
+.services-page .pf-box p {
+    width: auto;
+}
+
+.services-page .pj-box-content {
+    width: 100%;
+    margin: 0;
+}
+
+.services-page .pj-box {
+    min-height: 88px;
+}
+
+.services-page .pj-box p {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.services-page .pj-row:last-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 840px;
+    margin: 24px auto 0;
+}
+
+.services-page .stabilire {
+    position: relative;
+    height: auto;
+    padding: 24px var(--page-gutter);
+}
+
+.services-page .stabilire-bg {
+    inset: 0;
+    width: 100%;
+    height: auto;
+}
+
+.services-page .border {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 32px 20px;
+}
+
+.services-page .border > h1 {
+    width: min(75ch, 100%);
+    margin: 0;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+}
+
+.services-page .border .icon-box {
+    margin-top: 24px;
+}
+
+.services-page .stabilire-text {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 65ch) 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 12rem;
+    margin: 24px 0 0;
+}
+
+.services-page .mySlides {
+    display: block;
+    visibility: hidden;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.services-page .mySlides.is-current {
+    visibility: visible;
+}
+
+.services-page .stabilire-text > a {
+    display: grid;
+    place-items: center;
+    grid-row: 1;
+    min-height: 44px;
+    cursor: pointer;
+}
+
+.services-page .stabilire-text > a:first-child {
+    grid-column: 1;
+}
+
+.services-page .stabilire-text > a:last-child {
+    grid-column: 3;
+}
+
+.services-page :is(.arrow-left, .arrow-right) {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.services-page .stabilire-text p {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.services-page .border .icon-box2 {
+    margin-top: 24px;
+}
+
+.services-page .border .icon-box2 h1 {
+    width: auto;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Existing partner cards and slider keep their content and controls. */
+.partners-page .parteneri {
+    height: auto;
+    padding: var(--section-space) var(--page-gutter);
+}
+
+.partners-page .parteneri > h3 {
+    margin: 0 auto;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.35;
+}
+
+.partners-page .slide-container {
+    height: auto;
+    padding-bottom: 40px;
+    margin-top: 40px;
+}
+
+.partners-page .slide-content {
+    height: auto;
+}
+
+.partners-page .swiper-wrapper {
+    align-items: stretch;
+}
+
+.partners-page .swiper-slide {
+    height: auto;
+}
+
+.partners-page .servicii-box1::after {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.partners-page .servicii-item {
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 500px;
+    padding: 24px 20px;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+.partners-page .servicii-item-title {
+    margin: 240px 0 12px;
+}
+
+.partners-page .servicii-item-title h1 {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.partners-page .servicii-item h2 {
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    line-height: 1.35;
+}
+
+.partners-page .servicii-item p {
+    width: auto;
+}
+
+/* Preserve the approved footer columns while allowing larger text. */
+.content-page .footer-about {
+    position: relative;
+    height: auto;
+    min-height: 280px;
+    padding-block: 40px;
+}
+
+.content-page .footer-bg {
+    inset: 0;
+    height: auto;
+}
+
+.content-page .footer-box {
+    position: relative;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.content-page .footer-info {
+    min-width: 0;
+}
+
+.content-page .contact-info-items h1,
+.content-page #arii-practica .contact-info-items a {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.content-page .contact-info-items h1 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.content-page .contact-info-items i {
+    flex: 0 0 1em;
+    width: 1em;
+}
+
+.content-page .contact-info-header h1 {
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.content-page .bottom-nav-bar,
+.content-page .bottom-nav {
+    height: auto;
+    min-height: 50px;
+}
+
+.content-page .bottom-nav {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px;
+    gap: 16px;
+}
+
+.content-page .bottom-nav h1 {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 1200px) {
+    .content-page .nav-links {
+        width: min(300px, 100vw);
+        right: -300px;
+        overflow-y: auto;
+    }
+
+    .content-page .nav a {
+        font-size: 1.125rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 1100px) {
+    .services-page .servicii-boxes-list {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .practice-page .dreptul-position {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .about-page :is(.dc-noi-box, .rezolv-prob-box, .mai-multe),
+    .services-page :is(.rezolv-list, .pf-box-content, .pj-row, .pj-row:last-child) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about-page .dc-noi-box > img,
+    .about-page .rezolv-prob-box > img {
+        max-width: 600px;
+        margin-inline: auto;
+    }
+
+    .about-page .about-copy {
+        max-width: 75ch;
+        margin-inline: auto;
+    }
+
+    .about-page .bg-cover-left {
+        display: flex;
+        min-height: 0;
+        padding: 32px 20px;
+        text-align: center;
+    }
+
+    .about-page .bg-cover-right {
+        min-height: 0;
+        padding: 40px 20px;
+    }
+
+    .services-page .pj-row:last-child {
+        max-width: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .content-page .sub-header {
+        min-height: 220px;
+        padding-top: 108px;
+        padding-bottom: 40px;
+    }
+
+    .content-page .sub-header-line {
+        display: none;
+    }
+
+    .about-page .prob-item {
+        grid-template-columns: 12px minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .services-page .button-box {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .services-page .consiliere-text-box > h2,
+    .services-page .tipuri-persoane li {
+        font-size: 1rem;
+    }
+
+    .services-page .border {
+        padding-inline: 12px;
+    }
+
+    .services-page .stabilire-text {
+        grid-template-columns: 32px minmax(0, 1fr) 32px;
+        min-height: 18rem;
+        gap: 12px;
+    }
+
+    .services-page :is(.arrow-left, .arrow-right) {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .services-page .servicii-item-title h1 {
+        font-size: 1.25rem;
+    }
+}
