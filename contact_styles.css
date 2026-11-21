@@ -576,8 +576,7 @@ nav .fa-times:hover {
     background: #fff;
 }
 
-.form-field label,
-.field-error {
+.form-field label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -587,6 +586,29 @@ nav .fa-times:hover {
     clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
+}
+
+.field-error {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: -1px;
+    z-index: 20;
+    box-sizing: border-box;
+    width: max-content;
+    max-width: min(360px, calc(100% + 2px));
+    padding: 10px 14px;
+    border: 1px solid #b42318;
+    background: #fff1f0;
+    color: #7f1d1d;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 4px 12px rgba(36, 32, 33, 0.15);
+    pointer-events: none;
+}
+
+.form-field.show-field-help .field-error {
+    display: block;
 }
 
 .form-field :is(input, textarea) {
@@ -630,7 +652,12 @@ nav .fa-times:hover {
 }
 
 .form-field.has-error {
-    border-color: #962b2b;
+    border-color: #b42318;
+    box-shadow: inset 0 0 0 1px #b42318;
+}
+
+.form-field.has-error:focus-within {
+    outline-color: #b42318;
 }
 
 #contact-form button {
@@ -662,10 +689,28 @@ nav .fa-times:hover {
     box-sizing: border-box;
     width: min(400px, calc(100vw - 40px));
     padding: 18px 52px 18px 20px;
-    border: 1px solid #FCBC04;
-    background: #242021;
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    border: 2px solid #827b7d;
+    background: #f5f3f1;
+    color: #242021;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+}
+
+.contact-notification[data-state="error"] {
+    border-color: #b42318;
+    background: #fff1f0;
+    color: #7f1d1d;
+}
+
+.contact-notification[data-state="success"] {
+    border-color: #16803e;
+    background: #ecfdf3;
+    color: #14532d;
+}
+
+.contact-notification[data-state="unavailable"] {
+    border-color: #a16207;
+    background: #fff7db;
+    color: #713f12;
 }
 
 .contact-notification[hidden] {
@@ -692,14 +737,14 @@ nav .fa-times:hover {
     padding: 0;
     border: 0;
     background: transparent;
-    color: #fff;
+    color: inherit;
     font-size: 26px;
     line-height: 1;
     cursor: pointer;
 }
 
 #contact-notification-close:focus-visible {
-    outline: 2px solid #FCBC04;
+    outline: 2px solid currentColor;
     outline-offset: 2px;
 }
 

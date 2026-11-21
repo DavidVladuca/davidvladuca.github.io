@@ -1,3 +1,26 @@
+.footer-box .footer-info {
+    height: auto;
+    align-self: stretch;
+    justify-content: flex-start;
+}
+
+#arii-practica {
+    justify-content: space-between;
+}
+
+#arii-practica .contact-info-header {
+    margin-bottom: 12px;
+}
+
+#arii-practica .contact-info-items {
+    margin-bottom: 0;
+}
+
+#arii-practica .contact-info-items a {
+    margin-top: 0;
+    line-height: 1.25;
+}
+
 .footer-info:not(#arii-practica) {
     height: auto;
     min-height: 170px;

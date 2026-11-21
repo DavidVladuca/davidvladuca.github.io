@@ -7,7 +7,9 @@ const contactNotification = document.querySelector("#contact-notification");
 const notificationClose = document.querySelector("#contact-notification-close");
 const submitLabel = contactSubmit.textContent;
 let submitting = false;
+let validationAttempted = false;
 let notificationReturnFocus = contactSubmit;
+let notificationTimer;
 
 function fieldError(field) {
     const value = field.value.trim();
@@ -34,17 +36,32 @@ function validateField(field) {
     document.querySelector(`#${field.id}-error`).textContent = message;
     field.setAttribute("aria-invalid", String(Boolean(message)));
     field.closest(".form-field").classList.toggle("has-error", Boolean(message));
+    if (!message) {
+        field.closest(".form-field").classList.remove("show-field-help");
+    }
     return !message;
 }
 
 function showContactStatus(message, state, returnFocus = contactSubmit) {
     contactStatus.textContent = message;
     contactStatus.dataset.state = state;
+    contactNotification.dataset.state = state;
     contactNotification.hidden = !message;
     notificationReturnFocus = returnFocus;
+    scheduleNotificationDismiss();
+}
+
+function scheduleNotificationDismiss() {
+    window.clearTimeout(notificationTimer);
+    if (contactNotification.hidden || contactStatus.dataset.state === "sending"
+        || contactNotification.matches(":hover") || contactNotification.contains(document.activeElement)) {
+        return;
+    }
+    notificationTimer = window.setTimeout(dismissContactNotification, 6000);
 }
 
 function dismissContactNotification() {
+    window.clearTimeout(notificationTimer);
     const restoreFocus = contactNotification.contains(document.activeElement);
     contactNotification.hidden = true;
     if (restoreFocus) {
@@ -53,6 +70,10 @@ function dismissContactNotification() {
 }
 
 notificationClose.addEventListener("click", dismissContactNotification);
+contactNotification.addEventListener("mouseenter", () => window.clearTimeout(notificationTimer));
+contactNotification.addEventListener("mouseleave", scheduleNotificationDismiss);
+contactNotification.addEventListener("focusin", () => window.clearTimeout(notificationTimer));
+contactNotification.addEventListener("focusout", () => window.setTimeout(scheduleNotificationDismiss, 0));
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !contactNotification.hidden) {
         dismissContactNotification();
@@ -60,16 +81,22 @@ document.addEventListener("keydown", (event) => {
 });
 
 contactFields.forEach((field) => {
+    field.addEventListener("focus", () => {
+        if (validationAttempted && !validateField(field)) {
+            field.closest(".form-field").classList.add("show-field-help");
+        }
+    });
     field.addEventListener("blur", () => {
-        if (!validateField(field)) {
-            showContactStatus(fieldError(field), "error", field);
+        field.closest(".form-field").classList.remove("show-field-help");
+        if (validationAttempted) {
+            validateField(field);
         }
     });
     field.addEventListener("input", () => {
-        if (field.getAttribute("aria-invalid") === "true") {
+        if (validationAttempted) {
             validateField(field);
         }
-        if (["success", "error"].includes(contactStatus.dataset.state)) {
+        if (contactStatus.dataset.state === "success") {
             showContactStatus("", "idle");
         }
     });
@@ -81,25 +108,23 @@ contactForm.addEventListener("submit", async (event) => {
         return;
     }
 
+    validationAttempted = true;
     const valid = contactFields.map(validateField).every(Boolean);
     if (!valid) {
         const firstInvalid = contactFields.find((field) => field.getAttribute("aria-invalid") === "true");
-        showContactStatus(fieldError(firstInvalid), "error", firstInvalid);
-        firstInvalid.focus({ preventScroll: true });
+        showContactStatus("Mesajul nu a fost trimis. Verificați câmpurile marcate cu roșu și încercați din nou.", "error", firstInvalid);
         return;
     }
 
     // Enable delivery only after the inbox owner has activated FormSubmit.
     if (contactForm.dataset.deliveryEnabled !== "true") {
         showContactStatus("Formularul nu este încă activ. Ne puteți trimite mesajul la infoavocati@yahoo.com sau ne puteți suna la 0726 286 228.", "unavailable");
-        contactStatus.focus({ preventScroll: true });
         return;
     }
 
     const payload = Object.fromEntries(new FormData(contactForm));
     if (payload._honey) {
         showContactStatus("Trimiterea nu a putut fi procesată. Contactați-ne prin email sau telefon.", "error");
-        contactStatus.focus({ preventScroll: true });
         return;
     }
     contactFields.forEach((field) => {
@@ -132,7 +157,13 @@ contactForm.addEventListener("submit", async (event) => {
             throw new Error("Submission was not confirmed by the delivery service.");
         }
         contactForm.reset();
-        showContactStatus("Mesajul a fost preluat pentru trimitere. Vă mulțumim! Vă vom contacta cât mai curând posibil.", "success");
+        validationAttempted = false;
+        contactFields.forEach((field) => {
+            field.setAttribute("aria-invalid", "false");
+            document.querySelector(`#${field.id}-error`).textContent = "";
+            field.closest(".form-field").classList.remove("has-error", "show-field-help");
+        });
+        showContactStatus("Mesajul a fost trimis cu succes. Vă mulțumim! Vă vom contacta cât mai curând posibil.", "success");
     } catch {
         showContactStatus("Nu am putut confirma trimiterea mesajului. Textul a fost păstrat. Verificați conexiunea și încercați din nou sau scrieți-ne la infoavocati@yahoo.com.", "error");
     } finally {
@@ -141,7 +172,6 @@ contactForm.addEventListener("submit", async (event) => {
         contactFieldset.disabled = false;
         contactForm.removeAttribute("aria-busy");
         contactSubmit.textContent = submitLabel;
-        contactStatus.focus({ preventScroll: true });
     }
 });
 
