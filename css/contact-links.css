@@ -1,51 +1,29 @@
-.footer-about {
-    position: relative;
-    box-sizing: border-box;
-    height: auto;
-    min-height: 320px;
-    padding: 40px 0;
-}
-
-.footer-about > .footer-bg {
-    inset: 0;
-    height: auto;
-}
-
-.footer-box {
-    position: relative;
-}
-
-.footer-box .footer-info {
-    height: auto;
-    align-self: stretch;
-    justify-content: flex-start;
-}
-
 .footer-info:not(#arii-practica) {
-    width: min(280px, calc(100vw - 40px));
-    gap: 16px;
+    height: auto;
+    min-height: 170px;
+    max-width: calc(100vw - 40px);
 }
 
 .footer-info:not(#arii-practica) .contact-info-header {
-    margin-bottom: 0;
+    margin-bottom: 12px;
 }
 
 .footer-info:not(#arii-practica) .contact-info-items {
-    display: grid;
-    grid-template-columns: 18px minmax(0, 1fr);
-    column-gap: 12px;
-    margin: 0;
+    margin-bottom: 6px;
+}
+
+.footer-info:not(#arii-practica) .contact-info-items:last-child {
+    margin-bottom: 0;
 }
 
 .footer-info:not(#arii-practica) .contact-info-items h1 {
-    margin: 0;
-    line-height: 1.6;
+    margin-top: 0;
+    line-height: 1.25;
 }
 
 .footer-info:not(#arii-practica) .contact-info-items i {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.6;
+    width: 14px;
+    line-height: 1.25;
     text-align: center;
 }
 

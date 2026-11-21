@@ -510,8 +510,8 @@ nav .fa-times:hover {
     isolation: isolate;
     box-sizing: border-box;
     width: 100%;
-    min-height: 0;
-    padding: 56px 24px;
+    min-height: 850px;
+    padding: 64px 24px;
     background: url("images/room-bg.jpg") center / cover no-repeat;
     display: flex;
     justify-content: center;
@@ -533,7 +533,7 @@ nav .fa-times:hover {
 }
 
 .submit h1 {
-    font-size: clamp(24px, 3.5vw, 40px);
+    font-size: clamp(24px, 4vw, 48px);
     font-weight: bold;
     color: #242021;
     text-align: center;
@@ -546,8 +546,8 @@ nav .fa-times:hover {
 
 #contact-form fieldset {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -564,61 +564,66 @@ nav .fa-times:hover {
     overflow-wrap: anywhere;
 }
 
-.form-note a,
-.form-status a {
+.form-note a {
     color: inherit;
     text-underline-offset: 3px;
 }
 
-.form-required-note {
-    margin-bottom: 16px;
-    color: #242021;
-    font-size: 13px;
-    line-height: 1.5;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-}
-
-.message-field,
-#contact-form button {
-    grid-column: 1 / -1;
-}
-
 .form-field {
-    padding: 10px 16px;
-    border: 1px solid rgba(36, 32, 33, 0.25);
-    background: #fff;
+    position: relative;
     min-width: 0;
+    border: 1px solid #827b7d;
+    background: #fff;
 }
 
-.form-field label {
-    display: block;
-    color: #242021;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.5;
+.form-field label,
+.field-error {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
 }
 
 .form-field :is(input, textarea) {
     box-sizing: border-box;
     display: block;
     width: 100%;
-    min-height: 32px;
-    padding: 2px 0;
+    height: 60px;
+    padding: 18px 20px;
     margin: 0;
     border: 0;
     border-radius: 0;
     background: transparent;
     color: #242021;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
+}
+
+.form-field :is(input, textarea)::placeholder {
+    color: #757575;
+    opacity: 1;
 }
 
 .form-field textarea {
-    min-height: 128px;
+    height: 210px;
+    min-height: 160px;
     resize: vertical;
 }
 
-.form-field :is(input, textarea):focus-visible,
+.form-field:focus-within {
+    outline: 1px solid #242021;
+    outline-offset: 1px;
+}
+
+.form-field :is(input, textarea):focus-visible {
+    outline: none;
+}
+
 #contact-form button:focus-visible {
     outline: 2px solid #242021;
     outline-offset: 4px;
@@ -628,22 +633,15 @@ nav .fa-times:hover {
     border-color: #962b2b;
 }
 
-.field-error {
-    display: block;
-    color: #962b2b;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
 #contact-form button {
     box-sizing: border-box;
     width: 100%;
-    min-height: 52px;
-    padding: 14px 20px;
+    min-height: 60px;
+    padding: 12px 20px;
     background: #FCBC04;
     color: #fff;
     border: 0;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -656,27 +654,53 @@ nav .fa-times:hover {
     cursor: wait;
 }
 
-.form-status {
-    color: #242021;
-    font-size: 16px;
+.contact-notification {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1100;
+    box-sizing: border-box;
+    width: min(400px, calc(100vw - 40px));
+    padding: 18px 52px 18px 20px;
+    border: 1px solid #FCBC04;
+    background: #242021;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.contact-notification[hidden] {
+    display: none;
+}
+
+#contact-form-status {
+    margin: 0;
+    font-size: 14px;
     line-height: 1.6;
     overflow-wrap: anywhere;
 }
 
-.form-status:not(:empty) {
-    margin-top: 16px;
-    padding: 12px 16px;
-    border: 1px solid #242021;
-    background: #fff;
+#contact-form-status:focus {
+    outline: none;
 }
 
-.form-status[data-state="error"] {
-    border-color: #962b2b;
+#contact-notification-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
 }
 
-.form-status:focus-visible {
-    outline: 2px solid #242021;
-    outline-offset: 4px;
+#contact-notification-close:focus-visible {
+    outline: 2px solid #FCBC04;
+    outline-offset: 2px;
 }
 
 .col-text a {
@@ -712,9 +736,13 @@ nav .fa-times:hover {
         padding: 48px 20px;
     }
 
-    #contact-form fieldset {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
+    .form-field textarea {
+        height: 180px;
+    }
+
+    #contact-form button {
+        min-height: 52px;
+        font-size: 16px;
     }
 }
 /* SEND A MESSAGE END */

@@ -79,31 +79,30 @@
         <div class="submit">
             <h1 id="contact-form-heading">LĂSAȚI UN MESAJ</h1>
             <form id="contact-form" action="https://formsubmit.co/ajax/infoavocati@yahoo.com" method="post" data-delivery-enabled="false" novalidate lang="ro">
-                <p class="form-required-note">Toate câmpurile sunt obligatorii.</p>
                 <fieldset disabled aria-labelledby="contact-form-heading">
                     <div class="form-field">
                         <label for="name">Nume</label>
-                        <input type="text" id="name" name="name" autocomplete="name" maxlength="120" required data-contact-field data-required-message="Introduceți numele dumneavoastră." aria-describedby="name-error">
+                        <input type="text" id="name" placeholder="Nume*" name="name" autocomplete="name" maxlength="120" required data-contact-field data-required-message="Introduceți numele dumneavoastră." aria-describedby="name-error">
                         <span class="field-error" id="name-error"></span>
                     </div>
                     <div class="form-field">
                         <label for="mail">Email</label>
-                        <input type="email" id="mail" name="email" autocomplete="email" maxlength="254" required data-contact-field data-required-message="Introduceți adresa de email." aria-describedby="mail-error">
+                        <input type="email" id="mail" placeholder="Email*" name="email" autocomplete="email" maxlength="254" required data-contact-field data-required-message="Introduceți adresa de email." aria-describedby="mail-error">
                         <span class="field-error" id="mail-error"></span>
                     </div>
                     <div class="form-field">
                         <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="40" required data-contact-field data-required-message="Introduceți numărul de telefon." aria-describedby="phone-error">
+                        <input type="tel" id="phone" placeholder="Telefon*" name="phone" autocomplete="tel" maxlength="40" required data-contact-field data-required-message="Introduceți numărul de telefon." aria-describedby="phone-error">
                         <span class="field-error" id="phone-error"></span>
                     </div>
                     <div class="form-field">
                         <label for="subject">Subiect</label>
-                        <input type="text" id="subject" name="subject" autocomplete="off" maxlength="160" required data-contact-field data-required-message="Introduceți subiectul mesajului." aria-describedby="subject-error">
+                        <input type="text" id="subject" placeholder="Subiect*" name="subject" autocomplete="off" maxlength="160" required data-contact-field data-required-message="Introduceți subiectul mesajului." aria-describedby="subject-error">
                         <span class="field-error" id="subject-error"></span>
                     </div>
-                    <div class="form-field message-field">
+                    <div class="form-field">
                         <label for="text">Mesaj</label>
-                        <textarea id="text" name="message" autocomplete="off" maxlength="5000" required data-contact-field data-required-message="Introduceți mesajul dumneavoastră." aria-describedby="text-error" rows="4"></textarea>
+                        <textarea id="text" placeholder="Mesaj*" name="message" autocomplete="off" maxlength="5000" required data-contact-field data-required-message="Introduceți mesajul dumneavoastră." aria-describedby="text-error" rows="6"></textarea>
                         <span class="field-error" id="text-error"></span>
                     </div>
                     <div class="form-honeypot" hidden aria-hidden="true">
@@ -111,12 +110,16 @@
                     </div>
                     <button type="submit">TRIMITEȚI MESAJUL</button>
                 </fieldset>
-                <p id="contact-form-status" class="form-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
                 <noscript><p class="form-note">Pentru a folosi formularul, activați JavaScript. Ne puteți scrie direct la <a href="mailto:infoavocati@yahoo.com">infoavocati@yahoo.com</a> sau suna la <a href="tel:+40726286228">0726 286 228</a>.</p></noscript>
             </form>   
         </div>
     </section>
 
+
+<div id="contact-notification" class="contact-notification" role="status" aria-live="polite" aria-atomic="true" hidden>
+    <p id="contact-form-status" tabindex="-1"></p>
+    <button id="contact-notification-close" type="button" aria-label="Închideți mesajul">×</button>
+</div>
 
 <section class="footer-about">
     <div class="footer-box">
