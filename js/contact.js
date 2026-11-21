@@ -3,7 +3,6 @@ const contactFields = [...contactForm.querySelectorAll("[data-contact-field]")];
 const contactFieldset = contactForm.querySelector("fieldset");
 const contactSubmit = contactForm.querySelector("button[type='submit']");
 const contactStatus = document.querySelector("#contact-form-status");
-const deliveryNotice = document.querySelector("#contact-delivery-notice");
 const submitLabel = contactSubmit.textContent;
 let submitting = false;
 
@@ -121,5 +120,4 @@ contactForm.addEventListener("submit", async (event) => {
     }
 });
 
-deliveryNotice.hidden = contactForm.dataset.deliveryEnabled === "true";
 contactFieldset.disabled = false;

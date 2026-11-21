@@ -437,131 +437,69 @@ nav .fa-times:hover {
 
 /* CONTACT INFO */
 .contact-content {
+    box-sizing: border-box;
     background: #242021;
     width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    padding: 28px clamp(20px, 3vw, 60px);
 }
 
 .content-col {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    min-width: 0;
 }
 
 .content-col i {
     color: #FCBC04;
-    margin-right: 20px;
+    margin: 0;
+    font-size: 26px;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .content-col h1 {
     font-size: 20px;
+    line-height: 1.5;
     color: #fff;
     font-weight: normal;
 }
 
 .content-col h2 {
+    margin-top: 4px;
     font-size: 14px;
+    line-height: 1.7;
     color: #FCBC04;
     font-weight: normal;
 }
 
-@media only screen and (max-width: 1150px) {
-    .content-col h1 {
-        font-size: 14px;
-    }
-    
-    .content-col h2 {
-        font-size: 12px;
+@media only screen and (max-width: 1100px) {
+    .contact-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
     }
 
-    .content-col i {
-        margin-right: 10px;
-        font-size: 20px;
-    }
-}
-
-@media only screen and (max-width: 920px) {
-    .harta {
-        height: 80px;
+    .content-col {
+        width: min(100%, 480px);
+        justify-self: center;
     }
 
     .content-col h1 {
-        font-size: 11px;
-    }
-    
-    .content-col h2 {
-        font-size: 8px;
-    }
-
-    .content-col i {
-        margin-right: 10px;
-        font-size: 20px;
-    }
-}
-
-@media only screen and (max-width: 700px) {
-    .harta {
-        height: 70px;
-    }
-
-    .content-col h1 {
-        font-size: 10px;
-    }
-    
-    .content-col h2 {
-        font-size: 6px;
-    }
-
-    .content-col i {
-        margin-right: 10px;
         font-size: 16px;
+    }
+
+    .content-col i {
+        font-size: 24px;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .harta {
         height: 60px;
-    }
-
-    .content-col h1 {
-        font-size: 8px;
-    }
-    
-    .content-col h2 {
-        font-size: 5px;
-    }
-
-    .content-col i {
-        margin-right: 10px;
-        font-size: 16px;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .harta {
-        height: 60px;
-    }
-
-    .content-col h1 {
-        font-size: 10px;
-    }
-    
-    .content-col h2 {
-        font-size: 6px;
-    }
-
-    .content-col i {
-        margin-right: 10px;
-        font-size: 16px;
-    }
-
-    .contact-content {
-        flex-direction: column;
-        justify-content: space-around;
-        height: 150px;
     }
 }
 /* CONTACT INFO END */
@@ -572,8 +510,8 @@ nav .fa-times:hover {
     isolation: isolate;
     box-sizing: border-box;
     width: 100%;
-    min-height: 850px;
-    padding: 64px 24px;
+    min-height: 0;
+    padding: 56px 24px;
     background: url("images/room-bg.jpg") center / cover no-repeat;
     display: flex;
     justify-content: center;
@@ -595,7 +533,7 @@ nav .fa-times:hover {
 }
 
 .submit h1 {
-    font-size: clamp(24px, 4vw, 48px);
+    font-size: clamp(24px, 3.5vw, 40px);
     font-weight: bold;
     color: #242021;
     text-align: center;
@@ -608,15 +546,15 @@ nav .fa-times:hover {
 
 #contact-form fieldset {
     display: grid;
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
     min-width: 0;
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-.form-note,
-.form-required-note {
+.form-note {
     margin-bottom: 16px;
     padding: 12px 16px;
     background: #fff;
@@ -626,10 +564,6 @@ nav .fa-times:hover {
     overflow-wrap: anywhere;
 }
 
-.form-note[hidden] {
-    display: none;
-}
-
 .form-note a,
 .form-status a {
     color: inherit;
@@ -637,12 +571,21 @@ nav .fa-times:hover {
 }
 
 .form-required-note {
-    padding: 8px 16px;
+    margin-bottom: 16px;
+    color: #242021;
+    font-size: 13px;
+    line-height: 1.5;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.message-field,
+#contact-form button {
+    grid-column: 1 / -1;
 }
 
 .form-field {
     padding: 10px 16px;
-    border: 1px solid #827b7d;
+    border: 1px solid rgba(36, 32, 33, 0.25);
     background: #fff;
     min-width: 0;
 }
@@ -651,7 +594,7 @@ nav .fa-times:hover {
     display: block;
     color: #242021;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1.5;
 }
 
@@ -659,8 +602,8 @@ nav .fa-times:hover {
     box-sizing: border-box;
     display: block;
     width: 100%;
-    min-height: 44px;
-    padding: 8px 0;
+    min-height: 32px;
+    padding: 2px 0;
     margin: 0;
     border: 0;
     border-radius: 0;
@@ -671,7 +614,7 @@ nav .fa-times:hover {
 }
 
 .form-field textarea {
-    min-height: 160px;
+    min-height: 128px;
     resize: vertical;
 }
 
@@ -695,12 +638,12 @@ nav .fa-times:hover {
 #contact-form button {
     box-sizing: border-box;
     width: 100%;
-    min-height: 60px;
+    min-height: 52px;
     padding: 14px 20px;
     background: #FCBC04;
     color: #fff;
     border: 0;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -769,9 +712,9 @@ nav .fa-times:hover {
         padding: 48px 20px;
     }
 
-    #contact-form button {
-        font-size: 16px;
-        min-height: 52px;
+    #contact-form fieldset {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
     }
 }
 /* SEND A MESSAGE END */
