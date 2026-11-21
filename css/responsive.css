@@ -3,7 +3,9 @@ body.content-page {
     --page-width: 1280px;
     --page-gutter: 20px;
     --section-space: clamp(40px, 5vw, 64px);
-    overflow-wrap: anywhere;
+    /* Keep whole words while sizing columns; reserve emergency wrapping for oversized text. */
+    overflow-wrap: break-word;
+    word-break: normal;
 }
 
 .content-page section,
@@ -390,13 +392,15 @@ body.content-page :is(p, li) {
 }
 
 .services-page .servicii-item-title h1 {
-    min-width: 0;
+    flex-shrink: 0;
+    max-width: calc(100% - 24px);
     margin: 0;
     font-size: 1.5rem;
     line-height: 1.35;
 }
 
 .services-page .servicii-item-title .line {
+    flex: 0 1 32px;
     width: 32px;
     min-width: 0;
     margin: 0;
@@ -459,6 +463,8 @@ body.content-page :is(p, li) {
 }
 
 .services-page .consiliere-text-box > h2 {
+    min-width: 0;
+    max-width: 100%;
     font-size: 1.125rem;
     line-height: 1.4;
     text-align: center;
@@ -537,6 +543,8 @@ body.content-page :is(p, li) {
 }
 
 .services-page .rezolv-item-text h2 {
+    min-width: 0;
+    max-width: 100%;
     font-size: 1.125rem;
     line-height: 1.5;
 }
@@ -802,6 +810,10 @@ body.content-page :is(p, li) {
 
 .content-page .contact-info-items h1 {
     min-width: 0;
+    overflow-wrap: normal;
+}
+
+.content-page .contact-info-items a[href^="mailto:"] {
     overflow-wrap: anywhere;
 }
 
