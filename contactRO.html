@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="contact_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>VLĂDUCĂ & PARTNERS</title>
+    <link rel="stylesheet" href="css/contact-links.css">
+    <script src="js/contact.js" defer></script>
 </head>
 
 <body>
@@ -45,47 +46,74 @@
     </section>
 
     <section class="contact-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.211787882105!2d26.1
-        343419!3d44.428817699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1fed977882c
-        31%3A0xa8fca3993a01da6c!2sBulevardul%20Decebal%2014%2C%20Bucure%C8%99ti!5e0!3m2!1sen!2sro!4v166
-        1265004953!5m2!1sen!2sro" width="80%" height="350px" style="border:0;" allowfullscreen="" loading="lazy" 
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.211787882105!2d26.1343419!3d44.428817699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1fed977882c31%3A0xa8fca3993a01da6c!2sBulevardul%20Decebal%2014%2C%20Bucure%C8%99ti!5e0!3m2!1sen!2sro!4v1661265004953!5m2!1sen!2sro" width="80%" height="350px" style="border:0;" allowfullscreen="" loading="lazy" title="Localizarea biroului, Bulevardul Decebal 14, București"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="map-directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bulevardul%20Decebal%2014%2C%20Sector%203%2C%20Bucure%C8%99ti">Deschideți indicațiile de orientare în Google Maps</a>
     </section>
 
     <section class="contact-content">
         <div class="content-col">
             <i class="fa-solid fa-home fa-2xl"></i>
             <div class="col-text">
-                <h1>Sector 3, Bulevardul Decebal 14</h1>
+                <h1><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bulevardul%20Decebal%2014%2C%20Sector%203%2C%20Bucure%C8%99ti">Sector 3, Bulevardul Decebal 14</a></h1>
                 <h2>Bloc S6, Scara 4, Etaj 4, Interfon 79, Apartament 79</h2>
             </div>
         </div>
         <div class="content-col">
             <i class="fa-solid fa-phone fa-2xl"></i>
             <div class="col-text">
-                <h1>Număr de telefon: 0726 286 228</h1>
+                <h1>Număr de telefon: <a href="tel:+40726286228">0726 286 228</a></h1>
                 <h2>Disponibil de luni până vineri între orele 10:00–16:00</h2>
             </div>
         </div>
         <div class="content-col">
             <i class="fa-solid fa-envelope fa-2xl"></i>
             <div class="col-text">
-                <h1>Email: infoavocati@yahoo.com</h1>
-                <h2>Al doilea email: officeinfoavocati@gmail.com</h2>
+                <h1>Email: <a href="mailto:infoavocati@yahoo.com">infoavocati@yahoo.com</a></h1>
+                <h2>Al doilea email: <a href="mailto:officeinfoavocati@gmail.com">officeinfoavocati@gmail.com</a></h2>
             </div>
         </div>
     </section>
 
     <section class="submit-content">
         <div class="submit">
-            <h1>LĂSAȚI UN MESAJ</h1>
-            <form action="contact.php" method="post">
-                <input type="text" id="name" name="name" placeholder="Nume*">
-                <input type="text" id="mail" name="mail" placeholder="Email*">
-                <input type="text" id="phone" name="phone" placeholder="Telefon*">
-                <input type="text" id="subject" name="subject" placeholder="Subiect*">
-                <textarea id="text" name="message" placeholder="Mesaj*"></textarea>
-                <button onclick="myalert()" type="submit" name="submit">TRIMITEȚI MESAJUL</button>
+            <h1 id="contact-form-heading">LĂSAȚI UN MESAJ</h1>
+            <form id="contact-form" action="https://formsubmit.co/ajax/infoavocati@yahoo.com" method="post" data-delivery-enabled="false" novalidate lang="ro">
+                <p class="form-note" id="contact-delivery-notice">Formularul este în curs de activare. Ne puteți scrie la <a href="mailto:infoavocati@yahoo.com">infoavocati@yahoo.com</a> sau ne puteți suna la <a href="tel:+40726286228">0726 286 228</a>.</p>
+                <p class="form-required-note">Toate câmpurile sunt obligatorii.</p>
+                <fieldset disabled aria-labelledby="contact-form-heading">
+                    <div class="form-field">
+                        <label for="name">Nume</label>
+                        <input type="text" id="name" name="name" autocomplete="name" maxlength="120" required data-contact-field data-required-message="Introduceți numele dumneavoastră." aria-describedby="name-error">
+                        <span class="field-error" id="name-error"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="mail">Email</label>
+                        <input type="email" id="mail" name="email" autocomplete="email" maxlength="254" required data-contact-field data-required-message="Introduceți adresa de email." aria-describedby="mail-error">
+                        <span class="field-error" id="mail-error"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="40" required data-contact-field data-required-message="Introduceți numărul de telefon." aria-describedby="phone-error">
+                        <span class="field-error" id="phone-error"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="subject">Subiect</label>
+                        <input type="text" id="subject" name="subject" autocomplete="off" maxlength="160" required data-contact-field data-required-message="Introduceți subiectul mesajului." aria-describedby="subject-error">
+                        <span class="field-error" id="subject-error"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="text">Mesaj</label>
+                        <textarea id="text" name="message" autocomplete="off" maxlength="5000" required data-contact-field data-required-message="Introduceți mesajul dumneavoastră." aria-describedby="text-error" rows="6"></textarea>
+                        <span class="field-error" id="text-error"></span>
+                    </div>
+                    <div class="form-honeypot" hidden aria-hidden="true">
+                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-label="Lăsați acest câmp gol">
+                    </div>
+                    <button type="submit">TRIMITEȚI MESAJUL</button>
+                </fieldset>
+                <p id="contact-form-status" class="form-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+                <noscript><p class="form-note">Pentru a folosi formularul, activați JavaScript. Ne puteți scrie direct la <a href="mailto:infoavocati@yahoo.com">infoavocati@yahoo.com</a> sau suna la <a href="tel:+40726286228">0726 286 228</a>.</p></noscript>
             </form>   
         </div>
     </section>
@@ -101,22 +129,22 @@
             </div>
             <div class="contact-info-items">
                 <i class="fa-solid fa-phone fa-sm"></i>
-                <h1>0726 286 228</h1>
+                <h1><a href="tel:+40726286228">0726 286 228</a></h1>
             </div>
             <div class="contact-info-items">
                 <i class="fa-solid fa-envelope fa-sm"></i>
                 <h1>
-                    infoavocati@yahoo.com <br>
-                    officeinfoavocati@gmail.com
+                    <a href="mailto:infoavocati@yahoo.com">infoavocati@yahoo.com</a> <br>
+                    <a href="mailto:officeinfoavocati@gmail.com">officeinfoavocati@gmail.com</a>
                 </h1>
             </div>
             <div class="contact-info-items">
                 <i class="fa-solid fa-location-arrow fa-sm"></i>
                 <h1>
-                    Bulevardul Decebal 14 <br>
+                    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bulevardul%20Decebal%2014%2C%20Sector%203%2C%20Bucure%C8%99ti">Bulevardul Decebal 14 <br>
                     Sector 3, București <br>
                     Bloc S6, Scara 4, Etaj 4 <br>
-                    Interfon 79, Apartament 79
+                    Interfon 79, Apartament 79</a>
                 </h1>
             </div>
         </div>
@@ -143,27 +171,6 @@
     </nav>
 </section>
 
-<script>
-    function myalert() {
-        alert("Mesajul a fost trimis!\n" + "Vă vom contacta cât mai curând posibil.")
-    }
-</script>
-<script>
-    document.getElementById("pf").addEventListener("click", newDivHere1);
-    document.getElementById("pj").addEventListener("click", newDivHere2);
-    function newDivHere1() {
-        document.getElementById("persoane-fizice").style.display="block";
-        document.getElementById("persoane-juridice").style.display="none";
-        document.getElementById("pf").classList.add('act');
-        document.getElementById("pj").classList.remove('act');
-    }
-    function newDivHere2() {
-        document.getElementById("persoane-fizice").style.display="none";
-        document.getElementById("persoane-juridice").style.display="block";
-        document.getElementById("pj").classList.add('act');
-        document.getElementById("pf").classList.remove('act');
-    }
-</script>
 <script> 
     window.addEventListener('scroll', function () {
         let header = document.querySelector('header');
