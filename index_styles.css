@@ -965,6 +965,32 @@ body:has(.trailer-dialog[open][data-phase="returning"]) :is(.site-header, .hero-
     }
 }
 
+@media (max-width: 700px), (max-width: 950px) and (max-height: 500px) and (orientation: landscape) {
+    .trailer-volume {
+        flex: 1;
+        max-width: 26rem;
+    }
+
+    .trailer-volume input {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        height: 2.75rem;
+    }
+}
+
+@media (max-width: 700px) and (orientation: portrait) {
+    .trailer-actions {
+        flex-wrap: wrap;
+    }
+
+    .trailer-volume {
+        flex-basis: 100%;
+        max-width: none;
+        gap: 0.75rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         transition: none !important;

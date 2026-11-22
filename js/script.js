@@ -2,6 +2,13 @@
     const container = document.querySelector(".slide-content");
     if (!container || typeof Swiper !== "function") return;
     const totalSlides = container.querySelectorAll(".swiper-slide").length;
+    const currentPosition = document.querySelector(".partner-current");
+    const totalPositions = document.querySelector(".partner-total");
+
+    function updateCounter(swiper) {
+        if (currentPosition) currentPosition.textContent = String(swiper.realIndex + 1);
+        if (totalPositions) totalPositions.textContent = String(totalSlides);
+    }
 
     function updateSlides(swiper) {
         swiper.slides.forEach(slide => {
@@ -9,6 +16,7 @@
             slide.setAttribute("aria-hidden", String(!visible));
             slide.inert = !visible;
         });
+        updateCounter(swiper);
     }
 
     const carousel = new Swiper(container, {
@@ -41,12 +49,14 @@
         },
         on: {
             afterInit: updateSlides,
+            realIndexChange: updateCounter,
             slideChangeTransitionEnd: updateSlides,
             resize: updateSlides,
         },
     });
 
-    container.addEventListener("keydown", event => {
+    const controls = container.closest(".slide-container") || container;
+    controls.addEventListener("keydown", event => {
         if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
         event.preventDefault();
         if (event.key === "ArrowLeft") carousel.slidePrev();

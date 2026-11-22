@@ -40,15 +40,20 @@
     const status = document.getElementById("fee-factor-status");
     if (!slides.length || !previous || !next || !number || !status) return;
 
+    const mobile = window.matchMedia("(max-width: 700px), (max-width: 950px) and (max-height: 500px) and (orientation: landscape)");
+    const mobileHeading = document.querySelector(".fee-mobile-heading");
+    const introduction = document.querySelector(".fee-factors-intro");
+    const pagination = number.closest(".fee-factor-pagination");
     let active = 0;
     function showSlide(index, announce = true) {
         active = (index + slides.length) % slides.length;
         slides.forEach((slide, current) => {
             slide.classList.toggle("is-current", current === active);
-            slide.setAttribute("aria-hidden", String(current !== active));
+            if (mobile.matches) slide.removeAttribute("aria-hidden");
+            else slide.setAttribute("aria-hidden", String(current !== active));
         });
         number.textContent = String(active + 1);
-        if (announce) {
+        if (announce && !mobile.matches) {
             const text = slides[active].textContent.trim().replace(/\s+/g, " ");
             status.textContent = `Factorul ${active + 1} din ${slides.length}: ${text}`;
         }
@@ -67,5 +72,28 @@
             showSlide(target);
         }
     });
-    showSlide(0, false);
+
+    function updatePresentation() {
+        const focusOnControls = document.activeElement === previous || document.activeElement === next;
+        const focusOnHeading = document.activeElement === mobileHeading;
+        previous.hidden = mobile.matches;
+        next.hidden = mobile.matches;
+        status.hidden = mobile.matches;
+        if (pagination) pagination.hidden = mobile.matches;
+        if (mobileHeading) mobileHeading.hidden = !mobile.matches;
+        if (introduction) {
+            if (mobile.matches) {
+                introduction.removeAttribute("role");
+                introduction.removeAttribute("aria-level");
+            } else {
+                introduction.setAttribute("role", "heading");
+                introduction.setAttribute("aria-level", "2");
+            }
+        }
+        showSlide(active, false);
+        if (mobile.matches && focusOnControls) mobileHeading?.focus({ preventScroll: true });
+        else if (!mobile.matches && focusOnHeading) previous.focus({ preventScroll: true });
+    }
+    mobile.addEventListener("change", updatePresentation);
+    updatePresentation();
 })();
