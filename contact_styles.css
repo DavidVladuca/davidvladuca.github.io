@@ -276,7 +276,7 @@ nav .fa-times:hover {
     z-index: 500;
 }
 
-.sub-header h2 {
+.sub-header .sub-header-intro {
     margin: 0 20px;
     color: #fff;
     font-size: 14px;
@@ -355,20 +355,20 @@ nav .fa-times:hover {
     border-bottom: 3px solid #fff;
 }
 
-.harta h1 {
+.harta h2 {
     font-size: 34px;
     color: #fff;
     margin: 0 20px;
 }
 
 @media only screen and (max-width: 1150px) {
-    .harta h1 {
+    .harta h2 {
         font-size: 24px;
     }
 }
 
 @media only screen and (max-width: 920px) {
-    .harta h1 {
+    .harta h2 {
         font-size: 20px;
     }
 
@@ -378,7 +378,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 700px) {
-    .harta h1 {
+    .harta h2 {
         font-size: 16px;
     }
 
@@ -393,7 +393,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 350px) {
-    .harta h1 {
+    .harta h2 {
         font-size: 14px;
         margin: 0 10px;
     }
@@ -462,14 +462,14 @@ nav .fa-times:hover {
     text-align: center;
 }
 
-.content-col h1 {
+.content-col .contact-detail {
     font-size: 20px;
     line-height: 1.5;
     color: #fff;
     font-weight: normal;
 }
 
-.content-col h2 {
+.content-col .contact-note {
     margin-top: 4px;
     font-size: 14px;
     line-height: 1.7;
@@ -488,7 +488,7 @@ nav .fa-times:hover {
         justify-self: center;
     }
 
-    .content-col h1 {
+    .content-col .contact-detail {
         font-size: 16px;
     }
 
@@ -532,7 +532,7 @@ nav .fa-times:hover {
     min-width: 0;
 }
 
-.submit h1 {
+.submit h2 {
     font-size: clamp(24px, 4vw, 48px);
     font-weight: bold;
     color: #242021;
@@ -836,7 +836,7 @@ nav .fa-times:hover {
     flex-direction: column;
     margin-bottom: 20px;
 }
-.contact-info-header h1{
+.contact-info-header h2{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -856,7 +856,7 @@ nav .fa-times:hover {
     margin-bottom: auto;
 }
 
-.contact-info-items h1 {
+.contact-info-items p {
     margin-top: -9px;
     font-size: 14px;
     font-weight: normal;
@@ -931,7 +931,7 @@ nav .fa-times:hover {
 	color: #fff;
 }
 
-.bottom-nav h1 {
+.bottom-nav p {
     font-size: 18px;
     color: #242021;
     margin-left: 100px;
@@ -939,7 +939,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 600px) {
-    .bottom-nav h1 {
+    .bottom-nav p {
         font-size: 12px;
         margin-left: 20px;
     }

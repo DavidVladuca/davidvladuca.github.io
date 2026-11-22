@@ -1,29 +1,56 @@
-var swiper = new Swiper(".slide-content", {
-    slidesPerView: 3,
-    spaceBetween: 25,
-    loop: true,
-    centerSlide: 'true',
-    fade: 'true',
-    grabCursor: 'true',
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
+(() => {
+    const container = document.querySelector(".slide-content");
+    if (!container || typeof Swiper !== "function") return;
+    const totalSlides = container.querySelectorAll(".swiper-slide").length;
 
-    breakpoints:{
-        0: {
-            slidesPerView: 1,
+    function updateSlides(swiper) {
+        swiper.slides.forEach(slide => {
+            const visible = slide.classList.contains("swiper-slide-visible");
+            slide.setAttribute("aria-hidden", String(!visible));
+            slide.inert = !visible;
+        });
+    }
+
+    const carousel = new Swiper(container, {
+        slidesPerView: 3,
+        spaceBetween: 25,
+        loop: true,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true,
         },
-        520: {
-            slidesPerView: 2,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
         },
-        950: {
-            slidesPerView: 3,
+        a11y: {
+            prevSlideMessage: "Partenerul anterior",
+            nextSlideMessage: "Partenerul următor",
+            paginationBulletMessage: "Afișați partenerul {{index}}",
+            slideLabelMessage: "{{index}} din {{slidesLength}}",
+            containerRoleDescriptionMessage: "carusel",
+            itemRoleDescriptionMessage: "diapozitiv",
         },
-    },
-  });
+        breakpoints: {
+            0: { slidesPerView: 1 },
+            520: { slidesPerView: 2 },
+            950: { slidesPerView: 3 },
+        },
+        on: {
+            afterInit: updateSlides,
+            slideChangeTransitionEnd: updateSlides,
+            resize: updateSlides,
+        },
+    });
+
+    container.addEventListener("keydown", event => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        if (event.key === "ArrowLeft") carousel.slidePrev();
+        else if (event.key === "ArrowRight") carousel.slideNext();
+        else carousel.slideToLoop(event.key === "Home" ? 0 : totalSlides - 1);
+    });
+})();

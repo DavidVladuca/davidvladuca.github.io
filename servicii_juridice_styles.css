@@ -276,7 +276,7 @@ nav .fa-times:hover {
     z-index: 500;
 }
 
-.sub-header h2 {
+.sub-header .sub-header-intro {
     margin: 0 20px;
     color: #fff;
     font-size: 14px;
@@ -325,7 +325,7 @@ nav .fa-times:hover {
         margin-top: 7px;
         width: 40px;
     }
-    .sub-header h2 {
+    .sub-header .sub-header-intro {
         margin: 0 10px;
         font-size: 11px;
     }
@@ -345,7 +345,7 @@ nav .fa-times:hover {
     .sub-header-line {
         width: 0px;
     }
-    .sub-header h2 {
+    .sub-header .sub-header-intro {
         margin: 0;
         font-size: 8px;
     }
@@ -359,7 +359,7 @@ nav .fa-times:hover {
     .sub-header {
         height: 180px;
     }
-    .sub-header h2 {
+    .sub-header .sub-header-intro {
         font-size: 0px;
     }
 }
@@ -398,14 +398,13 @@ nav .fa-times:hover {
     margin-top: 50px;
 }
 
-.serviciile-noastre h1 {
+.serviciile-noastre h2 {
     color: #FCBC04;
     font-size: 40px;
     user-select: none;
 }
 
-.serviciile-noastre h1::after {
-    content: ' NOASTRE';
+.serviciile-noastre h2 .heading-rest {
     color: #242021;
 }
 
@@ -522,7 +521,7 @@ nav .fa-times:hover {
     border-bottom: 2px solid #fff;
 }
 
-.servicii-item-title h1 {
+.servicii-item-title h3 {
     margin: 0 19px;
     color: #fff;
     font-size: 24px;
@@ -591,7 +590,7 @@ nav .fa-times:hover {
         height: 2px;
     }
     
-    .servicii-item-title h1 {
+    .servicii-item-title h3 {
         margin: 0 19px;
         font-size: 22px;
     }
@@ -629,7 +628,7 @@ nav .fa-times:hover {
         margin-top: 50px;
     }
     
-    .serviciile-noastre h1 {
+    .serviciile-noastre h2 {
         font-size: 35px;
     }
     
@@ -676,7 +675,7 @@ nav .fa-times:hover {
         width: 0px;
     }
     
-    .servicii-item-title h1 {
+    .servicii-item-title h3 {
         font-size: 20px;
     }
     
@@ -713,7 +712,7 @@ nav .fa-times:hover {
         margin-top: 30px;
     }
     
-    .serviciile-noastre h1 {
+    .serviciile-noastre h2 {
         font-size: 30px;
     }
     
@@ -760,7 +759,7 @@ nav .fa-times:hover {
         width: 0px;
     }
     
-    .servicii-item-title h1 {
+    .servicii-item-title h3 {
         font-size: 18px;
     }
     
@@ -781,7 +780,7 @@ nav .fa-times:hover {
         margin-top: 30px;
     }
     
-    .serviciile-noastre h1 {
+    .serviciile-noastre h2 {
         font-size: 26px;
     }
     
@@ -807,7 +806,7 @@ nav .fa-times:hover {
         line-height: 55px;
     }
     
-    .servicii-item-title h1 {
+    .servicii-item-title h3 {
         font-size: 16px;
     }
     
@@ -844,7 +843,7 @@ nav .fa-times:hover {
     background: linear-gradient(180deg, rgba(36, 32, 33, 0.53) 99.98%, rgba(36, 32, 33, 0) 99.99%, #242021 100%);
 }
 
-.consiliere h1 {
+.consiliere h2 {
     position: absolute;
     z-index: 2;
     margin-top: 50px;
@@ -869,7 +868,7 @@ nav .fa-times:hover {
     text-decoration: none;
 }
 
-.consiliere-button:hover h2 {
+.consiliere-button:hover span {
     color: #FCBC04;
     transition: 0.5s;
 }
@@ -925,7 +924,7 @@ nav .fa-times:hover {
     width: 480px;
 }
 
-.consiliere-text-box h2 {
+.consiliere-text-box span {
     font-size: 24px;
     color: #fff;
 }
@@ -943,14 +942,14 @@ nav .fa-times:hover {
     margin-top: -3px;
 }
 
-.mai-multe-button h2 {
+.mai-multe-button span {
     margin: 0 5px;
     color: #fff;
     font-size: 12px;
 }
 
 @media only screen and (max-width: 1500px) {
-    .consiliere h1 {
+    .consiliere h2 {
         margin-top: 50px;
         font-size: 35px;
     }
@@ -998,7 +997,7 @@ nav .fa-times:hover {
         margin-top: 100px;
     }
 
-    .consiliere h1 {
+    .consiliere h2 {
         margin-top: 60px;
         font-size: 20px;
     }
@@ -1048,7 +1047,7 @@ nav .fa-times:hover {
         margin-top: 70px;
     }
 
-    .consiliere h1 {
+    .consiliere h2 {
         margin-top: 40px;
         font-size: 14px;
     }
@@ -1085,7 +1084,7 @@ nav .fa-times:hover {
         margin-top: 20px;
     }
 
-    .consiliere-text-box h2 {
+    .consiliere-text-box span {
         font-size: 16px;
     }
     
@@ -1098,7 +1097,7 @@ nav .fa-times:hover {
         margin-top: -2px;
     }
     
-    .mai-multe-button h2 {
+    .mai-multe-button span {
         font-size: 10px;
     }
 }
@@ -1112,7 +1111,7 @@ nav .fa-times:hover {
         margin-top: 100px;
     }
 
-    .consiliere h1 {
+    .consiliere h2 {
         margin-top: 50px;
         font-size: 13px;
         width: 240px;
@@ -1147,7 +1146,7 @@ nav .fa-times:hover {
         margin-top: 20px;
     }
 
-    .consiliere-text-box h2 {
+    .consiliere-text-box span {
         font-size: 11px;
     }
     
@@ -1160,7 +1159,7 @@ nav .fa-times:hover {
         margin-top: -2px;
     }
     
-    .mai-multe-button h2 {
+    .mai-multe-button span {
         font-size: 8px;
     }
 }
@@ -1176,7 +1175,7 @@ nav .fa-times:hover {
     align-items: center;
 }
 
-.atestarea-curea h1 {
+.atestarea-curea h2 {
     font-weight: bold;
     font-size: 40px;
     color: #242021;
@@ -1199,7 +1198,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 1260px) {
-    .atestarea-curea h1 {
+    .atestarea-curea h2 {
         font-size: 30px;
     }
     .atestarea-curea .line {
@@ -1216,7 +1215,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 700px) {
-    .atestarea-curea h1 {
+    .atestarea-curea h2 {
         font-size: 20px;
     }
     .atestarea-curea .line {
@@ -1233,7 +1232,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 490px) {
-    .atestarea-curea h1 {
+    .atestarea-curea h2 {
         font-size: 14px;
         margin: 0 10px;
     }
@@ -1262,7 +1261,7 @@ nav .fa-times:hover {
     flex-direction: column;
 }
 
-.rezolv-prob h1 {
+.rezolv-prob h2 {
     margin-top: 25px;
     font-size: 28px;
     color: #fff;
@@ -1335,7 +1334,7 @@ nav .fa-times:hover {
         height: 350px;
     }
     
-    .rezolv-prob h1 {
+    .rezolv-prob h2 {
         margin-top: 10px;
         font-size: 20px;
     }
@@ -1359,7 +1358,7 @@ nav .fa-times:hover {
         height: 500px;
     }
     
-    .rezolv-prob h1 {
+    .rezolv-prob h2 {
         margin-top: 10px;
         font-size: 20px;
         text-align: center;
@@ -1390,7 +1389,7 @@ nav .fa-times:hover {
         height: 450px;
     }
     
-    .rezolv-prob h1 {
+    .rezolv-prob h2 {
         margin-top: 0px;
         font-size: 14px;
         text-align: center;
@@ -1432,7 +1431,7 @@ nav .fa-times:hover {
     flex-direction: column;
 }
 
-.onorarii h1 {
+.onorarii .fee-introduction {
     color: #685E61;
     font-weight: bold;
     font-size: 24px;
@@ -1445,7 +1444,7 @@ nav .fa-times:hover {
     margin-top: 50px;
 }
 
-.onorarii-percepute h1 {
+.onorarii-percepute h2 {
     margin-top: 10px;
     color: #FCBC04;
     font-size: 40px;
@@ -1453,8 +1452,7 @@ nav .fa-times:hover {
     user-select: none;
 }
 
-.onorarii-percepute h1::after {
-    content: ' PERCEPUTE';
+.onorarii-percepute h2 .heading-rest {
     color: #242021;
 }
 
@@ -1464,7 +1462,7 @@ nav .fa-times:hover {
     flex-direction: row;
 }
 
-.tipuri-persoane li {
+.tipuri-persoane button {
     list-style: none;
     font-size: 25px;
     color: #242021;
@@ -1474,14 +1472,14 @@ nav .fa-times:hover {
     cursor: pointer;
 }
 
-.tipuri-persoane li:hover {
+.tipuri-persoane button:hover {
     color: #FCBC04;
     border-bottom: 2px solid #FCBC04;
     transition: 0.2s;
 }
 
 
-.act li{
+.tipuri-persoane button.act{
     color: #FCBC04;
     border-bottom: 2px solid #FCBC04;
 }
@@ -1553,13 +1551,13 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 1300px) {
-    .onorarii h1 {
+    .onorarii .fee-introduction {
         font-size: 20px;
         width: 800px;
         margin-top: 30px;
     }
 
-    .onorarii-percepute h1 {
+    .onorarii-percepute h2 {
         margin-top: 10px;
         font-size: 35px;
         margin-top: 40px;
@@ -1586,7 +1584,7 @@ nav .fa-times:hover {
         font-size: 14px;
     }
 
-    .tipuri-persoane li {
+    .tipuri-persoane button {
         font-size: 20px;
         margin: 0 50px;
     }
@@ -1597,13 +1595,13 @@ nav .fa-times:hover {
         height: 570px;
     }
 
-    .onorarii h1 {
+    .onorarii .fee-introduction {
         font-size: 15px;
         width: 600px;
         margin-top: 20px;
     }
 
-    .onorarii-percepute h1 {
+    .onorarii-percepute h2 {
         margin-top: 10px;
         font-size: 30px;
         margin-top: 30px;
@@ -1630,7 +1628,7 @@ nav .fa-times:hover {
         font-size: 11px;
     }
 
-    .tipuri-persoane li {
+    .tipuri-persoane button {
         font-size: 20px;
         margin: 0 40px;
     }
@@ -1656,13 +1654,13 @@ nav .fa-times:hover {
         height: 680px;
     }
 
-    .onorarii h1 {
+    .onorarii .fee-introduction {
         font-size: 12px;
         width: 400px;
         margin-top: 20px;
     }
 
-    .onorarii-percepute h1 {
+    .onorarii-percepute h2 {
         margin-top: 10px;
         font-size: 20px;
         margin-top: 30px;
@@ -1689,7 +1687,7 @@ nav .fa-times:hover {
         font-size: 11px;
     }
 
-    .tipuri-persoane li {
+    .tipuri-persoane button {
         font-size: 14px;
         margin: 0 10px;
     }
@@ -1712,19 +1710,19 @@ nav .fa-times:hover {
         height: 680px;
     }
 
-    .onorarii h1 {
+    .onorarii .fee-introduction {
         font-size: 10px;
         width: 270px;
         margin-top: 20px;
     }
 
-    .onorarii-percepute h1 {
+    .onorarii-percepute h2 {
         margin-top: 10px;
         font-size: 20px;
         margin-top: 30px;
     }
 
-    .tipuri-persoane li {
+    .tipuri-persoane button {
         font-size: 10px;
         margin: 0 4px;
     }
@@ -1762,7 +1760,7 @@ nav .fa-times:hover {
     flex-direction: column;
 }
 
-.border h1 {
+.border h2 {
     margin-top: 20px;
     width: 80%;
     font-size: 28px;
@@ -1804,7 +1802,7 @@ nav .fa-times:hover {
     margin-top: -3px;
 }
 
-.border .icon-box2 h1 {
+.border .icon-box2 .factor-number {
     color: #fff;
     margin-top: 0px;
     font-size: 20px;
@@ -1840,7 +1838,7 @@ nav .fa-times:hover {
     .arrow-left, .arrow-right {
         margin-top: 20px;
     }
-    .border h1 {
+    .border h2 {
         margin-top: 20px;
         width: 80%;
         font-size: 20px;
@@ -1860,7 +1858,7 @@ nav .fa-times:hover {
         height: 40px;
     }
 
-    .border h1 {
+    .border h2 {
         margin-top: 20px;
         font-size: 14px;
     }
@@ -1877,7 +1875,7 @@ nav .fa-times:hover {
         border-bottom: 1px solid #fff;
     }
     
-    .border .icon-box2 h1 {
+    .border .icon-box2 .factor-number {
         font-size: 14px;
     }
 
@@ -1906,7 +1904,7 @@ nav .fa-times:hover {
         margin-top: 30px;
     }
 
-    .border h1 {
+    .border h2 {
         margin-top: 20px;
         font-size: 12px;
     }
@@ -1923,7 +1921,7 @@ nav .fa-times:hover {
         border-bottom: 1px solid #fff;
     }
     
-    .border .icon-box2 h1 {
+    .border .icon-box2 .factor-number {
         font-size: 10px;
     }
 
@@ -2005,7 +2003,7 @@ nav .fa-times:hover {
     flex-direction: column;
     margin-bottom: 20px;
 }
-.contact-info-header h1{
+.contact-info-header h2{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -2025,7 +2023,7 @@ nav .fa-times:hover {
     margin-bottom: auto;
 }
 
-.contact-info-items h1 {
+.contact-info-items p {
     margin-top: -9px;
     font-size: 14px;
     font-weight: normal;
@@ -2100,7 +2098,7 @@ nav .fa-times:hover {
 	color: #fff;
 }
 
-.bottom-nav h1 {
+.bottom-nav p {
     font-size: 18px;
     color: #242021;
     margin-left: 100px;
@@ -2108,7 +2106,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 600px) {
-    .bottom-nav h1 {
+    .bottom-nav p {
         font-size: 12px;
         margin-left: 20px;
     }

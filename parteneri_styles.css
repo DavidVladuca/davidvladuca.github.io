@@ -276,7 +276,7 @@ nav .fa-times:hover {
     z-index: 500;
 }
 
-.sub-header h2 {
+.sub-header .sub-header-intro {
     margin: 0 20px;
     color: #fff;
     font-size: 14px;
@@ -318,7 +318,7 @@ nav .fa-times:hover {
     height: 710px;
 }
 
-.parteneri h3 {
+.parteneri h2 {
     text-align: center;
     font-size: 40px;
     font-weight: bold;
@@ -366,14 +366,14 @@ nav .fa-times:hover {
     border-bottom: 2px solid #FCBC04;
 }
 
-.servicii-item-title h1 {
+.servicii-item-title p {
     margin-left: 9px;
     color: #FCBC04;
     font-size: 15px;
     font-weight: normal;
 }
 
-.servicii-item h2 {
+.servicii-item h3 {
     font-size: 30px;
     color: #fff;
     margin-bottom: 20px;
@@ -388,13 +388,13 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 950px) {
-    .parteneri h3 {
+    .parteneri h2 {
         font-size: 30px;
     }
     .parteneri {
         height: 700px;
     }
-    .servicii-item-title h1 {
+    .servicii-item-title p {
         margin-left: 5px;
         color: #FCBC04;
         font-size: 12px;
@@ -402,7 +402,7 @@ nav .fa-times:hover {
     .servicii-item p {
         font-size: 12px;
     }
-    .servicii-item h2 {
+    .servicii-item h3 {
         font-size: 24px;
         margin-bottom: 10px;
     }
@@ -414,7 +414,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 520px) {
-    .parteneri h3 {
+    .parteneri h2 {
         font-size: 25px;
     }
     .parteneri {
@@ -467,7 +467,7 @@ nav .fa-times:hover {
     flex-direction: column;
     margin-bottom: 20px;
 }
-.contact-info-header h1{
+.contact-info-header h2{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -487,7 +487,7 @@ nav .fa-times:hover {
     margin-bottom: auto;
 }
 
-.contact-info-items h1 {
+.contact-info-items p {
     margin-top: -9px;
     font-size: 14px;
     font-weight: normal;
@@ -562,7 +562,7 @@ nav .fa-times:hover {
 	color: #fff;
 }
 
-.bottom-nav h1 {
+.bottom-nav p {
     font-size: 18px;
     color: #242021;
     margin-left: 100px;
@@ -570,7 +570,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 600px) {
-    .bottom-nav h1 {
+    .bottom-nav p {
         font-size: 12px;
         margin-left: 20px;
     }

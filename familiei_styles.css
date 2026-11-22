@@ -327,7 +327,7 @@ nav .fa-times:hover {
 
 /* PRACTICE AREAS */
 
-.arii-de-practica h1 {
+.arii-de-practica h2 {
     font-size: 28px;
     font-weight: bold;
     color: #242021;
@@ -350,15 +350,14 @@ nav .fa-times:hover {
     margin-bottom: 15px;
 }
 
-.area-row h2 {
+.area-row .area-label {
     margin-left: 15px;
     font-size: 18px;
     font-weight: medium;
     color: #242021;
 }
 
-.area-row h2::before {
-    content: "\f30b";
+.area-row .area-label .area-arrow {
     font-family: "Font Awesome 5 Free";
     font-size: 18px;
     color: #FCBC04;
@@ -380,7 +379,7 @@ nav .fa-times:hover {
     margin-bottom: 15px;
 }
 
-.area-active h2{
+.area-active .area-label{
     color: #FCBC04;
 }
 
@@ -388,17 +387,17 @@ nav .fa-times:hover {
     border: 2px solid #FCBC04;
 }
 
-.area-active h2::before {
+.area-active .area-label .area-arrow {
     opacity: 1;
     margin-right: 15px;
 }
 
-.area-row:hover h2 {
+.area-row:hover .area-label {
     color: #FCBC04;
     transition: 0.1s;
 }
 
-.area-row:hover h2::before {
+.area-row:hover .area-label .area-arrow {
     opacity: 1;
     left: 0;
     margin-right: 15px;
@@ -423,7 +422,7 @@ nav .fa-times:hover {
     margin-bottom: 50px;
 }
 
-.civil-box h1 {
+.civil-box h2 {
     color: #FCBC04;
     font-size: 24px;
     font-weight: bold;
@@ -454,12 +453,12 @@ nav .fa-times:hover {
         margin-left: 80px;
     }
 
-    .area-row h2 {
+    .area-row .area-label {
         margin-left: 15px;
         font-size: 14px;
     }
     
-    .area-row h2::before {
+    .area-row .area-label .area-arrow {
         font-size: 14px;
         left: -20px;
     }
@@ -473,7 +472,7 @@ nav .fa-times:hover {
         margin-bottom: 15px;
     }
 
-    .arii-de-practica h1 {
+    .arii-de-practica h2 {
         font-size: 24px;
         margin-bottom: 30px;
     }
@@ -489,19 +488,19 @@ nav .fa-times:hover {
         margin-left: 80px;
     }
 
-    .civil-box p, .civil-box li, .civil-box h3 {
+    .civil-box p, .civil-box li, .civil-box .article-summary {
         font-size: 14px;
     }
 
-    .civil-box h1 {
+    .civil-box h2 {
         font-size: 20px;
     }
 
-    .area-row h2 {
+    .area-row .area-label {
         font-size: 14px;
     }
     
-    .area-row h2::before {
+    .area-row .area-label .area-arrow {
         font-size: 14px;
     }
     
@@ -514,7 +513,7 @@ nav .fa-times:hover {
         margin-bottom: 15px;
     }
 
-    .arii-de-practica h1 {
+    .arii-de-practica h2 {
         font-size: 24px;
         margin-bottom: 30px;
     }
@@ -534,7 +533,7 @@ nav .fa-times:hover {
         flex-wrap: wrap-reverse;
     }
 
-    .area-row h2 {
+    .area-row .area-label {
         font-size: 14px;
     }
     
@@ -551,7 +550,7 @@ nav .fa-times:hover {
         margin-bottom: 15px;
     }
 
-    .arii-de-practica h1 {
+    .arii-de-practica h2 {
         font-size: 20px;
         margin-bottom: 20px;
     }
@@ -572,19 +571,19 @@ nav .fa-times:hover {
         margin-top: -20px;
     }
 
-    .civil-box p, .civil-box li, .civil-box h3 {
+    .civil-box p, .civil-box li, .civil-box .article-summary {
         font-size: 12px;
     }
 
-    .civil-box h1 {
+    .civil-box h2 {
         font-size: 16px;
     }
 
-    .area-row h2 {
+    .area-row .area-label {
         font-size: 12px;
     }
 
-    .area-row h2::before {
+    .area-row .area-label .area-arrow {
         font-size: 12px;
     }
     
@@ -601,7 +600,7 @@ nav .fa-times:hover {
         margin-bottom: 15px;
     }
 
-    .arii-de-practica h1 {
+    .arii-de-practica h2 {
         font-size: 16px;
         margin-bottom: 20px;
     }
@@ -669,7 +668,7 @@ nav .fa-times:hover {
     flex-direction: column;
     margin-bottom: 20px;
 }
-.contact-info-header h1{
+.contact-info-header h2{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -689,7 +688,7 @@ nav .fa-times:hover {
     margin-bottom: auto;
 }
 
-.contact-info-items h1 {
+.contact-info-items p {
     margin-top: -9px;
     font-size: 14px;
     font-weight: normal;
@@ -764,7 +763,7 @@ nav .fa-times:hover {
 	color: #fff;
 }
 
-.bottom-nav h1 {
+.bottom-nav p {
     font-size: 18px;
     color: #242021;
     margin-left: 100px;
@@ -772,7 +771,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 600px) {
-    .bottom-nav h1 {
+    .bottom-nav p {
         font-size: 12px;
         margin-left: 20px;
     }

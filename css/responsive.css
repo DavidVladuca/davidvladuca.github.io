@@ -49,7 +49,7 @@ body.content-page :is(p, li) {
     align-items: center;
 }
 
-.content-page .sub-header-box h2 {
+.content-page .sub-header-box .sub-header-intro {
     flex: 1;
     min-width: 0;
     margin: 0;
@@ -62,7 +62,7 @@ body.content-page :is(p, li) {
     margin-top: 0;
 }
 
-.content-page :is(.sub-header-box, .consiliere > h1) br {
+.content-page :is(.sub-header-box, .consiliere > h2) br {
     display: none;
 }
 
@@ -122,13 +122,13 @@ body.content-page :is(p, li) {
     margin: 0 0 32px;
 }
 
-.practice-page .civil-box h1 {
+.practice-page .civil-box h2 {
     margin: 24px 0 12px;
     font-size: 1.5rem;
     line-height: 1.35;
 }
 
-.practice-page .civil-box > img + h1 {
+.practice-page .civil-box > img + h2 {
     margin-top: 0;
 }
 
@@ -136,7 +136,7 @@ body.content-page :is(p, li) {
     margin: 0 0 20px;
 }
 
-.practice-page .civil-box h3 {
+.practice-page .civil-box .article-summary {
     font-size: 1rem;
     line-height: 1.65;
 }
@@ -162,7 +162,7 @@ body.content-page :is(p, li) {
     margin: 0;
 }
 
-.practice-page .arii-de-practica h1 {
+.practice-page .arii-de-practica h2 {
     margin: 0 0 24px;
     font-size: 1.5rem;
     line-height: 1.35;
@@ -174,14 +174,14 @@ body.content-page :is(p, li) {
     margin: 0;
 }
 
-.practice-page .area-row h2 {
+.practice-page .area-row .area-label {
     min-width: 0;
     margin-left: 12px;
     font-size: 1rem;
     line-height: 1.5;
 }
 
-.practice-page .area-row h2::before {
+.practice-page .area-row .area-label .area-arrow {
     font-size: 1rem;
 }
 
@@ -201,7 +201,7 @@ body.content-page :is(p, li) {
     margin-top: 32px;
 }
 
-.about-page .dc-noi h1 {
+.about-page .dc-noi h2 {
     font-size: clamp(1.5rem, 3vw, 2rem);
     line-height: 1.35;
     text-align: center;
@@ -262,7 +262,7 @@ body.content-page :is(p, li) {
     box-sizing: border-box;
 }
 
-.about-page .mm-noi h1 {
+.about-page .mm-noi h2 {
     font-size: clamp(2rem, 4.5vw, 4rem);
     line-height: 1.4;
     margin: 0;
@@ -295,7 +295,7 @@ body.content-page :is(p, li) {
     padding: var(--section-space) var(--page-gutter);
 }
 
-.about-page .rezolv-prob > h1 {
+.about-page .rezolv-prob > h2 {
     width: min(var(--page-width), 100%);
     margin: 0 auto 32px;
     font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -336,7 +336,7 @@ body.content-page :is(p, li) {
     margin-top: 32px;
 }
 
-.services-page :is(.serviciile-noastre, .onorarii-percepute) h1 {
+.services-page :is(.serviciile-noastre, .onorarii-percepute) h2 {
     width: auto;
     margin: 0;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
@@ -391,7 +391,7 @@ body.content-page :is(p, li) {
     justify-content: center;
 }
 
-.services-page .servicii-item-title h1 {
+.services-page .servicii-item-title h3 {
     flex-shrink: 0;
     max-width: calc(100% - 24px);
     margin: 0;
@@ -410,7 +410,7 @@ body.content-page :is(p, li) {
     display: block;
 }
 
-.services-page .consiliere > h1 {
+.services-page .consiliere > h2 {
     position: relative;
     display: block;
     width: min(var(--page-width), 100%);
@@ -462,7 +462,7 @@ body.content-page :is(p, li) {
     padding: 12px 8px;
 }
 
-.services-page .consiliere-text-box > h2 {
+.services-page .consiliere-text-box > span {
     min-width: 0;
     max-width: 100%;
     font-size: 1.125rem;
@@ -474,7 +474,7 @@ body.content-page :is(p, li) {
     margin-top: 6px;
 }
 
-.services-page .mai-multe-button h2 {
+.services-page .mai-multe-button span {
     font-size: 0.875rem;
     line-height: 1.4;
 }
@@ -491,7 +491,7 @@ body.content-page :is(p, li) {
     padding: 24px var(--page-gutter);
 }
 
-.services-page .atestarea-curea h1 {
+.services-page .atestarea-curea h2 {
     font-size: clamp(1.125rem, 2.2vw, 2rem);
     line-height: 1.35;
     text-align: center;
@@ -503,7 +503,7 @@ body.content-page :is(p, li) {
     margin: 0;
 }
 
-.services-page .rezolv-prob > h1 {
+.services-page .rezolv-prob > h2 {
     width: min(var(--page-width), 100%);
     margin: 24px auto 0;
     font-size: clamp(1.25rem, 2.2vw, 1.75rem);
@@ -542,14 +542,14 @@ body.content-page :is(p, li) {
     padding: 20px;
 }
 
-.services-page .rezolv-item-text h2 {
+.services-page .rezolv-item-text p {
     min-width: 0;
     max-width: 100%;
     font-size: 1.125rem;
     line-height: 1.5;
 }
 
-.services-page .onorarii > h1 {
+.services-page .onorarii > .fee-introduction {
     width: min(75ch, 100%);
     margin: 24px auto 0;
     font-size: 1.125rem;
@@ -563,7 +563,7 @@ body.content-page :is(p, li) {
     margin: 32px 0;
 }
 
-.services-page .tipuri-persoane li {
+.services-page .tipuri-persoane button {
     margin: 0;
     padding: 8px 0;
     font-size: 1.25rem;
@@ -643,7 +643,7 @@ body.content-page :is(p, li) {
     padding: 32px 20px;
 }
 
-.services-page .border > h1 {
+.services-page .border > h2 {
     width: min(75ch, 100%);
     margin: 0;
     font-size: clamp(1.25rem, 2.2vw, 1.75rem);
@@ -677,7 +677,7 @@ body.content-page :is(p, li) {
     visibility: visible;
 }
 
-.services-page .stabilire-text > a {
+.services-page .stabilire-text > button {
     display: grid;
     place-items: center;
     grid-row: 1;
@@ -685,11 +685,11 @@ body.content-page :is(p, li) {
     cursor: pointer;
 }
 
-.services-page .stabilire-text > a:first-child {
+.services-page .stabilire-text > button:first-child {
     grid-column: 1;
 }
 
-.services-page .stabilire-text > a:last-child {
+.services-page .stabilire-text > button:last-child {
     grid-column: 3;
 }
 
@@ -709,7 +709,7 @@ body.content-page :is(p, li) {
     margin-top: 24px;
 }
 
-.services-page .border .icon-box2 h1 {
+.services-page .border .icon-box2 .factor-number {
     width: auto;
     margin: 0;
     font-size: 1rem;
@@ -721,7 +721,7 @@ body.content-page :is(p, li) {
     padding: var(--section-space) var(--page-gutter);
 }
 
-.partners-page .parteneri > h3 {
+.partners-page .parteneri > h2 {
     margin: 0 auto;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     line-height: 1.35;
@@ -764,12 +764,12 @@ body.content-page :is(p, li) {
     margin: 240px 0 12px;
 }
 
-.partners-page .servicii-item-title h1 {
+.partners-page .servicii-item-title p {
     font-size: 0.875rem;
     line-height: 1.5;
 }
 
-.partners-page .servicii-item h2 {
+.partners-page .servicii-item h3 {
     margin-bottom: 16px;
     font-size: 1.5rem;
     line-height: 1.35;
@@ -802,13 +802,13 @@ body.content-page :is(p, li) {
     min-width: 0;
 }
 
-.content-page .contact-info-items h1,
+.content-page .contact-info-items p,
 .content-page #arii-practica .contact-info-items a {
     font-size: 1rem;
     line-height: 1.4;
 }
 
-.content-page .contact-info-items h1 {
+.content-page .contact-info-items p {
     min-width: 0;
     overflow-wrap: normal;
 }
@@ -822,7 +822,7 @@ body.content-page :is(p, li) {
     width: 1em;
 }
 
-.content-page .contact-info-header h1 {
+.content-page .contact-info-header h2 {
     font-size: 1.25rem;
     line-height: 1.5;
 }
@@ -840,7 +840,7 @@ body.content-page :is(p, li) {
     gap: 16px;
 }
 
-.content-page .bottom-nav h1 {
+.content-page .bottom-nav p {
     font-size: 0.875rem;
     line-height: 1.5;
 }
@@ -926,8 +926,8 @@ body.content-page :is(p, li) {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .services-page .consiliere-text-box > h2,
-    .services-page .tipuri-persoane li {
+    .services-page .consiliere-text-box > span,
+    .services-page .tipuri-persoane button {
         font-size: 1rem;
     }
 
@@ -948,7 +948,7 @@ body.content-page :is(p, li) {
 }
 
 @media (max-width: 400px) {
-    .services-page .servicii-item-title h1 {
+    .services-page .servicii-item-title h3 {
         font-size: 1.25rem;
     }
 }

@@ -39,7 +39,7 @@
     margin-bottom: 0;
 }
 
-.footer-info:not(#arii-practica) .contact-info-items h1 {
+.footer-info:not(#arii-practica) .contact-info-items p {
     margin-top: 0;
     line-height: 1.25;
 }
@@ -50,7 +50,7 @@
     text-align: center;
 }
 
-.contact-info-items h1 a {
+.contact-info-items p a {
     color: inherit;
     font: inherit;
     line-height: inherit;
@@ -58,13 +58,13 @@
     text-decoration: none;
 }
 
-.contact-info-items h1 a:is(:hover, :focus-visible) {
+.contact-info-items p a:is(:hover, :focus-visible) {
     color: #FCBC04;
     text-decoration: underline;
     text-underline-offset: 3px;
 }
 
-.contact-info-items h1 a:focus-visible {
+.contact-info-items p a:focus-visible {
     outline: 2px solid #FCBC04;
     outline-offset: 3px;
 }

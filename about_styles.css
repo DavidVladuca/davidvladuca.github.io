@@ -323,14 +323,13 @@ nav .fa-times:hover {
     margin-top: 50px;
 }
 
-.dc-noi h1 {
+.dc-noi h2 {
     color: #FCBC04;
     font-size: 32px;
     user-select: none;
 }
 
-.dc-noi h1::after {
-    content: ' SĂ NE ALEGEȚI PE NOI?';
+.dc-noi h2 .heading-rest {
     color: #242021;
 }
 
@@ -397,7 +396,7 @@ nav .fa-times:hover {
         font-size: 40px;
     }
 
-    .dc-noi h1 {
+    .dc-noi h2 {
         color: #FCBC04;
         font-size: 24px;
         user-select: none;
@@ -430,7 +429,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 350px) {
-    .dc-noi h1 {
+    .dc-noi h2 {
         font-size: 18px;
     }
     .dc-content .line {
@@ -479,14 +478,13 @@ nav .fa-times:hover {
     width: 558px;
 }
 
-.mm-noi h1 {
+.mm-noi h2 {
     color: #242021;
     font-size: 64px;
     user-select: none;
 }
 
-.mm-noi h1::after {
-    content: ' detalii despre noi:';
+.mm-noi h2 .heading-rest {
     color: #fff;
 }
 
@@ -511,7 +509,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 1600px) {
-    .mm-noi h1 {
+    .mm-noi h2 {
         font-size: 58px;
         margin-left: 20px;
     }
@@ -524,7 +522,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 1250px) {
-    .mm-noi h1 {
+    .mm-noi h2 {
         font-size: 42px;
         margin-left: 100px;
     }
@@ -611,7 +609,7 @@ nav .fa-times:hover {
     flex-direction: column;
 }
 
-.rezolv-prob h1 {
+.rezolv-prob h2 {
     font-size: 32px;
     color: #FCBC04;
     margin-bottom: 60px;
@@ -671,7 +669,7 @@ nav .fa-times:hover {
         height: 800px;
     }
 
-    .rezolv-prob h1 {
+    .rezolv-prob h2 {
         font-size: 28px;
         text-align: center;
     }
@@ -727,7 +725,7 @@ nav .fa-times:hover {
         height: 800px;
     }
 
-    .rezolv-prob h1 {
+    .rezolv-prob h2 {
         font-size: 20px;
         margin: 0px 5px 50px 5px;
     }
@@ -802,7 +800,7 @@ nav .fa-times:hover {
     flex-direction: column;
     margin-bottom: 20px;
 }
-.contact-info-header h1{
+.contact-info-header h2{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -822,7 +820,7 @@ nav .fa-times:hover {
     margin-bottom: auto;
 }
 
-.contact-info-items h1 {
+.contact-info-items p {
     margin-top: -9px;
     font-size: 14px;
     font-weight: normal;
@@ -897,7 +895,7 @@ nav .fa-times:hover {
 	color: #fff;
 }
 
-.bottom-nav h1 {
+.bottom-nav p {
     font-size: 18px;
     color: #242021;
     margin-left: 100px;
@@ -905,7 +903,7 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 600px) {
-    .bottom-nav h1 {
+    .bottom-nav p {
         font-size: 12px;
         margin-left: 20px;
     }

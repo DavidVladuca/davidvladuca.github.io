@@ -1,70 +1,75 @@
 <!doctype html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="servicii_juridice_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
     <title>Servicii Juridice - Vlăducă & Partners</title>
     <link rel="stylesheet" href="css/contact-links.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <script src="js/navigation.js" defer></script>
+    <script src="js/services.js" defer></script>
 </head>
 
 <body class="content-page services-page">
+    <a class="skip-link" href="#continut">Sari la conținut</a>
     <header>
         <div class="container">
-            <nav class="nav">
-                <a href="indexRO.html" class="logo"><img src="images/logo_text.png"></a>
+            <nav class="nav" aria-label="Navigare principală">
+                <a href="indexRO.html" class="logo"><img src="images/logo_text.png" alt="Vlăducă &amp; Partners, acasă"></a>
                 <div class="nav-links" id="navLinks">
-                    <i class="fa fa-times" onclick="hideMenu()"></i>
+                    <button class="nav-toggle nav-close" type="button" aria-label="Închideți meniul"><i class="fa fa-times" aria-hidden="true"></i></button>
                     <ul class="nav-list">
                         <li><a href="indexRO.html" class="nav-link">ACASĂ</a></li>
                         <li><a href="aboutRO.html" class="nav-link">DESPRE NOI</a></li>
                         <li><a href="parteneriRO.html" class="nav-link">PARTENERI</a></li>
-                        <li><a href="servicii_juridiceRO.html" class="nav-link active">SERVICII JURIDICE</a></li>
+                        <li><a href="servicii_juridiceRO.html" class="nav-link active" aria-current="page">SERVICII JURIDICE</a></li>
                         <li><a href="contactRO.html" class="nav-link">CONTACT</a></li>
-                        <ul class="roww">
-                            <li><a href="aboutRO.html" class="nav-link language-style1 lg-active">RO</a></li>
-                            <li><a class="nav-link language-bar">/</a></li>
-                            <li><a href="servicii_juridiceRO.html" class="nav-link language-style2">EN</a></li>
-                        </ul>
+                        <li><ul class="roww">
+                            <li><a href="aboutRO.html" class="nav-link language-style1 lg-active" lang="ro" aria-label="Română">RO</a></li>
+                            <li aria-hidden="true"><span class="nav-link language-bar" aria-hidden="true">/</span></li>
+                            <li><a href="servicii_juridiceRO.html" class="nav-link language-style2" lang="en" aria-label="English">EN</a></li>
+                        </ul></li>
                     </ul>
                 </div>
-                <i class="fa fa-bars" onclick="showMenu()"></i>
+                <button class="nav-toggle nav-open" type="button" aria-label="Deschideți meniul" aria-controls="navLinks" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button>
             </nav>
         </div>
     </header>
+    <main id="continut" tabindex="-1" aria-labelledby="page-heading">
     <section class="sub-header" id="up">
-        <h1 class="title">SERVICII JURIDICE</h1>
+        <h1 class="title" id="page-heading">SERVICII JURIDICE</h1>
         <div class="sub-header-box">
-            <div class="sub-header-line"></div>
-            <h2>
+            <div class="sub-header-line" aria-hidden="true"></div>
+            <p class="sub-header-intro">
                 Serviciile de consultanță, asistență și reprezentare juridică sunt cele mai solicitate servicii<br>
                 ale casei noastre de avocatură și sunt oferite la înalte standarde de performanță.
-            </h2>
-            <div class="sub-header-line"></div>
+            </p>
+            <div class="sub-header-line" aria-hidden="true"></div>
         </div>
     </section>
 
 <section class="servicii-content">
     <div class="icon-box">
-        <div class="line"></div>
-        <i class="fa-solid fa-award fa-xl"></i>
-        <div class="line"></div>
+        <div class="line" aria-hidden="true"></div>
+        <i class="fa-solid fa-award fa-xl" aria-hidden="true"></i>
+        <div class="line" aria-hidden="true"></div>
     </div>
     <div class="serviciile-noastre">
-        <h1>SERVICIILE</h1>
+        <h2>SERVICIILE<span class="heading-rest"> NOASTRE</span></h2>
     </div>
     <div class="servicii-boxes-list">
         <div class="servicii-box1">
             <div class="servicii-item">
-                <div class="circle-icon"><i class="fa-solid fa-graduation-cap fa-2xl"></i></div>
+                <div class="circle-icon"><i class="fa-solid fa-graduation-cap fa-2xl" aria-hidden="true"></i></div>
                 <div class="servicii-item-title">
-                    <div class="line"></div>
-                    <h1>CUNOAȘTERE</h1>
-                    <div class="line"></div>
+                    <div class="line" aria-hidden="true"></div>
+                    <h3>CUNOAȘTERE</h3>
+                    <div class="line" aria-hidden="true"></div>
                 </div>
                 <p>
                     Succesul nostru e strâns legat de cunoștințele și experiența dobândite de-a lungul anilor,
@@ -78,11 +83,11 @@
         </div>
         <div class="servicii-box2">
             <div class="servicii-item">
-                <div class="circle-icon"><i class="fa-solid fa-medal fa-2xl"></i></div>
+                <div class="circle-icon"><i class="fa-solid fa-medal fa-2xl" aria-hidden="true"></i></div>
                 <div class="servicii-item-title">
-                    <div class="line"></div>
-                    <h1>PROFESIONALISM</h1>
-                    <div class="line"></div>
+                    <div class="line" aria-hidden="true"></div>
+                    <h3>PROFESIONALISM</h3>
+                    <div class="line" aria-hidden="true"></div>
                 </div>
                 <p>
                     Prin experiență și profesionalism, prin eficiență și celeritate, echipa noastră de avocați vă oferă răspunsuri la
@@ -94,11 +99,11 @@
         </div>
         <div class="servicii-box3">
             <div class="servicii-item">
-                <div class="circle-icon"><i class="fa-solid fa-landmark fa-2xl"></i></div>
+                <div class="circle-icon"><i class="fa-solid fa-landmark fa-2xl" aria-hidden="true"></i></div>
                 <div class="servicii-item-title">
-                    <div class="line"></div>
-                    <h1>TRADIȚIE</h1>
-                    <div class="line"></div>
+                    <div class="line" aria-hidden="true"></div>
+                    <h3>TRADIȚIE</h3>
+                    <div class="line" aria-hidden="true"></div>
                 </div>
                 <p>
                     Tradiția pe care am construit-o în cele trei linii principale de activitate juridică, consiliere, asistență și
@@ -108,154 +113,154 @@
             </div>
         </div>
     </div>
-    <div class="arrow-down"></div>
+    <div class="arrow-down" aria-hidden="true"></div>
 </section>
 
 <section class="consiliere">
-    <h1>Serviciile noastre de consiliere, asistență și reprezentare vă stau la <br> dispoziție în următoarele ramuri ale dreptului:</h1>
+    <h2>Serviciile noastre de consiliere, asistență și reprezentare vă stau la <br> dispoziție în următoarele ramuri ale dreptului:</h2>
     <div class="button-box">
         <a href="dreptul_civilRO.html">
             <div class="consiliere-button">
-                <div class="patrat-icon"><i class="fa-solid fa-scale-unbalanced fa-2xl"></i></i></div>
+                <div class="patrat-icon"><i class="fa-solid fa-scale-unbalanced fa-2xl" aria-hidden="true"></i></div>
                 <div class="consiliere-text-box">
-                    <h2>DREPTUL CIVIL</h2>
+                    <span>DREPTUL CIVIL</span>
                     <div class="mai-multe-button">
-                        <div class="line"></div>
-                        <h2>VEZI MAI MULT</h2>
-                        <div class="line"></div>
+                        <div class="line" aria-hidden="true"></div>
+                        <span>VEZI MAI MULT</span>
+                        <div class="line" aria-hidden="true"></div>
                     </div>
                 </div>
-                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl"></i></div>
+                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl" aria-hidden="true"></i></div>
             </div>
         </a>
         <a href="dreptul_medicalRO.html">
             <div class="consiliere-button">
-                <div class="patrat-icon"><i class="fa-solid fa-syringe fa-2xl"></i></div>
+                <div class="patrat-icon"><i class="fa-solid fa-syringe fa-2xl" aria-hidden="true"></i></div>
                 <div class="consiliere-text-box coloana-middle">
-                    <h2>DREPTUL MEDICAL SAU MALPRAXIS</h2>
+                    <span>DREPTUL MEDICAL SAU MALPRAXIS</span>
                     <div class="mai-multe-button">
-                        <div class="line"></div>
-                        <h2>VEZI MAI MULT</h2>
-                        <div class="line"></div>
+                        <div class="line" aria-hidden="true"></div>
+                        <span>VEZI MAI MULT</span>
+                        <div class="line" aria-hidden="true"></div>
                     </div>
                 </div>
-                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl"></i></div>
+                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl" aria-hidden="true"></i></div>
             </div>
         </a>
         <a href="dreptul_munciiRO.html">
             <div class="consiliere-button">
-                <div class="patrat-icon"><i class="fa-solid fa-briefcase fa-2xl"></i></div>
+                <div class="patrat-icon"><i class="fa-solid fa-briefcase fa-2xl" aria-hidden="true"></i></div>
                 <div class="consiliere-text-box">
-                    <h2>DREPTUL MUNCII</h2>
+                    <span>DREPTUL MUNCII</span>
                     <div class="mai-multe-button">
-                        <div class="line"></div>
-                        <h2>VEZI MAI MULT</h2>
-                        <div class="line"></div>
+                        <div class="line" aria-hidden="true"></div>
+                        <span>VEZI MAI MULT</span>
+                        <div class="line" aria-hidden="true"></div>
                     </div>
                 </div>
-                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl"></i></div>
+                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl" aria-hidden="true"></i></div>
             </div>
         </a>
         <a href="dreptul_familieiRO.html">
             <div class="consiliere-button">
-                <div class="patrat-icon"><i class="fa-solid fa-user-group fa-2xl"></i></div>
+                <div class="patrat-icon"><i class="fa-solid fa-user-group fa-2xl" aria-hidden="true"></i></div>
                 <div class="consiliere-text-box">
-                    <h2>DREPTUL FAMILIEI</h2>
+                    <span>DREPTUL FAMILIEI</span>
                     <div class="mai-multe-button">
-                        <div class="line"></div>
-                        <h2>VEZI MAI MULT</h2>
-                        <div class="line"></div>
+                        <div class="line" aria-hidden="true"></div>
+                        <span>VEZI MAI MULT</span>
+                        <div class="line" aria-hidden="true"></div>
                     </div>
                 </div>
-                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl"></i></div>
+                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl" aria-hidden="true"></i></div>
             </div>
         </a>
         <a href="dreptul_contraventionalRO.html">
             <div class="consiliere-button">
-                <div class="patrat-icon"><i class="fa-solid fa-wallet fa-2xl"></i></div>
+                <div class="patrat-icon"><i class="fa-solid fa-wallet fa-2xl" aria-hidden="true"></i></div>
                 <div class="consiliere-text-box coloana-middle">
-                    <h2>DREPTUL CONTRAVENȚIONAL</h2>
+                    <span>DREPTUL CONTRAVENȚIONAL</span>
                     <div class="mai-multe-button">
-                        <div class="line"></div>
-                        <h2>VEZI MAI MULT</h2>
-                        <div class="line"></div>
+                        <div class="line" aria-hidden="true"></div>
+                        <span>VEZI MAI MULT</span>
+                        <div class="line" aria-hidden="true"></div>
                     </div>
                 </div>
-                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl"></i></div>
+                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl" aria-hidden="true"></i></div>
             </div>
         </a>
         <a href="dreptul_societarRO.html">
             <div class="consiliere-button">
-                <div class="patrat-icon"><i class="fa-solid fa-city fa-2xl"></i></div>
+                <div class="patrat-icon"><i class="fa-solid fa-city fa-2xl" aria-hidden="true"></i></div>
                 <div class="consiliere-text-box">
-                    <h2>DREPTUL SOCIETAR</h2>
+                    <span>DREPTUL SOCIETAR</span>
                     <div class="mai-multe-button">
-                        <div class="line"></div>
-                        <h2>VEZI MAI MULT</h2>
-                        <div class="line"></div>
+                        <div class="line" aria-hidden="true"></div>
+                        <span>VEZI MAI MULT</span>
+                        <div class="line" aria-hidden="true"></div>
                     </div>
                 </div>
-                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl"></i></div>
+                <div class="dreptunghi-icon"><i class="fa-solid fa-chevron-right fa-2xl" aria-hidden="true"></i></div>
             </div>
         </a>
     </div>
 </section>
 
 <section class="atestarea-curea">
-    <div class="line"></div>
-    <h1>ATESTAREA UNUI ÎNSCRIS</h1>
-    <div class="line"></div>
-    <div class="arrow-down"></div>
+    <div class="line" aria-hidden="true"></div>
+    <h2>ATESTAREA UNUI ÎNSCRIS</h2>
+    <div class="line" aria-hidden="true"></div>
+    <div class="arrow-down" aria-hidden="true"></div>
 </section>
 
 <section class="rezolv-prob">
     <div class="icon-box2">
-        <div class="line"></div>
-        <i class="fa-solid fa-book-open fa-xl"></i>
-        <div class="line"></div>
+        <div class="line" aria-hidden="true"></div>
+        <i class="fa-solid fa-book-open fa-xl" aria-hidden="true"></i>
+        <div class="line" aria-hidden="true"></div>
     </div>
-    <h1>În rezolvarea cu succes a problemelor juridice ne bazăm pe:</h1>
+    <h2>În rezolvarea cu succes a problemelor juridice ne bazăm pe:</h2>
     <div class="rezolv-list">
         <div class="rezolv-item">
-            <i class="fa-solid fa-address-card fa-6x"></i>
+            <i class="fa-solid fa-address-card fa-6x" aria-hidden="true"></i>
             <div class="rezolv-item-text">
-                <h2>
+                <p>
                     Servicii de atestare a identității părților semnatare ale
                     unui act juridic sau ale unui înscris;
-                </h2>
+                </p>
             </div>
         </div>
         <div class="rezolv-item">
             <div class="rezolv-item-text">
-                <h2>
+                <p>
                     Servicii de atestare a consimțământului părților semnatare, a
                     conținutului, precum și a datei actului juridic încheiat de către avocat;
-                </h2>
+                </p>
             </div>
-            <i class="fa-solid fa-folder-open fa-6x"></i>
+            <i class="fa-solid fa-folder-open fa-6x" aria-hidden="true"></i>
         </div>
     </div>
-    <div class="arrow-down"></div>
+    <div class="arrow-down" aria-hidden="true"></div>
 </section>
 
 <section class="onorarii">
     <div class="icon-box">
-        <div class="line"></div>
-        <i class="fa-solid fa-trophy fa-xl"></i>
-        <div class="line"></div>
+        <div class="line" aria-hidden="true"></div>
+        <i class="fa-solid fa-trophy fa-xl" aria-hidden="true"></i>
+        <div class="line" aria-hidden="true"></div>
     </div>
     <div class="onorarii-percepute">
-        <h1>ONORARII</h1>
+        <h2>ONORARII<span class="heading-rest"> PERCEPUTE</span></h2>
     </div>
-    <h1>
+    <p class="fee-introduction">
         Abordarea noastră în ceea ce privește costurile este flexibilă.
         Onorariile se stabilesc ținând cont de dificultatea, amploarea, urgența sau durata cazului.
-    </h1>
-    <nav class="tipuri-persoane">
-        <div class="act" id="pf"><li>PENTRU PERSOANE FIZICE</li></div>
-        <div id="pj"><li>PENTRU PERSOANE JURIDICE</li></div>
-    </nav>
-    <section id="persoane-fizice">
+    </p>
+    <div class="tipuri-persoane" role="tablist" aria-label="Onorarii în funcție de client">
+        <button class="act" id="pf" type="button" role="tab" aria-controls="persoane-fizice" aria-selected="true">PENTRU PERSOANE FIZICE</button>
+        <button id="pj" type="button" role="tab" aria-controls="persoane-juridice" aria-selected="false" tabindex="-1">PENTRU PERSOANE JURIDICE</button>
+    </div>
+    <section id="persoane-fizice" role="tabpanel" aria-labelledby="pf" tabindex="0">
         <div class="pf-box-content">
             <div class="pf-box">
                 <p>
@@ -281,7 +286,7 @@
             </div>
         </div>
     </section>
-    <section id="persoane-juridice">
+    <section id="persoane-juridice" role="tabpanel" aria-labelledby="pj" tabindex="0" hidden="">
         <div class="pj-box-content">
             <div class="pj-row">
                 <div class="pj-box">
@@ -319,107 +324,111 @@
 <section class="stabilire">
     <div class="stabilire-bg"></div>
     <div class="border">
-        <h1>
+        <h2>
             Când stabilim onorariile pentru fiecare client în parte (indiferent dacă
             este persoană fizică sau persoană juridică) ținem cont de următoarele aspecte:
-        </h1>
+        </h2>
         <div class="icon-box">
-            <div class="line"></div>
-            <i class="fa-solid fa-user fa-xl"></i>
-            <div class="line"></div>
+            <div class="line" aria-hidden="true"></div>
+            <i class="fa-solid fa-user fa-xl" aria-hidden="true"></i>
+            <div class="line" aria-hidden="true"></div>
         </div>
         <div class="stabilire-text">
-            <a onclick="plusSlides(-1)"><div class="arrow-left"></div></a>
-            <div class="mySlides">
+            <button type="button" class="factor-previous" aria-label="Factorul anterior"><div class="arrow-left"></div></button>
+            <div class="mySlides is-current" aria-hidden="false">
                 <p>
                     Împrejurarea că acceptarea de către avocat a mandatului acordat de client îl împiedică să accepte un alt mandat,
                     din partea unei alte persoane, dacă această împrejurare poate fi constatată de client fără investigații suplimentare;
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Timpul și volumul de muncă pe care trebuie să-l depunem pentru executarea mandatului primit sau pentru realizarea
                     activității solicitate de client;
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Constrângerile de timp în care avocatul este obligat de împrejurările cauzei să acționeze pentru a asigura servicii
                      profesionale de calitate;
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Termenele-limită și perioada din zi în care trebuie să-și desfășoare activitatea profesională.
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Colaborarea și conlucrarea cu experți sau alți specialiști impusă de natura, obiectul, complexitatea și dificultatea cazului;
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Avantajele și rezultatele obținute în beneficiul clientului, ca urmare a activității și muncii depuse de avocat;
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Poziția socială și situația financiară a clientului;
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Importanța intereselor clientului în cauză;
                 </p>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" aria-hidden="true">
                 <p>
                     Felul, natura, noutatea și dificultatea cazului;
                 </p>
             </div>
-            <a onclick="plusSlides(1)"><div class="arrow-right"></div></a>
+            <button type="button" class="factor-next" aria-label="Factorul următor"><div class="arrow-right"></div></button>
         </div>
         <div class="icon-box2" style="margin-top: 40px">
-            <div class="line"></div>
-            <h1 id="number">1</h1>
-            <div class="line"></div>
+            <div class="line" aria-hidden="true"></div>
+            <span id="number" aria-hidden="true" class="factor-number">1</span>
+            <div class="line" aria-hidden="true"></div>
         </div>
+        <p class="visually-hidden" id="fee-factor-status" role="status" aria-live="polite" aria-atomic="true">Factorul 1 din 9.</p>
     </div>
 </section>
 
-<section class="footer-about">
+</main>
+
+<footer class="site-footer">
+    <section class="footer-about">
     <div class="footer-box">
-        <img src="images/logo_patrat.png" class="footer-logo-patrat">
+        <img src="images/logo_patrat.png" class="footer-logo-patrat" alt="">
         <div class="footer-info">
             <div class="contact-info-header">
-                <h1>Contact</h1>
+                <h2>Contact</h2>
                 <div class="underline"></div>
             </div>
             <div class="contact-info-items">
-                <i class="fa-solid fa-phone fa-sm"></i>
-                <h1><a href="tel:+40726286228">0726 286 228</a></h1>
+                <i class="fa-solid fa-phone fa-sm" aria-hidden="true"></i>
+                <p><a href="tel:+40726286228">0726 286 228</a></p>
             </div>
             <div class="contact-info-items">
-                <i class="fa-solid fa-envelope fa-sm"></i>
-                <h1>
+                <i class="fa-solid fa-envelope fa-sm" aria-hidden="true"></i>
+                <p>
                     <a href="mailto:infoavocati@yahoo.com">infoavocati@yahoo.com</a> <br>
                     <a href="mailto:officeinfoavocati@gmail.com">officeinfoavocati@gmail.com</a>
-                </h1>
+                </p>
             </div>
             <div class="contact-info-items">
-                <i class="fa-solid fa-location-arrow fa-sm"></i>
-                <h1>
+                <i class="fa-solid fa-location-arrow fa-sm" aria-hidden="true"></i>
+                <p>
                     <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bulevardul%20Decebal%2014%2C%20Sector%203%2C%20Bucure%C8%99ti">Bulevardul Decebal 14 <br>
                     Sector 3, București <br>
                     Bloc S6, Scara 4, Etaj 4 <br>
                     Interfon 79, Apartament 79</a>
-                </h1>
+                </p>
             </div>
         </div>
         <div class="footer-info" id="arii-practica">
             <div class="contact-info-header">
-                <h1>Arii de Practică</h1>
+                <h2>Arii de Practică</h2>
                 <div class="underline"></div>
             </div>
             <div class="contact-info-items"><a href="dreptul_civilRO.html">Dreptul Civil</a></div>
@@ -429,73 +438,21 @@
             <div class="contact-info-items"><a href="dreptul_societarRO.html">Dreptul Societar</a></div>
             <div class="contact-info-items"><a href="dreptul_contraventionalRO.html">Dreptul Contravențional</a></div>
         </div>
-        <img src="images/logo_text.png" class="footer-logo-text">
+        <img src="images/logo_text.png" class="footer-logo-text" alt="">
     </div>
 </section>
 
 <section class="bottom-nav-bar">
-    <nav class="bottom-nav">
-        <h1>Copyright © Vlăducă & Partners</h1>
-        <a href="#up"><div><i class="fa-solid fa-angle-up fa-lg"></i></div></a>
-    </nav>
+    <div class="bottom-nav">
+        <p>Copyright © Vlăducă & Partners</p>
+        <a href="#up" aria-label="Înapoi la începutul paginii"><div><i class="fa-solid fa-angle-up fa-lg" aria-hidden="true"></i></div></a>
+    </div>
 </section>
+</footer>
 
-<script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
-    
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-    
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-    
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].classList.remove("is-current");
-      }
-      slides[slideIndex-1].classList.add("is-current");
-      document.getElementById("number").innerHTML = slideIndex;
-    }
-</script>
-<script>
-    document.getElementById("pf").addEventListener("click", newDivHere1);
-    document.getElementById("pj").addEventListener("click", newDivHere2);
-    function newDivHere1() {
-        document.getElementById("persoane-fizice").style.display="block";
-        document.getElementById("persoane-juridice").style.display="none";
-        document.getElementById("pf").classList.add('act');
-        document.getElementById("pj").classList.remove('act');
-    }
-    function newDivHere2() {
-        document.getElementById("persoane-fizice").style.display="none";
-        document.getElementById("persoane-juridice").style.display="block";
-        document.getElementById("pj").classList.add('act');
-        document.getElementById("pf").classList.remove('act');
-    }
-</script>
-<script> 
-        window.addEventListener('scroll', function () {
-            let header = document.querySelector('header');
-            let windowPosition = window.scrollY > 0;
-            header.classList.toggle('scrolling-active', windowPosition);
-        })
-</script>
-<script>
-    var navLinks = document.getElementById("navLinks");
-    function showMenu() {
-        navLinks.style.right = "0";
-    }
-    function hideMenu() {
-        navLinks.style.right = "-300px";  
-    }
-</script>
+
+
+
+
 </body>
 </html>

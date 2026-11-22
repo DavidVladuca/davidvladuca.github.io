@@ -1,32 +1,3 @@
-const navigation = document.querySelector(".site-header .nav");
-const menuPanel = navigation.querySelector(".nav-links");
-const openMenu = navigation.querySelector(".nav-open");
-const closeMenu = navigation.querySelector(".nav-close");
-const mobileNavigation = window.matchMedia("(max-width: 1200px)");
-
-function setMenuOpen(open) {
-    menuPanel.classList.toggle("is-open", open);
-    menuPanel.inert = mobileNavigation.matches && !open;
-    openMenu.setAttribute("aria-expanded", String(open));
-}
-
-openMenu.addEventListener("click", () => {
-    setMenuOpen(true);
-    closeMenu.focus({ preventScroll: true });
-});
-closeMenu.addEventListener("click", () => {
-    setMenuOpen(false);
-    openMenu.focus({ preventScroll: true });
-});
-navigation.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && menuPanel.classList.contains("is-open")) {
-        setMenuOpen(false);
-        openMenu.focus({ preventScroll: true });
-    }
-});
-mobileNavigation.addEventListener("change", () => setMenuOpen(false));
-setMenuOpen(false);
-
 const hero = document.querySelector(".hero");
 const film = document.querySelector("#hero-film");
 const poster = hero.querySelector(".hero-media img");

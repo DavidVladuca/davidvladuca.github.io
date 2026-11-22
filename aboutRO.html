@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,47 +9,51 @@
     <title>Despre noi - Vlăducă & Partners</title>
     <link rel="stylesheet" href="css/contact-links.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <script src="js/navigation.js" defer></script>
 </head>
 <body class="content-page about-page">
+    <a class="skip-link" href="#continut">Sari la conținut</a>
     <header>
         <div class="container">
-            <nav class="nav">
-                <a href="indexRO.html" class="logo"><img src="images/logo_text.png"></a>
+            <nav class="nav" aria-label="Navigare principală">
+                <a href="indexRO.html" class="logo"><img src="images/logo_text.png" alt="Vlăducă &amp; Partners, acasă"></a>
                 <div class="nav-links" id="navLinks">
-                    <i class="fa fa-times" onclick="hideMenu()"></i>
+                    <button class="nav-toggle nav-close" type="button" aria-label="Închideți meniul"><i class="fa fa-times" aria-hidden="true"></i></button>
                     <ul class="nav-list">
                         <li><a href="indexRO.html" class="nav-link">ACASĂ</a></li>
-                        <li><a href="aboutRO.html" class="nav-link active">DESPRE NOI</a></li>
+                        <li><a href="aboutRO.html" class="nav-link active" aria-current="page">DESPRE NOI</a></li>
                         <li><a href="parteneriRO.html" class="nav-link">PARTENERI</a></li>
                         <li><a href="servicii_juridiceRO.html" class="nav-link">SERVICII JURIDICE</a></li>
                         <li><a href="contactRO.html" class="nav-link">CONTACT</a></li>
-                        <ul class="roww">
-                            <li><a href="aboutRO.html" class="nav-link language-style1 lg-active">RO</a></li>
-                            <li><a class="nav-link language-bar">/</a></li>
-                            <li><a href="aboutRO.html" class="nav-link language-style2">EN</a></li>
-                        </ul>
+                        <li><ul class="roww">
+                            <li><a href="aboutRO.html" class="nav-link language-style1 lg-active" lang="ro" aria-label="Română">RO</a></li>
+                            <li aria-hidden="true"><span class="nav-link language-bar" aria-hidden="true">/</span></li>
+                            <li><a href="aboutRO.html" class="nav-link language-style2" lang="en" aria-label="English">EN</a></li>
+                        </ul></li>
                     </ul>
                 </div>
-                <i class="fa fa-bars" onclick="showMenu()"></i>
+                <button class="nav-toggle nav-open" type="button" aria-label="Deschideți meniul" aria-controls="navLinks" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button>
             </nav>
         </div>
     </header>
 
+    <main id="continut" tabindex="-1" aria-labelledby="page-heading">
     <section class="sub-header" id="up">
-        <h1 class="title">DESPRE NOI</h1>
+        <h1 class="title" id="page-heading">DESPRE NOI</h1>
     </section>
-   
+
     <section class="dc-content">
         <div class="icon-box">
-            <div class="line"></div>
-            <i class="fa-solid fa-scale-balanced fa-xl"></i>
-            <div class="line"></div>
+            <div class="line" aria-hidden="true"></div>
+            <i class="fa-solid fa-scale-balanced fa-xl" aria-hidden="true"></i>
+            <div class="line" aria-hidden="true"></div>
         </div>
         <div class="dc-noi">
-            <h1>DE CE</h1>
+            <h2>DE CE<span class="heading-rest"> SĂ NE ALEGEȚI PE NOI?</span></h2>
         </div>
         <div class="dc-noi-box">
-            <img src="images/dc-noi-bg.jpg">
+            <img src="images/dc-noi-bg.jpg" alt="Carte de vizită a casei de avocatură Vlăducă &amp; Partners">
             <div class="about-copy">
                 <p>
                     Succesul nostru este strâns legat de cunoștințele și experiența dobândite de-a lungul anilor, de viziunea pe care o
@@ -76,21 +80,21 @@
                 </p>
             </div>
         </div> 
-        <div class="arrow-down"></div>
+        <div class="arrow-down" aria-hidden="true"></div>
     </section>
-    
+
     <section class="mai-multe">
         <div class="bg-cover-left">
             <div class="mm-noi">
-                <h1>Mai multe</h1>
+                <h2>Mai multe<span class="heading-rest"> detalii despre noi:</span></h2>
             </div>
         </div>
         <div class="bg-cover-right">
             <div class="mai-multe-box">
                 <div class="icon-box">
-                    <div class="line"></div>
-                    <i class="fa-solid fa-book-open fa-2xl"></i>
-                    <div class="line"></div>
+                    <div class="line" aria-hidden="true"></div>
+                    <i class="fa-solid fa-book-open fa-2xl" aria-hidden="true"></i>
+                    <div class="line" aria-hidden="true"></div>
                 </div>
                 <div class="about-copy">
                     <p>
@@ -112,66 +116,70 @@
     </section>
 
     <section class="rezolv-prob">
-        <h1>În rezolvarea cu succes a problemelor juridice ne bazăm pe:</h1>
+        <h2>În rezolvarea cu succes a problemelor juridice ne bazăm pe:</h2>
         <div class="rezolv-prob-box">
-            <img src="images/dc-noi-bg2.jpg">
+            <img src="images/dc-noi-bg2.jpg" alt="Identitatea Vlăducă &amp; Partners, casă de avocatură și consultanță">
             <div class="prob-list">
                 <div class="prob-item">
-                    <div><i class="fa-solid fa-star fa-lg"></i></div>
+                    <div><i class="fa-solid fa-star fa-lg" aria-hidden="true"></i></div>
                     <p>Profesionalism și confidențialitate în relația cu clienții noștri;</p>
                 </div>
                 <div class="prob-item">
-                    <div><i class="fa-solid fa-star fa-lg"></i></div>
+                    <div><i class="fa-solid fa-star fa-lg" aria-hidden="true"></i></div>
                     <p>Nivel ridicat de cunoștințe juridice;</p>
                 </div>
                 <div class="prob-item">
-                    <div><i class="fa-solid fa-star fa-lg"></i></div>
+                    <div><i class="fa-solid fa-star fa-lg" aria-hidden="true"></i></div>
                     <p>Creativitate și dinamism;</p>
                 </div>
                 <div class="prob-item">
-                    <div><i class="fa-solid fa-star fa-lg"></i></div>
+                    <div><i class="fa-solid fa-star fa-lg" aria-hidden="true"></i></div>
                     <p>Adaptabilitate în funcție de necesitățile clienților;</p>
                 </div>
                 <div class="prob-item">
-                    <div><i class="fa-solid fa-star fa-lg"></i></div>
+                    <div><i class="fa-solid fa-star fa-lg" aria-hidden="true"></i></div>
                     <p>Promovarea consultanței permanente de tipul "avocatul casei";</p>
                 </div>
+            </div>
         </div>
     </section>
 
+    </main>
+
+<footer class="site-footer">
     <section class="footer-about">
         <div class="footer-bg"></div>
         <div class="footer-box">
-            <img src="images/logo_patrat.png" class="footer-logo-patrat">
+            <img src="images/logo_patrat.png" class="footer-logo-patrat" alt="">
             <div class="footer-info">
                 <div class="contact-info-header">
-                    <h1>Contact</h1>
+                    <h2>Contact</h2>
                     <div class="underline"></div>
                 </div>
                 <div class="contact-info-items">
-                    <i class="fa-solid fa-phone fa-sm"></i>
-                    <h1><a href="tel:+40726286228">0726 286 228</a></h1>
+                    <i class="fa-solid fa-phone fa-sm" aria-hidden="true"></i>
+                    <p><a href="tel:+40726286228">0726 286 228</a></p>
                 </div>
                 <div class="contact-info-items">
-                    <i class="fa-solid fa-envelope fa-sm"></i>
-                    <h1>
+                    <i class="fa-solid fa-envelope fa-sm" aria-hidden="true"></i>
+                    <p>
                         <a href="mailto:infoavocati@yahoo.com">infoavocati@yahoo.com</a> <br>
                         <a href="mailto:officeinfoavocati@gmail.com">officeinfoavocati@gmail.com</a>
-                    </h1>
+                    </p>
                 </div>
                 <div class="contact-info-items">
-                    <i class="fa-solid fa-location-arrow fa-sm"></i>
-                    <h1>
+                    <i class="fa-solid fa-location-arrow fa-sm" aria-hidden="true"></i>
+                    <p>
                         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bulevardul%20Decebal%2014%2C%20Sector%203%2C%20Bucure%C8%99ti">Bulevardul Decebal 14 <br>
                     Sector 3, București <br>
                     Bloc S6, Scara 4, Etaj 4 <br>
                     Interfon 79, Apartament 79</a>
-                    </h1>
+                    </p>
                 </div>
             </div>
             <div class="footer-info" id="arii-practica">
                 <div class="contact-info-header">
-                    <h1>Arii de Practică</h1>
+                    <h2>Arii de Practică</h2>
                     <div class="underline"></div>
                 </div>
                 <div class="contact-info-items"><a href="dreptul_civilRO.html">Dreptul Civil</a></div>
@@ -181,32 +189,19 @@
                 <div class="contact-info-items"><a href="dreptul_societarRO.html">Dreptul Societar</a></div>
                 <div class="contact-info-items"><a href="dreptul_contraventionalRO.html">Dreptul Contravențional</a></div>
             </div>
-            <img src="images/logo_text.png" class="footer-logo-text">
+            <img src="images/logo_text.png" class="footer-logo-text" alt="">
         </div>
     </section>
 
     <section class="bottom-nav-bar">
-        <nav class="bottom-nav">
-            <h1>Copyright © Vlăducă & Partners</h1>
-            <a href="#up"><div><i class="fa-solid fa-angle-up fa-lg"></i></div></a>
-        </nav>
+        <div class="bottom-nav">
+            <p>Copyright © Vlăducă & Partners</p>
+            <a href="#up" aria-label="Înapoi la începutul paginii"><div><i class="fa-solid fa-angle-up fa-lg" aria-hidden="true"></i></div></a>
+        </div>
     </section>
-    
-    <script> 
-        window.addEventListener('scroll', function () {
-            let header = document.querySelector('header');
-            let windowPosition = window.scrollY > 0;
-            header.classList.toggle('scrolling-active', windowPosition);
-        })
-    </script>
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        function showMenu() {
-            navLinks.style.right = "0";
-        }
-        function hideMenu() {
-            navLinks.style.right = "-300px";  
-        }
-    </script>
+</footer>
+
+
+
 </body>
 </html>
