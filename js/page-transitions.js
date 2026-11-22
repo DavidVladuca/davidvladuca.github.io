@@ -13,6 +13,38 @@
     let leaving = false;
     let navigationTimer;
     let recoveryTimer;
+    let restorePending = false;
+
+    function saveReadingPosition() {
+        try {
+            const state = history.state;
+            if (state !== null && typeof state !== "object") return;
+            history.replaceState({ ...state, vpReadingPosition: { x: scrollX, y: scrollY } }, "");
+        } catch { /* Native history remains available when state cannot be saved. */ }
+    }
+
+    function restoreReadingPosition() {
+        const point = history.state?.vpReadingPosition;
+        if (!Number.isFinite(point?.x) || !Number.isFinite(point?.y)) return;
+        restorePending = true;
+        // A reloaded history entry can settle at a different scroll anchor than it left.
+        const fonts = document.fonts?.ready || Promise.resolve();
+        Promise.race([fonts, new Promise(resolve => setTimeout(resolve, 800))]).then(() => {
+            requestAnimationFrame(() => {
+                if (!restorePending || document.hidden) return;
+                restorePending = false;
+                window.scrollTo({ left: point.x, top: point.y, behavior: "instant" });
+            });
+        });
+    }
+
+    function skipPageTransition(transition) {
+        if (!transition) return;
+        // Skipping a native transition deliberately rejects its ready promise.
+        transition.ready.catch(() => {});
+        transition.finished.catch(() => {});
+        transition.skipTransition();
+    }
 
     // Different documents get distinct snapshot names, avoiding stretched text or panels.
     const pageKey = location.pathname.split("/").pop().replace(/[^a-z0-9]/gi, "-") || "home";
@@ -65,6 +97,7 @@
         clearTimeout(navigationTimer);
         clearTimeout(recoveryTimer);
         leaving = false;
+        restorePending = false;
         delete root.dataset.pageFade;
         delete root.dataset.pageNavigating;
         observer?.disconnect();
@@ -74,7 +107,7 @@
     }
 
     function prepareReveals() {
-        if (!document.body.classList.contains("content-page") || reducedMotion.matches) return;
+        if (historyEntry || !document.body.classList.contains("content-page") || reducedMotion.matches) return;
         const groups = [...document.querySelectorAll([
             ".sub-header .title", ".sub-header-box", ".dc-noi", ".dc-noi-box",
             ".mai-multe .mm-noi", ".mai-multe-box", ".rezolv-prob > h2", ".rezolv-prob-box",
@@ -122,10 +155,11 @@
     window.addEventListener("pagereveal", event => {
         nativeEntrance = Boolean(event.viewTransition);
         if (reducedMotion.matches || historyEntry || window.navigation?.activation?.navigationType === "traverse") {
-            event.viewTransition?.skipTransition();
+            skipPageTransition(event.viewTransition);
         }
     });
     window.addEventListener("pageswap", event => {
+        saveReadingPosition();
         // Capture the page behind an open phone menu, rather than dissolving its gold panel.
         const panel = document.querySelector(".nav-links.is-open");
         if (panel) {
@@ -135,23 +169,31 @@
             document.querySelector(".nav-open")?.setAttribute("aria-expanded", "false");
         }
         if (reducedMotion.matches || event.activation?.navigationType === "traverse") {
-            event.viewTransition?.skipTransition();
+            skipPageTransition(event.viewTransition);
         }
     });
-    window.addEventListener("pagehide", reset);
+    window.addEventListener("pagehide", () => { saveReadingPosition(); reset(); });
     window.addEventListener("beforeprint", reset);
-    window.addEventListener("pageshow", event => { if (event.persisted) reset(); });
+    window.addEventListener("pageshow", event => {
+        if (event.persisted) reset();
+        if (event.persisted || historyEntry) restoreReadingPosition();
+    });
+    for (const type of ["pointerdown", "keydown", "wheel", "touchmove"]) {
+        document.addEventListener(type, () => { restorePending = false; }, { passive: true });
+    }
     reducedMotion.addEventListener("change", () => { if (reducedMotion.matches) reset(); });
 
     // Fallback only for the home fade. Ordinary links retain native navigation/history.
     document.addEventListener("click", event => {
-        if (nativeTransitions || reducedMotion.matches || event.defaultPrevented || event.button !== 0
+        if (event.defaultPrevented || event.button !== 0
             || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         const link = event.target.closest?.("a[href]");
         if (!link || link.hasAttribute("download") || (link.target && link.target !== "_self")) return;
         const url = new URL(link.href);
-        if (url.origin !== location.origin || !isHome(url)
+        if (url.origin !== location.origin || !/(?:\.html|\/)$/.test(url.pathname)
             || canonicalPath(url) === canonicalPath(new URL(location.href))) return;
+        saveReadingPosition();
+        if (nativeTransitions || reducedMotion.matches || !isHome(url)) return;
         event.preventDefault();
         if (leaving) return;
         leaving = true;
