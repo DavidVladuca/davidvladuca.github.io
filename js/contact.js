@@ -118,7 +118,7 @@
             return;
         }
 
-        // Enable delivery only after the inbox owner has activated FormSubmit.
+        // Delivery can be disabled here without changing the approved form design.
         if (contactForm.dataset.deliveryEnabled !== "true") {
             showContactStatus("Formularul nu este încă activ. Ne puteți trimite mesajul la infoavocati@yahoo.com sau ne puteți suna la 0726 286 228.", "unavailable");
             return;
@@ -152,10 +152,18 @@
                 signal: controller.signal,
                 credentials: "omit",
             });
+            if (response.status === 429) {
+                showContactStatus("Au fost prea multe încercări de trimitere. Mesajul a fost păstrat. Așteptați câteva minute și încercați din nou sau scrieți-ne la infoavocati@yahoo.com.", "error");
+                return;
+            }
             const result = await response.json();
-            const accepted = result.success === true || result.success === "true";
-            const needsActivation = /activat/i.test(String(result.message || ""));
-            if (!response.ok || !accepted || needsActivation) {
+            const accepted = result?.success === true || result?.success === "true";
+            const needsActivation = /activat/i.test(String(result?.message || ""));
+            if (needsActivation) {
+                showContactStatus("Mesajul nu a fost trimis. Formularul este temporar indisponibil. Textul a fost păstrat. Vă rugăm să ne scrieți la infoavocati@yahoo.com sau să ne sunați la 0726 286 228.", "unavailable");
+                return;
+            }
+            if (!response.ok || !accepted) {
                 throw new Error("Submission was not confirmed by the delivery service.");
             }
             contactForm.reset();

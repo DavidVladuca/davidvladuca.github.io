@@ -40,8 +40,14 @@ The website is currently used as the official online presence of the law firm.
 
 The form uses [FormSubmit AJAX](https://formsubmit.co/ajax-documentation) and is prepared for `infoavocati@yahoo.com`. There are no client-side API keys.
 
-Delivery is currently disabled through `data-delivery-enabled="false"` on `#contact-form` in `contactRO.html`, following the owner's decision to leave activation for later. The local preview validates fields and displays an unavailable message without posting to FormSubmit. No activation or test email has been sent.
+On 22 November 2026, the owner authorized enabling delivery and requesting activation for `infoavocati@yahoo.com`. The local form now has `data-delivery-enabled="true"`. These changes are not deployed yet. Mail delivery still depends on the inbox owner completing FormSubmit's confirmation and on a real message reaching the inbox.
 
-To finish setup after approval, send an authorized activation request for the intended site, confirm the email received in the firm inbox, then set `data-delivery-enabled="true"`. Verify a controlled submission arrives with all five fields and that Reply-To addresses the visitor. Test errors as well as successful acceptance before publication.
+One authorized activation/test request was made from the intended site origin, `https://infoavocati.ro`, on 22 November 2026. FormSubmit returned HTTP 200 with `success: "false"` and reported sending an activation email to `infoavocati@yahoo.com`. The form correctly displayed an unavailable notice and retained the message; no enquiry delivery was confirmed.
+
+The owner has asked to continue when his mother sees the email. Do not repeat the activation request while confirmation is pending. After she clicks **Activate Form** and the owner confirms this, send one controlled delivery test and verify it reaches Yahoo with all five fields and the intended Reply-To. These changes remain local; the published form has not been enabled or redeployed as part of this work.
+
+A provider activation notice is shown as unavailable, never as successful message delivery. Rate limits and network/provider errors preserve entered values for retry. Setting `data-delivery-enabled="false"` disables requests if needed.
 
 The honeypot uses FormSubmit's `_honey` field. Submission feedback checks the provider's response, including activation errors. Client-side validation improves usability; FormSubmit processes submissions on the server. Local simulated responses cannot verify actual inbox delivery or provider activation.
+
+Local checks passed 37 cases at 320, 390, and 1440 px, covering validation, floating errors without layout shifts, both accepted-response formats, activation pending, rate limits, provider and connection errors, malformed responses, timeouts, duplicate-submit prevention, trimmed UTF-8 payloads, Reply-To, honeypot blocking, and the no-JavaScript contact fallback. All test requests were intercepted before the separately authorized real activation request. The notification close control has a 44 px touch target; the approved field, footer, and notification designs are retained.
