@@ -1,9 +1,14 @@
 <!doctype html>
-<html lang="ro">
+<html lang="ro" data-page-kind="home">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#242021">
+    <style>html { background: #242021; } body.content-page { background: #fff; }</style>
+    <link rel="preload" as="image" href="images/hero/hero-poster-mobile.webp" media="(width &lt; 48rem) and (orientation: portrait)" fetchpriority="high">
+    <link rel="preload" as="image" href="images/hero/hero-poster.webp" media="(width &gt;= 48rem), (orientation: landscape)" fetchpriority="high">
+    <script src="js/page-transitions.js"></script>
+    <link rel="stylesheet" href="css/page-transitions.css">
     <link rel="stylesheet" href="index_styles.css">
     <link rel="stylesheet" href="css/accessibility.css">
     <script src="js/i18n.js" defer></script>
@@ -25,7 +30,7 @@
     <header class="site-header">
         <div class="container">
             <nav class="nav" aria-label="Navigare principală">
-                <a class="logo" href="indexRO.html"><img src="images/logo_text.png" alt="Vlăducă &amp; Partners, acasă" width="595" height="104"></a>
+                <a class="logo" href="index.html"><img src="images/logo_text.png" alt="Vlăducă &amp; Partners, acasă" width="595" height="104"></a>
                 <!-- Font Awesome Free 6.1.1 icons © 2022 Fonticons, Inc. https://fontawesome.com/license/free (CC BY 4.0) -->
                 <div class="nav-links" id="navLinks">
                     <button class="nav-toggle nav-close" type="button" aria-label="Închideți meniul">
@@ -34,7 +39,7 @@
                         </svg>
                     </button>
                     <ul class="nav-list">
-                        <li><a href="indexRO.html" class="nav-link active" aria-current="page">ACASĂ</a></li>
+                        <li><a href="index.html" class="nav-link active" aria-current="page">ACASĂ</a></li>
                         <li><a href="aboutRO.html" class="nav-link">DESPRE NOI</a></li>
                         <li><a href="parteneriRO.html" class="nav-link">PARTENERI</a></li>
                         <li><a href="servicii_juridiceRO.html" class="nav-link">SERVICII JURIDICE</a></li>

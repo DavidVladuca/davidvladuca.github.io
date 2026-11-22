@@ -1,3 +1,43 @@
+/* Responsive copies preserve the existing photographs and background positioning. */
+:root {
+    --photo-about3-bg: url("../images/optimized/about3-bg-1920.webp");
+    --photo-books: url("../images/optimized/books-1920.webp");
+    --photo-footer-bg: url("../images/optimized/footer-bg-1920.webp");
+    --photo-civil-bg: url("../images/optimized/civil-bg-1920.webp");
+    --photo-contact-bg: url("../images/optimized/contact-bg-1920.webp");
+    --photo-room-bg: url("../images/optimized/room-bg-1920.webp");
+    --photo-contraventional-bg: url("../images/optimized/contraventional-bg-1920.webp");
+    --photo-familiei-bg: url("../images/optimized/familiei-bg-1920.webp");
+    --photo-medical-bg: url("../images/optimized/medical-bg-1920.webp");
+    --photo-muncii-bg: url("../images/optimized/muncii-bg-1920.webp");
+    --photo-parteneri2-bg: url("../images/optimized/parteneri2-bg-1920.webp");
+    --photo-cunoastere: url("../images/optimized/cunoastere-1920.webp");
+    --photo-servicii-juridice-bg: url("../images/optimized/servicii-juridice-bg-1920.webp");
+    --photo-traditie: url("../images/optimized/traditie-1920.webp");
+    --photo-stabilire-bg: url("../images/optimized/stabilire-bg-1920.webp");
+    --photo-societar-bg22: url("../images/optimized/societar-bg22-1920.webp");
+}
+@media (max-width: 700px) {
+    :root {
+        --photo-about3-bg: url("../images/optimized/about3-bg-960.webp");
+        --photo-books: url("../images/optimized/books-960.webp");
+        --photo-footer-bg: url("../images/optimized/footer-bg-960.webp");
+        --photo-civil-bg: url("../images/optimized/civil-bg-960.webp");
+        --photo-contact-bg: url("../images/optimized/contact-bg-960.webp");
+        --photo-room-bg: url("../images/optimized/room-bg-960.webp");
+        --photo-contraventional-bg: url("../images/optimized/contraventional-bg-960.webp");
+        --photo-familiei-bg: url("../images/optimized/familiei-bg-960.webp");
+        --photo-medical-bg: url("../images/optimized/medical-bg-960.webp");
+        --photo-muncii-bg: url("../images/optimized/muncii-bg-960.webp");
+        --photo-parteneri2-bg: url("../images/optimized/parteneri2-bg-960.webp");
+        --photo-cunoastere: url("../images/optimized/cunoastere-960.webp");
+        --photo-servicii-juridice-bg: url("../images/optimized/servicii-juridice-bg-960.webp");
+        --photo-traditie: url("../images/optimized/traditie-960.webp");
+        --photo-stabilire-bg: url("../images/optimized/stabilire-bg-960.webp");
+        --photo-societar-bg22: url("../images/optimized/societar-bg22-960.webp");
+    }
+}
+
 /* Shared reading sizes and layouts for the interior pages. */
 body.content-page {
     --page-width: 1280px;

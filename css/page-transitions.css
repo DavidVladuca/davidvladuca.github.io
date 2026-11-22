@@ -1,0 +1,92 @@
+/* Shared motion keeps the existing page layouts and navbar in place. */
+:root {
+    --page-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --page-rise: 16px;
+}
+
+body.content-page { background-color: #fff; }
+html[data-page-navigating] .nav-links { visibility: hidden; }
+
+@view-transition { navigation: auto; }
+
+::view-transition { pointer-events: none; }
+::view-transition-group(*) { animation: none; }
+::view-transition-image-pair(*) { isolation: isolate; }
+::view-transition-old(*),
+::view-transition-new(*) { mix-blend-mode: normal; }
+
+::view-transition-old(*) { animation: page-depart 160ms ease-out both; }
+::view-transition-new(*) { animation: page-rise-in 400ms var(--page-ease) both; }
+::view-transition-new(root) { animation: page-arrive 240ms ease-out both; }
+
+.content-page .sub-header .title {
+    view-transition-name: var(--page-heading-name, none);
+}
+
+.content-page main > section:nth-child(2) {
+    view-transition-name: var(--page-intro-name, none);
+}
+
+/* Entering the library uses the same fade through black as the film's ending. */
+html[data-page-kind="home"]::view-transition { background: #000; }
+html[data-page-kind="home"]::view-transition-old(*) {
+    animation: page-depart 180ms ease-in both;
+}
+html[data-page-kind="home"]::view-transition-new(*) {
+    animation: page-arrive 420ms 160ms ease-out both;
+}
+
+html[data-page-fade]::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    background: #000;
+    pointer-events: none;
+}
+
+html[data-page-fade="leaving"]::after { animation: page-arrive 180ms ease-in both; }
+html[data-page-fade="covered"]::after { animation: page-uncover 420ms 1200ms ease-out both; }
+html[data-page-fade="revealing"]::after { animation: page-uncover 420ms ease-out both; }
+
+/* Only below-fold groups awaiting their first reveal receive this state. */
+[data-page-reveal="pending"] { opacity: 0; }
+
+@keyframes page-depart {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes page-arrive {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes page-uncover {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes page-rise-in {
+    from { opacity: 0; transform: translateY(var(--page-rise)); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 700px) {
+    :root { --page-rise: 10px; }
+}
+
+@media print {
+    [data-page-reveal="pending"] { opacity: 1 !important; }
+    html[data-page-fade]::after { content: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*),
+    html[data-page-fade]::after { animation: none !important; }
+    html[data-page-fade]::after { content: none; }
+    [data-page-reveal="pending"] { opacity: 1; }
+}

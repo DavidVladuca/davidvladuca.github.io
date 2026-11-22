@@ -252,7 +252,7 @@ nav .fa-times:hover {
 .sub-header {
     width: 100%;
     height: 350px;
-    background: url("images/familiei-bg.jpg") center no-repeat;
+    background: var(--photo-familiei-bg, url("images/familiei-bg.jpg")) center no-repeat;
     background-size: cover;
 }
 

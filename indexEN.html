@@ -1,9 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page-kind="home">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#242021">
+    <style>html { background: #242021; } body.content-page { background: #fff; }</style>
+    <link rel="preload" as="image" href="images/hero/hero-poster-mobile.webp" media="(width &lt; 48rem) and (orientation: portrait)" fetchpriority="high">
+    <link rel="preload" as="image" href="images/hero/hero-poster.webp" media="(width &gt;= 48rem), (orientation: landscape)" fetchpriority="high">
+    <script src="js/page-transitions.js"></script>
+    <link rel="stylesheet" href="css/page-transitions.css">
     <link rel="stylesheet" href="index_styles.css">
     <link rel="stylesheet" href="css/accessibility.css">
     <script src="js/i18n.js" defer></script>

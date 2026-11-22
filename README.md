@@ -42,7 +42,7 @@ Stage 5 adds eleven static English pages, starting at `indexEN.html`. Each inter
 
 Page copy, navigation, image descriptions, form labels, required-field help, fee factors, partner controls, quotations, and trailer controls have English versions. Shared messages are in `js/i18n.js`; the document language selects the catalogue. Form delivery targets `infoavocati@yahoo.com` through the shared Formspree setup described below.
 
-Each content page has a distinct title and description, a canonical URL, the existing favicon, and reciprocal `ro`, `en`, and `x-default` language associations. Romanian home links retain the existing `indexRO.html` alias, which redirects to the main homepage. The homepage language switch uses the main page directly. See [Google’s language-version guidance](https://developers.google.com/search/docs/specialty/international/localized-versions).
+Each content page has a distinct title and description, a canonical URL, the existing favicon, and reciprocal `ro`, `en`, and `x-default` language associations. Romanian home links open the main homepage directly. The existing `indexRO.html` redirect remains available for old links, with a dark background to avoid a white flash. See [Google’s language-version guidance](https://developers.google.com/search/docs/specialty/international/localized-versions).
 
 For local review, open `http://127.0.0.1:8631/indexEN.html`, then use RO/EN on Home, About Us, Partners, Legal Services, Contact, and all six practice-area pages. Check the phone layout, both fee categories, the Partners carousel, and the English trailer controls. Keep provider requests intercepted during QA; the separately controlled real Formspree test and owner-confirmed Yahoo receipt are recorded below.
 
@@ -79,3 +79,15 @@ The previous FormSubmit connection is retired after two authorized activation at
 ## Publication
 
 GitHub Pages publishes the repository root of `2026-version` at `https://infoavocati.ro/`. Approved releases are merged into `main` and advanced to `2026-version`; pushing the publishing branch starts the Pages build. The English release includes the approved mobile reading and practice-link refinements, confirmed Formspree delivery, trailer rotation, and continuous mobile library background.
+
+## Page transitions
+
+The approved option 1 adds restrained content entrances on interior pages and a short fade through black when entering either homepage language. For local review, open `http://127.0.0.1:8631/` and use the navigation links and browser Back/Forward on desktop and phone layouts. The implementation branch is `codex/page-transitions`.
+
+The shared `css/page-transitions.css` and `js/page-transitions.js` use browser-native transitions when available, with a home-fade fallback otherwise. Interior headings and the first content section enter over about 400 ms; later content groups reveal once as they enter view. Movement is 10 px on phones and 16 px on larger screens. The navbar does not slide. An outgoing mobile menu is cleared before its page snapshot, preventing its gold panel from lingering over the destination. Entering Home fades out over 180 ms and reveals the library over 420 ms, with no wait for the loop video.
+
+Ordinary navigation, language links, modified clicks, downloads, same-page anchors, and browser history keep their normal behavior. Restored pages retain their reading position. Focus immediately reveals a hidden group; reduced motion, printing, missing observation APIs, and disabled JavaScript keep content available. The fallback home cover has a timed recovery and waits at most 800 ms for the library poster.
+
+To prepare the photographs sooner, `images/optimized` contains 960 px and 1920 px WebP copies of the same sixteen background photographs and six practice-page photographs. Media queries and responsive image sources select the appropriate copy, banner images receive preload priority, and existing image elements now reserve their intrinsic dimensions. Original assets are retained. The existing layout, image framing, text, logos, trailer file, library-camera code, and contact handler/configuration are preserved. The remaining Stage 6 work is separate from this change.
+
+Local verification matched eighteen layout baselines and passed forty additional RO/EN template checks, four native navigation/contact/history flows, seven fallback/accessibility cases, four final scroll-reveal cases, and both language trailer flows. Four contact submissions were intercepted during QA; no real email was sent. In four simulated cold mobile loading cases, the banner images were ready before the first content paint. Physical-device checks remain outstanding.
