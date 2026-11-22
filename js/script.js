@@ -1,6 +1,7 @@
 (() => {
     const container = document.querySelector(".slide-content");
     if (!container || typeof Swiper !== "function") return;
+    const text = window.InfoavocatiI18n.text;
     const totalSlides = container.querySelectorAll(".swiper-slide").length;
     const currentPosition = document.querySelector(".partner-current");
     const totalPositions = document.querySelector(".partner-total");
@@ -35,12 +36,12 @@
             prevEl: ".swiper-button-prev",
         },
         a11y: {
-            prevSlideMessage: "Partenerul anterior",
-            nextSlideMessage: "Partenerul următor",
-            paginationBulletMessage: "Afișați partenerul {{index}}",
-            slideLabelMessage: "{{index}} din {{slidesLength}}",
-            containerRoleDescriptionMessage: "carusel",
-            itemRoleDescriptionMessage: "diapozitiv",
+            prevSlideMessage: text("partners.previous"),
+            nextSlideMessage: text("partners.next"),
+            paginationBulletMessage: text("partners.bullet"),
+            slideLabelMessage: text("partners.position"),
+            containerRoleDescriptionMessage: text("partners.carousel"),
+            itemRoleDescriptionMessage: text("partners.slide"),
         },
         breakpoints: {
             0: { slidesPerView: 1 },

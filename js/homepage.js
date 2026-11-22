@@ -1,4 +1,5 @@
 const hero = document.querySelector(".hero");
+const homepageText = window.InfoavocatiI18n.text;
 const film = document.querySelector("#hero-film");
 const poster = hero.querySelector(".hero-media img");
 const controls = document.querySelector(".hero-controls");
@@ -151,6 +152,7 @@ const volumeSlider = trailerDialog.querySelector("#trailer-volume");
 const volumeDisplay = trailerDialog.querySelector("output");
 const muteButton = trailerDialog.querySelector(".trailer-mute");
 const trailerStatus = trailerDialog.querySelector(".trailer-status");
+const mobileTrailerView = createMobileTrailerView(trailerDialog, homepageText);
 const introEnd = Number(new URL(trailerTrigger.href).hash.slice(3));
 
 let introFrame;
@@ -176,8 +178,8 @@ function updateVolumeDisplay() {
     }
     const silent = trailer.muted || volume === 0;
     volumeSlider.style.setProperty("--progress", `${volume}%`);
-    volumeDisplay.textContent = volumeSlider.disabled ? "Dispozitiv" : `${silent ? 0 : volume}%`;
-    muteButton.textContent = silent ? "Porniți sunetul" : "Opriți sunetul";
+    volumeDisplay.textContent = volumeSlider.disabled ? homepageText("film.device") : `${silent ? 0 : volume}%`;
+    muteButton.textContent = homepageText(silent ? "film.unmute" : "film.mute");
 }
 
 function enableTrailerVolume() {
@@ -220,7 +222,7 @@ function setTrailerVolume(volume) {
 }
 
 function drawTrailerExtension() {
-    if (!extensionContext || !extensionLayout.matches || trailerDialog.dataset.phase !== "watching") {
+    if (!extensionContext || (!extensionLayout.matches && !trailerDialog.hasAttribute("data-mobile-landscape")) || trailerDialog.dataset.phase !== "watching") {
         return;
     }
     if (trailer.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && trailer.currentTime !== lastExtensionTime) {
@@ -254,7 +256,7 @@ function refreshTrailerExtension() {
 function updateTrailerPlayback() {
     const playing = !trailer.paused && !trailer.ended;
     playbackButton.classList.toggle("is-playing", playing);
-    playbackButton.setAttribute("aria-label", playing ? "Puneți filmul pe pauză" : "Porniți filmul");
+    playbackButton.setAttribute("aria-label", homepageText(playing ? "film.pause" : "film.play"));
     refreshTrailerExtension();
 }
 
@@ -273,7 +275,7 @@ function playTrailer() {
             trailer.currentTime = introEnd;
             showTrailerPlayer();
         }
-        setTrailerStatus("Apăsați butonul de redare pentru a porni filmul.");
+        setTrailerStatus(homepageText("film.start"));
     });
 }
 
@@ -303,9 +305,12 @@ function advanceTrailerIntro() {
 }
 
 function closeTrailer() {
-    if (trailerDialog.open) {
-        trailerDialog.close();
-    }
+    const close = () => { if (trailerDialog.open) trailerDialog.close(); };
+    const restoring = mobileTrailerView.restore();
+    if (restoring) {
+        trailer.pause();
+        restoring.finally(close);
+    } else close();
 }
 
 function useBookTransition() {
@@ -328,6 +333,7 @@ trailerTrigger.addEventListener("click", (event) => {
     }
 
     const skipIntro = !useBookTransition();
+    mobileTrailerView.begin();
     setTrailerStatus("");
     trailerDialog.dataset.phase = "opening";
     trailerDialog.showModal();
@@ -355,6 +361,7 @@ trailer.addEventListener("seeked", refreshTrailerExtension);
 trailer.addEventListener("play", updateTrailerPlayback);
 trailer.addEventListener("pause", updateTrailerPlayback);
 extensionLayout.addEventListener("change", refreshTrailerExtension);
+trailerDialog.addEventListener("trailerviewchange", refreshTrailerExtension);
 trailer.addEventListener("playing", () => {
     setTrailerStatus("");
     refreshTrailerExtension();
@@ -366,19 +373,21 @@ trailer.addEventListener("timeupdate", () => {
 trailer.addEventListener("error", () => {
     if (trailerDialog.open) {
         showTrailerPlayer();
-        setTrailerStatus("Filmul nu s-a putut încărca. Închideți playerul și încercați din nou.");
+        setTrailerStatus(homepageText("film.failure"));
     }
 });
 trailer.addEventListener("ended", () => {
     if (!trailerDialog.open) {
         return;
     }
-    if (reducedMotion.matches) {
-        closeTrailer();
-        return;
-    }
-
-    trailerDialog.dataset.phase = "returning";
+    const returnToLibrary = () => {
+        if (!trailerDialog.open) return;
+        if (reducedMotion.matches) closeTrailer();
+        else trailerDialog.dataset.phase = "returning";
+    };
+    const restoring = mobileTrailerView.restore();
+    if (restoring) restoring.finally(returnToLibrary);
+    else returnToLibrary();
 });
 trailerDialog.addEventListener("animationend", (event) => {
     if (event.target === trailerDialog && event.animationName === "reveal-library") {

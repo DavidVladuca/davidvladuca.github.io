@@ -313,6 +313,13 @@ button {
     overflow: hidden;
 }
 
+/* Keep the library behind the mobile header while it fades into the camera shot. */
+@media (max-width: 700px), (max-width: 1100px) and (max-height: 500px) and (orientation: landscape) {
+    .hero-media {
+        position: fixed;
+    }
+}
+
 .hero-media > picture img,
 .hero-media video {
     inline-size: 100%;
@@ -602,6 +609,42 @@ body:has(.trailer-dialog[open][data-phase="returning"]) :is(.site-header, .hero-
     background: #000;
 }
 
+.trailer-screen,
+.trailer-player {
+    position: absolute;
+    inset: 0;
+}
+
+.trailer-screen:fullscreen {
+    background: #000;
+}
+
+.trailer-dialog[data-player-rotated] .trailer-player {
+    inset: auto;
+    left: 50%;
+    top: 50%;
+    width: var(--trailer-landscape-width);
+    height: var(--trailer-landscape-height);
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.trailer-dialog[data-mobile-landscape] .trailer-video {
+    object-fit: contain;
+    object-position: center;
+}
+
+.trailer-dialog[data-mobile-landscape] .trailer-extension {
+    display: block;
+}
+
+.trailer-dialog[data-restoring-view] .trailer-stage {
+    opacity: 0;
+}
+
+.trailer-dialog[data-restoring-view] :is(.trailer-footer, .trailer-close) {
+    visibility: hidden;
+}
+
 .trailer-video,
 .trailer-extension {
     position: absolute;
@@ -673,7 +716,8 @@ body:has(.trailer-dialog[open][data-phase="returning"]) :is(.site-header, .hero-
 
 .trailer-close,
 .trailer-mute,
-.trailer-playback {
+.trailer-playback,
+.trailer-rotate {
     display: grid;
     place-items: center;
     min-height: 2.75rem;
@@ -705,13 +749,33 @@ body:has(.trailer-dialog[open][data-phase="returning"]) :is(.site-header, .hero-
     padding: 0;
 }
 
+.trailer-rotate {
+    display: none;
+    width: 2.75rem;
+    padding: 0;
+}
+
+.trailer-rotate .restore-view,
+.trailer-rotate[aria-pressed="true"] .expand-view {
+    display: none;
+}
+
+.trailer-rotate[aria-pressed="true"] .restore-view {
+    display: block;
+}
+
+.trailer-rotate:active {
+    background: rgb(255 255 255 / 10%);
+}
+
 .trailer-mute {
     padding: 0 0.3rem;
     white-space: nowrap;
 }
 
 .trailer-mute:hover,
-.trailer-playback:hover {
+.trailer-playback:hover,
+.trailer-rotate:is(:hover, [aria-pressed="true"]) {
     color: var(--yellow);
 }
 
@@ -989,6 +1053,21 @@ body:has(.trailer-dialog[open][data-phase="returning"]) :is(.site-header, .hero-
         max-width: none;
         gap: 0.75rem;
     }
+}
+
+@media (max-width: 700px), (max-width: 1100px) and (max-height: 500px) and (orientation: landscape) {
+    .trailer-rotate {
+        display: grid;
+    }
+}
+
+.trailer-dialog[data-player-rotated] .trailer-actions {
+    flex-wrap: nowrap;
+}
+
+.trailer-dialog[data-player-rotated] .trailer-volume {
+    flex: 1;
+    max-width: 26rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

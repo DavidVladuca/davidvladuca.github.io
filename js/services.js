@@ -1,4 +1,5 @@
 (() => {
+    const text = window.InfoavocatiI18n.text;
     const tabList = document.querySelector(".tipuri-persoane");
     if (tabList) {
         const tabs = [...tabList.querySelectorAll('[role="tab"]')];
@@ -54,8 +55,8 @@
         });
         number.textContent = String(active + 1);
         if (announce && !mobile.matches) {
-            const text = slides[active].textContent.trim().replace(/\s+/g, " ");
-            status.textContent = `Factorul ${active + 1} din ${slides.length}: ${text}`;
+            const factor = slides[active].textContent.trim().replace(/\s+/g, " ");
+            status.textContent = text("fees.factor", { current: active + 1, total: slides.length, text: factor });
         }
     }
     previous.addEventListener("click", () => showSlide(active - 1));

@@ -1,6 +1,20 @@
 (() => {
     const contactForm = document.querySelector("#contact-form");
     if (!contactForm) return;
+    const text = window.InfoavocatiI18n.text;
+    const config = window.InfoavocatiContactConfig || {};
+    let endpoint = "";
+    try {
+        const url = new URL(config.endpoint);
+        if (url.protocol === "https:" && url.hostname === "formspree.io"
+            && /^\/f\/[a-z0-9]+$/i.test(url.pathname)
+            && !url.search && !url.hash && !url.username && !url.password) {
+            endpoint = url.href;
+            contactForm.action = endpoint;
+        }
+    } catch {
+        // An unconfigured form keeps its direct email/phone fallback without making a request.
+    }
     const contactFields = [...contactForm.querySelectorAll("[data-contact-field]")];
     const contactFieldset = contactForm.querySelector("fieldset");
     const contactSubmit = contactForm.querySelector("button[type='submit']");
@@ -8,6 +22,7 @@
     const contactNotification = document.querySelector("#contact-notification");
     const notificationClose = document.querySelector("#contact-notification-close");
     const submitLabel = contactSubmit.textContent;
+    const serverErrors = new Map();
     let submitting = false;
     let validationAttempted = false;
     let notificationReturnFocus = contactSubmit;
@@ -19,18 +34,18 @@
             return field.dataset.requiredMessage;
         }
         if (field.validity.typeMismatch) {
-            return "Introduceți o adresă de email validă, de exemplu nume@exemplu.ro.";
+            return text("contact.email");
         }
         if (field.maxLength > 0 && value.length > field.maxLength) {
-            return `Folosiți cel mult ${field.maxLength} de caractere.`;
+            return text("contact.length", { max: field.maxLength });
         }
         if (field.type === "tel") {
             const digits = value.replace(/\D/g, "");
             if (!/^\+?[\d\s().-]+$/.test(value) || digits.length < 7 || digits.length > 15) {
-                return "Introduceți un număr de telefon valid, de exemplu 0726 286 228.";
+                return text("contact.phone");
             }
         }
-        return "";
+        return serverErrors.get(field.name) || "";
     }
 
     function validateField(field) {
@@ -95,6 +110,7 @@
             }
         });
         field.addEventListener("input", () => {
+            serverErrors.delete(field.name);
             if (validationAttempted) {
                 validateField(field);
             }
@@ -114,38 +130,36 @@
         const valid = contactFields.map(validateField).every(Boolean);
         if (!valid) {
             const firstInvalid = contactFields.find((field) => field.getAttribute("aria-invalid") === "true");
-            showContactStatus("Mesajul nu a fost trimis. Verificați câmpurile marcate cu roșu și încercați din nou.", "error", firstInvalid);
+            showContactStatus(text("contact.invalid"), "error", firstInvalid);
             return;
         }
 
-        // Delivery can be disabled here without changing the approved form design.
-        if (contactForm.dataset.deliveryEnabled !== "true") {
-            showContactStatus("Formularul nu este încă activ. Ne puteți trimite mesajul la infoavocati@yahoo.com sau ne puteți suna la 0726 286 228.", "unavailable");
+        // Both languages share the same verified Formspree endpoint and delivery switch.
+        if (config.enabled !== true || !endpoint) {
+            showContactStatus(text("contact.disabled"), "unavailable");
             return;
         }
 
         const payload = Object.fromEntries(new FormData(contactForm));
-        if (payload._honey) {
-            showContactStatus("Trimiterea nu a putut fi procesată. Contactați-ne prin email sau telefon.", "error");
+        if (payload._gotcha) {
+            showContactStatus(text("contact.blocked"), "error");
             return;
         }
         contactFields.forEach((field) => {
             payload[field.name] = field.value.trim();
         });
-        payload._subject = `Mesaj de pe infoavocati.ro: ${payload.subject}`;
-        payload._replyto = payload.email;
-        payload._template = "table";
+        // Formspree uses the existing subject field and the visitor's email as Reply-To.
 
         submitting = true;
         contactFieldset.disabled = true;
         contactForm.setAttribute("aria-busy", "true");
-        contactSubmit.textContent = "SE TRIMITE…";
-        showContactStatus("Mesajul se trimite. Vă rugăm să așteptați.", "sending");
+        contactSubmit.textContent = text("contact.submit");
+        showContactStatus(text("contact.sending"), "sending");
 
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 20000);
         try {
-            const response = await fetch(contactForm.action, {
+            const response = await fetch(endpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Accept": "application/json" },
                 body: JSON.stringify(payload),
@@ -153,29 +167,46 @@
                 credentials: "omit",
             });
             if (response.status === 429) {
-                showContactStatus("Au fost prea multe încercări de trimitere. Mesajul a fost păstrat. Așteptați câteva minute și încercați din nou sau scrieți-ne la infoavocati@yahoo.com.", "error");
+                showContactStatus(text("contact.rateLimit"), "error");
                 return;
             }
             const result = await response.json();
-            const accepted = result?.success === true || result?.success === "true";
-            const needsActivation = /activat/i.test(String(result?.message || ""));
-            if (needsActivation) {
-                showContactStatus("Mesajul nu a fost trimis. Formularul este temporar indisponibil. Textul a fost păstrat. Vă rugăm să ne scrieți la infoavocati@yahoo.com sau să ne sunați la 0726 286 228.", "unavailable");
+            const errors = Array.isArray(result?.errors) ? result.errors : [];
+            const unavailableCodes = ["INACTIVE", "BLOCKED", "FORM_NOT_FOUND", "PROJECT_NOT_FOUND"];
+            if ([401, 403, 404].includes(response.status)
+                || errors.some(error => unavailableCodes.includes(error?.code))) {
+                showContactStatus(text("contact.unavailable"), "unavailable");
                 return;
             }
-            if (!response.ok || !accepted) {
+            let firstRejected;
+            errors.forEach(error => {
+                const field = contactFields.find(input => input.name === error?.field);
+                if (!field) return;
+                const message = ["REQUIRED_FIELD_EMPTY", "REQUIRED_FIELD_MISSING"].includes(error.code)
+                    ? field.dataset.requiredMessage
+                    : text(error.code === "TYPE_EMAIL" ? "contact.email" : "contact.serverField");
+                serverErrors.set(field.name, message);
+                validateField(field);
+                firstRejected ||= field;
+            });
+            if (firstRejected) {
+                showContactStatus(text("contact.invalid"), "error", firstRejected);
+                return;
+            }
+            if (!response.ok || result?.ok !== true || result?.error || errors.length) {
                 throw new Error("Submission was not confirmed by the delivery service.");
             }
             contactForm.reset();
+            serverErrors.clear();
             validationAttempted = false;
             contactFields.forEach((field) => {
                 field.setAttribute("aria-invalid", "false");
                 document.querySelector(`#${field.id}-error`).textContent = "";
                 field.closest(".form-field").classList.remove("has-error", "show-field-help");
             });
-            showContactStatus("Mesajul a fost trimis cu succes. Vă mulțumim! Vă vom contacta cât mai curând posibil.", "success");
+            showContactStatus(text("contact.success"), "success");
         } catch {
-            showContactStatus("Nu am putut confirma trimiterea mesajului. Textul a fost păstrat. Verificați conexiunea și încercați din nou sau scrieți-ne la infoavocati@yahoo.com.", "error");
+            showContactStatus(text("contact.failure"), "error");
         } finally {
             window.clearTimeout(timeout);
             submitting = false;

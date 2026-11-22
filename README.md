@@ -9,7 +9,7 @@ You can access it [here](https://davidvladuca.github.io/indexRO.html)
 ## 🚀 Features  
 - Responsive design for desktop and mobile  
 - Informational pages (services, about, contact)  
-- Contact form prepared for FormSubmit email delivery (activation pending)
+- Contact form prepared for Formspree email delivery
 - SEO-friendly structure
 <img width="1900" height="951" alt="image" src="https://github.com/user-attachments/assets/007d519d-bd8c-4996-ae8a-087f1689b6c3" />
 
@@ -17,7 +17,7 @@ You can access it [here](https://davidvladuca.github.io/indexRO.html)
 
 ## 🛠️ Tech Stack  
 - **Frontend:** HTML, CSS, JavaScript, 
-- **Form delivery:** FormSubmit, compatible with static GitHub Pages hosting
+- **Form delivery:** Formspree, compatible with static GitHub Pages hosting
 - **Other:** Figma
 <img width="1401" height="836" alt="image" src="https://github.com/user-attachments/assets/52d0fb8e-c5db-48d8-90db-616db0166daf" />
 
@@ -36,18 +36,46 @@ The website is currently used as the official online presence of the law firm.
 - Delivered a fully functional and deployed product  
 
 
+## English version and page metadata
+
+Stage 5 adds eleven static English pages, starting at `indexEN.html`. Each interior page has the same filename as its Romanian counterpart with `EN` in place of `RO`. Both versions use the existing stylesheets, photographs, logos, library animation, and trailer. Language switches keep the current page or practice area, and English navigation and practice-area links stay in English.
+
+Page copy, navigation, image descriptions, form labels, required-field help, fee factors, partner controls, quotations, and trailer controls have English versions. Shared messages are in `js/i18n.js`; the document language selects the catalogue. Form delivery targets `infoavocati@yahoo.com` through the shared Formspree setup described below.
+
+Each content page has a distinct title and description, a canonical URL, the existing favicon, and reciprocal `ro`, `en`, and `x-default` language associations. Romanian home links retain the existing `indexRO.html` alias, which redirects to the main homepage. The homepage language switch uses the main page directly. See [Google’s language-version guidance](https://developers.google.com/search/docs/specialty/international/localized-versions).
+
+For local review, open `http://127.0.0.1:8631/indexEN.html`, then use RO/EN on Home, About Us, Partners, Legal Services, Contact, and all six practice-area pages. Check the phone layout, both fee categories, the Partners carousel, and the English trailer controls. Keep provider requests intercepted during QA; the separately controlled real Formspree test and owner-confirmed Yahoo receipt are recorded below.
+
+Local verification passed 22 content-page metadata/link checks, 88 English layout cases, all eleven language-switch pairs, both languages’ fee and partner controls, ten intercepted form-response scenarios, and the English homepage/trailer flow. An existing homepage overflow at a 320 px viewport with 200% root text sizing occurs in both RO and EN and is recorded for Stage 6. Physical phone checks remain outstanding.
+
+## Mobile trailer landscape view
+
+On phone layouts, a subtle landscape/fullscreen control appears alongside Play and Mute once the trailer starts. It is available in both languages and hidden at desktop sizes. The existing library entrance, player controls, trailer file, and return fade are retained.
+
+The control requests fullscreen and landscape orientation when the browser supports them. Otherwise, it rotates only the inner player, including its controls; the homepage and navbar are never transformed. Physical phone rotation is handled without applying an extra rotation to an already-landscape viewport. The complete video frame is retained in this mode.
+
+Finishing the trailer or closing it clears the player rotation, requests portrait before releasing an owned orientation lock, and exits owned fullscreen before returning to the library. Back/Escape, manual fullscreen exit, rejected APIs, delayed fullscreen/orientation requests, and reduced-motion playback also clean up. No orientation lock is retained by the website after the player closes. Browsers and operating systems can refuse forced orientation; after unlock, the page follows the device’s normal orientation. Actual iPhone/Safari and Android/Chrome testing remains outstanding.
+
+The implementation is in `js/trailer-mobile.js`, loaded before the homepage player. Local verification covered 19 rotation/cleanup scenarios and unchanged desktop geometry at 1024, 1440, and 1920 px. Native fullscreen was exercised in desktop Edge with emulated phone dimensions; orientation-lock success and delayed responses were simulated. No media asset, library-camera script, Formspree setup, or unrelated page content was changed. The mobile background also fills the area behind the navbar so its fade reveals a continuous library image. Eight RO/EN mobile entrance, rotation, and return checks passed, together with two unchanged desktop layout comparisons.
+
 ## Contact-form setup
 
-The form uses [FormSubmit AJAX](https://formsubmit.co/ajax-documentation) and is prepared for `infoavocati@yahoo.com`. There are no client-side API keys.
+The Romanian and English forms use the same [Formspree](https://formspree.io/) endpoint, `https://formspree.io/f/xgakpwkw`. Configuration is shared in `js/contact-config.js`, loaded before `js/contact.js`. The endpoint is public and is not an API key. The `enabled` setting controls real requests independently of the approved form design. A missing or invalid endpoint sends nothing and offers direct email/phone contact instead.
 
-On 22 November 2026, the owner authorized enabling delivery and requesting activation for `infoavocati@yahoo.com`. The local form now has `data-delivery-enabled="true"`. These changes are not deployed yet. Mail delivery still depends on the inbox owner completing FormSubmit's confirmation and on a real message reaching the inbox.
+The intended recipient is **infoavocati@yahoo.com**. The owner may sign in to Formspree with a different personal email. The Yahoo address must be linked and verified in the account, then selected in **Workflow → Email**. The recipient is configured in Formspree, not in the browser payload. See [Changing a form email address](https://help.formspree.io/articles/form-and-project-settings/changing-a-form-email-address).
 
-One authorized activation/test request was made from the intended site origin, `https://infoavocati.ro`, on 22 November 2026. FormSubmit returned HTTP 200 with `success: "false"` and reported sending an activation email to `infoavocati@yahoo.com`. The form correctly displayed an unavailable notice and retained the message; no enquiry delivery was confirmed.
+Both languages retain the same five required fields, limits, labels, validation, floating field explanations, and fixed feedback notifications. Payloads contain `name`, `email`, `phone`, `subject`, `message`, and the empty `_gotcha` honeypot. Formspree uses the visitor’s `email` as Reply-To and `subject` as the notification subject; there are no FormSubmit-specific `_subject`, `_replyto`, or `_template` settings. See [Special fields](https://help.formspree.io/articles/building-your-form/special-fields) and [Honeypot filtering](https://help.formspree.io/articles/building-your-form/honeypot-spam-filtering).
 
-The owner has asked to continue when his mother sees the email. Do not repeat the activation request while confirmation is pending. After she clicks **Activate Form** and the owner confirms this, send one controlled delivery test and verify it reaches Yahoo with all five fields and the intended Reply-To. These changes remain local; the published form has not been enabled or redeployed as part of this work.
+The handler accepts success only after Formspree confirms the request. Service errors, inactive/missing forms, invalid provider responses, and connection failures retain the entered message. Provider field errors appear with the existing red highlights and translated floating help; editing the rejected field clears its server error. Rate-limit feedback also covers submission quotas without promising that waiting a few minutes will reset the monthly allowance. Submitting again while a request is pending is prevented.
 
-A provider activation notice is shown as unavailable, never as successful message delivery. Rate limits and network/provider errors preserve entered values for retry. Setting `data-delivery-enabled="false"` disables requests if needed.
+On 22 November 2026, 36 intercepted form cases and six layout cases passed across RO/EN and 320, 390, and 1440 px. The original field layout, visible page wording, stylesheets, and unrelated source files are preserved. JavaScript syntax and whitespace checks passed. All simulated requests were intercepted; no FormSubmit request occurred.
 
-The honeypot uses FormSubmit's `_honey` field. Submission feedback checks the provider's response, including activation errors. Client-side validation improves usability; FormSubmit processes submissions on the server. Local simulated responses cannot verify actual inbox delivery or provider activation.
+One separately controlled real technical submission was made from the `https://infoavocati.ro` origin in an isolated browser. Formspree returned HTTP 200 with `{"next":"/thanks?language=en","ok":true}` and the handler showed success. Its subject starts **TEST TEHNIC Formspree infoavocati.ro**. The owner then confirmed that it appeared in Formspree Submissions and was received in Yahoo. The shared configuration is enabled for both languages. No additional real test was sent.
 
-Local checks passed 37 cases at 320, 390, and 1440 px, covering validation, floating errors without layout shifts, both accepted-response formats, activation pending, rate limits, provider and connection errors, malformed responses, timeouts, duplicate-submit prevention, trimmed UTF-8 payloads, Reply-To, honeypot blocking, and the no-JavaScript contact fallback. All test requests were intercepted before the separately authorized real activation request. The notification close control has a 44 px touch target; the approved field, footer, and notification designs are retained.
+Account setup and real delivery are checked separately from simulated responses. Dashboard visibility and Yahoo receipt are owner-confirmed; the five-field payload was captured, and Formspree’s documented `email` field supplies Reply-To. Received email headers have not been independently inspected. A successful API response by itself confirms acceptance, not inbox receipt. The free plan currently allows 50 submissions per month and 30 days of dashboard history; see [Account limits](https://help.formspree.io/articles/account-management/account-limits).
+
+The previous FormSubmit connection is retired after two authorized activation attempts produced activation-required responses but neither activation email was received. Do not resend FormSubmit activation, run the old activation scripts, or reintroduce its endpoint.
+
+## Publication
+
+GitHub Pages publishes the repository root of `2026-version` at `https://infoavocati.ro/`. Approved releases are merged into `main` and advanced to `2026-version`; pushing the publishing branch starts the Pages build. The English release includes the approved mobile reading and practice-link refinements, confirmed Formspree delivery, trailer rotation, and continuous mobile library background.
