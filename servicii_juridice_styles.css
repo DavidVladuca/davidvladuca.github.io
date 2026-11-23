@@ -476,12 +476,6 @@ nav .fa-times:hover {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.servicii-box1:hover , .servicii-box2:hover , .servicii-box3:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 6px 6px 6px rgba(255, 187, 0, 0.85);
-    transition: 0.2s;
-}
-
 .servicii-item {
     z-index: 2;
     position: relative;
@@ -770,12 +764,6 @@ nav .fa-times:hover {
 }
 
 @media only screen and (max-width: 350px) {
-    .servicii-box1:hover , .servicii-box2:hover , .servicii-box3:hover {
-        transform: none;
-        box-shadow: none;
-        transition: none;
-    }
-
     .serviciile-noastre {
         margin-top: 30px;
     }
