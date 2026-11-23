@@ -156,6 +156,7 @@ const mobileTrailerView = createMobileTrailerView(trailerDialog, homepageText);
 const introEnd = Number(new URL(trailerTrigger.href).hash.slice(3));
 
 let introFrame;
+let trailerReturnTimer;
 let extensionFrame;
 let lastExtensionTime = -1;
 let lastAudibleVolume = 100;
@@ -222,7 +223,7 @@ function setTrailerVolume(volume) {
 }
 
 function drawTrailerExtension() {
-    if (!extensionContext || (!extensionLayout.matches && !trailerDialog.hasAttribute("data-mobile-landscape")) || trailerDialog.dataset.phase !== "watching") {
+    if (!extensionContext || (!extensionLayout.matches && !trailerDialog.hasAttribute("data-landscape-controls")) || trailerDialog.dataset.phase !== "watching") {
         return;
     }
     if (trailer.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && trailer.currentTime !== lastExtensionTime) {
@@ -305,12 +306,9 @@ function advanceTrailerIntro() {
 }
 
 function closeTrailer() {
-    const close = () => { if (trailerDialog.open) trailerDialog.close(); };
-    const restoring = mobileTrailerView.restore();
-    if (restoring) {
-        trailer.pause();
-        restoring.finally(close);
-    } else close();
+    window.clearTimeout(trailerReturnTimer);
+    mobileTrailerView.restore();
+    if (trailerDialog.open) trailerDialog.close();
 }
 
 function useBookTransition() {
@@ -377,17 +375,17 @@ trailer.addEventListener("error", () => {
     }
 });
 trailer.addEventListener("ended", () => {
-    if (!trailerDialog.open) {
+    if (!trailerDialog.open || trailerDialog.dataset.phase === "returning") {
         return;
     }
-    const returnToLibrary = () => {
-        if (!trailerDialog.open) return;
-        if (reducedMotion.matches) closeTrailer();
-        else trailerDialog.dataset.phase = "returning";
-    };
-    const restoring = mobileTrailerView.restore();
-    if (restoring) restoring.finally(returnToLibrary);
-    else returnToLibrary();
+    // The return fade is independent of asynchronous fullscreen/orientation cleanup.
+    mobileTrailerView.restore();
+    if (reducedMotion.matches) closeTrailer();
+    else {
+        trailerDialog.dataset.phase = "returning";
+        // Resizing/fullscreen changes can cancel animationend on mobile browsers.
+        trailerReturnTimer = window.setTimeout(closeTrailer, 1000);
+    }
 });
 trailerDialog.addEventListener("animationend", (event) => {
     if (event.target === trailerDialog && event.animationName === "reveal-library") {
@@ -396,6 +394,7 @@ trailerDialog.addEventListener("animationend", (event) => {
 });
 trailerClose.addEventListener("click", closeTrailer);
 trailerDialog.addEventListener("close", () => {
+    window.clearTimeout(trailerReturnTimer);
     trailer.pause();
     window.cancelAnimationFrame(introFrame);
     stopTrailerExtension();

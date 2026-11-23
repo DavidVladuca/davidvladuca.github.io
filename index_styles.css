@@ -628,12 +628,14 @@ body:has(.trailer-dialog[open][data-phase="returning"]) :is(.site-header, .hero-
     transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.trailer-dialog[data-mobile-landscape] .trailer-video {
+.trailer-dialog[data-mobile-landscape] .trailer-video,
+.trailer-dialog[data-landscape-controls] .trailer-video {
     object-fit: contain;
     object-position: center;
 }
 
-.trailer-dialog[data-mobile-landscape] .trailer-extension {
+.trailer-dialog[data-mobile-landscape] .trailer-extension,
+.trailer-dialog[data-landscape-controls] .trailer-extension {
     display: block;
 }
 
@@ -1061,13 +1063,25 @@ body:has(.trailer-dialog[open][data-phase="returning"]) :is(.site-header, .hero-
     }
 }
 
-.trailer-dialog[data-player-rotated] .trailer-actions {
+.trailer-dialog[data-landscape-controls] .trailer-actions {
     flex-wrap: nowrap;
 }
 
-.trailer-dialog[data-player-rotated] .trailer-volume {
-    flex: 1;
-    max-width: 26rem;
+.trailer-dialog[data-landscape-controls] .trailer-volume {
+    flex: 0 1 auto;
+    max-width: none;
+    gap: 0.5rem;
+}
+
+.trailer-dialog[data-landscape-controls] .trailer-volume input {
+    flex: 0 1 7.5rem;
+    width: 7.5rem;
+    min-width: 4.5rem;
+    height: 2.75rem;
+}
+
+.trailer-dialog[data-landscape-controls] .trailer-footer {
+    padding-block: 1.25rem calc(0.7rem + env(safe-area-inset-bottom));
 }
 
 @media (prefers-reduced-motion: reduce) {
