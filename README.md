@@ -1,115 +1,74 @@
-# Law Firm Website  
+# Law Firm Website
 
-A professional website built for a law firm during my internship at **RSTDEV S.R.L.** (Aug–Sep 2023).  
-I was responsible for both the **design** and the **full implementation**, managing the project independently with guidance from mentors.  
-You can access it [here](https://davidvladuca.github.io/indexRO.html)
+A professional website built for a law firm during my internship at **RSTDEV S.R.L.** (Aug–Sep 2023).
+I was responsible for both the **design** and the **full implementation**, managing the project independently with guidance from mentors.
+
+> **2026 update:** In 2026, I deployed an updated version of this website at [infoavocati.ro](https://infoavocati.ro/) and introduced several improvements. The screenshots below show the original version developed during my 2023 internship. Its source code is preserved in the [internship-2023 branch](https://github.com/DavidVladuca/davidvladuca.github.io/tree/internship-2023).
 
 ---
 
-## 🚀 Features  
-- Responsive design for desktop and mobile  
-- Informational pages (services, about, contact)  
-- Contact form prepared for Formspree email delivery
+## 🚀 Features
+
+- Responsive design for desktop and mobile
+- Informational pages covering services, the firm, partners, and contact details
+- Contact form with validation and email delivery
 - SEO-friendly structure
-<img width="1900" height="951" alt="image" src="https://github.com/user-attachments/assets/007d519d-bd8c-4996-ae8a-087f1689b6c3" />
+
+*Original internship version (2023).*
+
+<img width="1900" height="951" alt="Screenshot of the original 2023 internship version" src="https://github.com/user-attachments/assets/007d519d-bd8c-4996-ae8a-087f1689b6c3" />
 
 ---
 
-## 🛠️ Tech Stack  
-- **Frontend:** HTML, CSS, JavaScript, 
-- **Form delivery:** Formspree, compatible with static GitHub Pages hosting
-- **Other:** Figma
-<img width="1401" height="836" alt="image" src="https://github.com/user-attachments/assets/52d0fb8e-c5db-48d8-90db-616db0166daf" />
+## 🛠️ Tech Stack
 
+- **Frontend:** HTML, CSS, JavaScript
+- **Original form backend:** PHP (2023 internship version)
+- **Current form delivery:** Formspree (2026 version)
+- **Design:** Figma
+- **Hosting:** GitHub Pages
+
+*Original internship version (2023).*
+
+<img width="1401" height="836" alt="Another screenshot of the original 2023 internship version" src="https://github.com/user-attachments/assets/52d0fb8e-c5db-48d8-90db-616db0166daf" />
 
 ---
 
-## 📖 About the Project  
-This project was developed as part of my internship, with regular feedback sessions and progress tracking with supervisors.  
-The website is currently used as the official online presence of the law firm.  
+## 📖 About the Project
+
+This project was developed as part of my internship, with regular feedback sessions and progress tracking with supervisors.
+The updated website is currently used as the official online presence of the law firm.
 
 ---
 
-## 👨‍💻 Role  
-- Designed and implemented the website from scratch  
-- Managed all development independently with mentorship support  
-- Delivered a fully functional and deployed product  
+## 👨‍💻 Role
 
+- Designed and implemented the website from scratch
+- Managed all development independently with mentorship support
+- Delivered a fully functional and deployed product
 
-## English version and page metadata
+---
 
-Stage 5 adds eleven static English pages, starting at `indexEN.html`. Each interior page has the same filename as its Romanian counterpart with `EN` in place of `RO`. Both versions use the existing stylesheets, photographs, logos, library animation, and trailer. Language switches keep the current page or practice area, and English navigation and practice-area links stay in English.
+## 2026 Improvements
 
-Page copy, navigation, image descriptions, form labels, required-field help, fee factors, partner controls, quotations, and trailer controls have English versions. Shared messages are in `js/i18n.js`; the document language selects the catalogue. Form delivery targets `infoavocati@yahoo.com` through the shared Formspree setup described below.
+- Cinematic library homepage with changing quotations and an integrated presentation trailer
+- Mobile landscape/fullscreen trailer controls, adjustable volume, and an automatic fade back to the homepage
+- Romanian and English pages with matching language navigation and page metadata
+- Improved mobile reading layouts, content alignment, contact details, and form feedback
+- Restrained page transitions, preserved Back/Forward reading positions, and responsive WebP photographs
+- Keyboard navigation, visible focus states, and reduced-motion support
 
-Each content page has a distinct title and description, a canonical URL, the existing favicon, and reciprocal `ro`, `en`, and `x-default` language associations. Romanian home links open the main homepage directly. The existing `indexRO.html` redirect remains available for old links, with a dark background to avoid a white flash. See [Google’s language-version guidance](https://developers.google.com/search/docs/specialty/international/localized-versions).
+## Versions and Publication
 
-For local review, open `http://127.0.0.1:8631/indexEN.html`, then use RO/EN on Home, About Us, Partners, Legal Services, Contact, and all six practice-area pages. Check the phone layout, both fee categories, the Partners carousel, and the English trailer controls. Keep provider requests intercepted during QA; the separately controlled real Formspree test and owner-confirmed Yahoo receipt are recorded below.
+- [`2026-version`](https://github.com/DavidVladuca/davidvladuca.github.io/tree/2026-version) is the default branch and the current live website. GitHub Pages publishes its root at [infoavocati.ro](https://infoavocati.ro/).
+- [`internship-2023`](https://github.com/DavidVladuca/davidvladuca.github.io/tree/internship-2023) preserves the original internship source, with an updated README explaining the later release.
 
-Local verification passed 22 content-page metadata/link checks, 88 English layout cases, all eleven language-switch pairs, both languages’ fee and partner controls, ten intercepted form-response scenarios, and the English homepage/trailer flow. An existing homepage overflow at a 320 px viewport with 200% root text sizing occurs in both RO and EN and is recorded for Stage 6. See the final verification status below for physical-device coverage.
+## Contact Form
 
-## Mobile trailer landscape view
+The current Romanian and English forms use the same Formspree connection, configured in [`js/contact-config.js`](js/contact-config.js). The recipient is managed in Formspree and has been verified as **infoavocati@yahoo.com**. Delivery was confirmed by the owner in both Formspree and Yahoo. FormSubmit is retired.
 
-On phone layouts, a subtle landscape/fullscreen control appears alongside Play and Mute once the trailer starts. It is available in both languages and hidden at desktop sizes. The existing library entrance, player controls, trailer file, and return fade are retained.
+## Verification Notes
 
-The control requests fullscreen and landscape orientation when the browser supports them. Otherwise, it rotates only the inner player, including its controls; the homepage and navbar are never transformed. Physical phone rotation is handled without applying an extra rotation to an already-landscape viewport. The complete video frame is retained in this mode.
+The 2026 release was checked across Romanian and English desktop/mobile layouts, navigation, language links, page fades, browser history, form validation, and full trailer playback. Automated form submissions were intercepted locally to avoid sending additional email.
 
-Finishing the trailer or closing it clears the player rotation and releases an owned or pending landscape lock immediately. It requests fullscreen exit without making the library return wait for browser fullscreen/orientation promises. No new portrait lock is requested; after unlock, the page follows the device’s normal orientation. The existing return fade takes about 850 ms, with a 1000 ms recovery if fullscreen resizing interrupts its animation event. Reduced motion returns immediately. Native operations have a 650 ms UI timeout and late results are cleaned up without closing a newly reopened film.
-
-The implementation is in `js/trailer-mobile.js`, loaded before the homepage player. Fullscreen uses the document root so the homepage remains visible even if a browser fails to exit fullscreen. On mobile landscape layouts, the controls stay in one row with a 120 px volume track and a 44 px input hit area. This applies to physical landscape and the rotated-player fallback. Portrait and desktop geometry are preserved. No media asset, library-camera script, Formspree setup, or unrelated page content was changed. The mobile background also fills the area behind the navbar so its fade reveals a continuous library image.
-
-Stage 6.1 was implemented on `codex/stage-6-1-mobile-trailer`. On 23 November 2026, local Edge checks passed unchanged desktop geometry at 1024, 1440, and 1920 px, unchanged portrait geometry at 320, 390, and 430 px, eight RO/EN compact-control layouts with volume/mute/close/replay, and ten lifecycle/failure cases. These include unresponsive or rejected browser APIs, an interrupted return animation, and closing/reopening while an old request or return is pending. Two uninterrupted normal-speed playbacks, RO with native fullscreen and EN with the CSS fallback, reached the real end and returned automatically in under one second without test seeking or page errors. Native fullscreen was exercised in Edge; orientation operations were simulated. The owner tested the local preview on a Samsung Galaxy S23 using the fullscreen button and confirmed it worked and faded back automatically. The preview recorded mobile Chrome 157. Other physical-device coverage, including iPhone/Safari, remains for Stage 6.4. Stage 6.1 was saved as commit e44b100 and included in the owner-approved final release.
-
-## Contact-form setup
-
-The Romanian and English forms use the same [Formspree](https://formspree.io/) endpoint, `https://formspree.io/f/xgakpwkw`. Configuration is shared in `js/contact-config.js`, loaded before `js/contact.js`. The endpoint is public and is not an API key. The `enabled` setting controls real requests independently of the approved form design. A missing or invalid endpoint sends nothing and offers direct email/phone contact instead.
-
-The intended recipient is **infoavocati@yahoo.com**. The owner may sign in to Formspree with a different personal email. The Yahoo address must be linked and verified in the account, then selected in **Workflow → Email**. The recipient is configured in Formspree, not in the browser payload. See [Changing a form email address](https://help.formspree.io/articles/form-and-project-settings/changing-a-form-email-address).
-
-Both languages retain the same five required fields, limits, labels, validation, floating field explanations, and fixed feedback notifications. Payloads contain `name`, `email`, `phone`, `subject`, `message`, and the empty `_gotcha` honeypot. Formspree uses the visitor’s `email` as Reply-To and `subject` as the notification subject; there are no FormSubmit-specific `_subject`, `_replyto`, or `_template` settings. See [Special fields](https://help.formspree.io/articles/building-your-form/special-fields) and [Honeypot filtering](https://help.formspree.io/articles/building-your-form/honeypot-spam-filtering).
-
-The handler accepts success only after Formspree confirms the request. Service errors, inactive/missing forms, invalid provider responses, and connection failures retain the entered message. Provider field errors appear with the existing red highlights and translated floating help; editing the rejected field clears its server error. Rate-limit feedback also covers submission quotas without promising that waiting a few minutes will reset the monthly allowance. Submitting again while a request is pending is prevented.
-
-On 22 November 2026, 36 intercepted form cases and six layout cases passed across RO/EN and 320, 390, and 1440 px. The original field layout, visible page wording, stylesheets, and unrelated source files are preserved. JavaScript syntax and whitespace checks passed. All simulated requests were intercepted; no FormSubmit request occurred.
-
-One separately controlled real technical submission was made from the `https://infoavocati.ro` origin in an isolated browser. Formspree returned HTTP 200 with `{"next":"/thanks?language=en","ok":true}` and the handler showed success. Its subject starts **TEST TEHNIC Formspree infoavocati.ro**. The owner then confirmed that it appeared in Formspree Submissions and was received in Yahoo. The shared configuration is enabled for both languages. No additional real test was sent.
-
-Account setup and real delivery are checked separately from simulated responses. Dashboard visibility and Yahoo receipt are owner-confirmed; the five-field payload was captured, and Formspree’s documented `email` field supplies Reply-To. Received email headers have not been independently inspected. A successful API response by itself confirms acceptance, not inbox receipt. The free plan currently allows 50 submissions per month and 30 days of dashboard history; see [Account limits](https://help.formspree.io/articles/account-management/account-limits).
-
-The previous FormSubmit connection is retired after two authorized activation attempts produced activation-required responses but neither activation email was received. Do not resend FormSubmit activation, run the old activation scripts, or reintroduce its endpoint.
-
-## Publication
-
-GitHub Pages publishes the repository root of `2026-version` at `https://infoavocati.ro/`. Approved releases are merged into `main` and advanced to `2026-version`; pushing the publishing branch starts the Pages build. The English release includes the approved mobile reading and practice-link refinements, confirmed Formspree delivery, trailer rotation, and continuous mobile library background.
-
-## Page transitions
-
-The approved option 1 adds restrained content entrances on interior pages and a short fade through black when entering either homepage language. For local review, open `http://127.0.0.1:8631/` and use the navigation links and browser Back/Forward on desktop and phone layouts. The implementation branch is `codex/page-transitions`.
-
-The shared `css/page-transitions.css` and `js/page-transitions.js` use browser-native transitions when available, with a home-fade fallback otherwise. Interior headings and the first content section enter over about 400 ms; later content groups reveal once as they enter view. Movement is 10 px on phones and 16 px on larger screens. The navbar does not slide. An outgoing mobile menu is cleared before its page snapshot, preventing its gold panel from lingering over the destination. Entering Home fades out over 180 ms and reveals the library over 420 ms, with no wait for the loop video.
-
-Ordinary navigation, language links, modified clicks, downloads, same-page anchors, and browser history keep their normal behavior. Restored pages retain their reading position. Focus immediately reveals a hidden group; reduced motion, printing, missing observation APIs, and disabled JavaScript keep content available. The fallback home cover has a timed recovery and waits at most 800 ms for the library poster.
-
-Each document saves its reading position in its existing history entry before leaving. A reloaded or cached history entry restores that position after font readiness, without replaying the entrance sequence; user input cancels a pending correction. This avoids native scroll-anchor drift on Back/Forward while preserving the URL, existing history state, and normal same-page anchors.
-
-To prepare the photographs sooner, `images/optimized` contains 960 px and 1920 px WebP copies of the same sixteen background photographs and six practice-page photographs. Media queries and responsive image sources select the appropriate copy, banner images receive preload priority, and existing image elements now reserve their intrinsic dimensions. Original assets are retained. The existing layout, image framing, text, logos, trailer file, library-camera code, and contact handler/configuration are preserved. The remaining Stage 6 work is separate from this change.
-
-Local verification matched eighteen layout baselines and passed forty additional RO/EN template checks, four native navigation/contact/history flows, seven fallback/accessibility cases, four final scroll-reveal cases, and both language trailer flows. Four contact submissions were intercepted during QA; no real email was sent. In four simulated cold mobile loading cases, the banner images were ready before the first content paint. See the final verification status below for physical-device coverage.
-
-## Informational-card hover
-
-Stage 6.3 was implemented on `codex/stage-6-3-card-hover`, based on the reviewed Stage 6.1 commit `e44b100`. Stage 6.2 was rejected and removed. The three informational Services panels (Knowledge, Professionalism, Tradition) retain their photographs, text, layout, shading, and original static shadows. The hover-only movement and bright gold shadow are removed, together with the redundant narrow-screen hover override. Hover, keyboard focus, and pressed feedback on the actual practice-area links are preserved.
-
-On 23 November 2026, eight RO/EN browser cases passed at 1440, 390, and 320 px with normal and reduced motion, using desktop mouse and touch emulation. All three cards matched their previous non-hover appearance and stayed unchanged on hover or tap. Practice links retained their applicable hover feedback, visible keyboard focus, and navigation to the correct language's Civil Law page. No page errors or form-provider requests occurred. See the final verification status below for physical-device coverage.
-
-Review `http://127.0.0.1:8631/servicii_juridiceRO.html` (or `servicii_juridiceEN.html`), hover the three informational panels, then hover or keyboard-focus the practice-area links below. Stage 6.1's trailer fixes remain intact, and no other website behavior or content changes. Stage 6.3 was saved as commit c85085a and included in the owner-approved final release.
-
-## Final verification status
-
-Stage 6.4 was completed on `codex/stage-6-4-final-verification`, based on Stage 6.3 commit `c85085a`. The owner accepted the final testing and explicitly authorized deployment on 23 November 2026. This release retains Stage 6.1 and Stage 6.3; the rejected Stage 6.2 changes remain absent. No implementation change was needed during final verification.
-
-On 23 November 2026, the local Edge checks passed references in 23 HTML documents, 60 interior-page layouts across 320/390/1440 px, and eight normal-size homepage layouts including short and landscape screens. Content stayed within the viewport, footers followed the content, and all quotation controls worked. Four RO/EN navigation flows at phone and desktop dimensions passed page entrances, scroll reveals, the black home fade, and exact Back reading-position restoration (0 px drift). Both language contact forms passed validation, floating help, unchanged form height, and intercepted success responses; two requests were mocked locally and no email was sent. The enabled shared endpoint is unchanged.
-
-Two uninterrupted normal-speed trailer checks passed: RO using native fullscreen and EN using the rotated-player fallback. Both reached their real end without test seeking, cleared rotation/fullscreen state, and revealed the library with its navbar automatically after approximately 0.9-1.0 seconds. There were no page errors or failed local resources in the completed checks. Orientation operations were simulated in Edge; these results are separate from actual-phone verification. The Stage 6.3 mouse/touch/reduced-motion results remain applicable because its CSS is unchanged.
-
-The owner reported that the final testing looked correct and authorized publication in response to the phone checklist. The earlier recorded phone was a Samsung Galaxy S23 with mobile Chrome 157; no new device/browser details were supplied with the final approval. No physical iPhone/Safari or installed WebKit test browser was available on this computer. The known homepage clipping with 200% root text at narrow widths remains outside the active scope following the explicit Stage 6.2 rollback; this release does not reintroduce that layout.
+Physical phone checks were performed on a Samsung Galaxy S23 with Chrome. Physical iPhone/Safari coverage remains unverified. Homepage reflow with 200% root text sizing on very narrow screens remains a known limitation.
