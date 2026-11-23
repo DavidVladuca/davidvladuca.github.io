@@ -2,7 +2,7 @@
 
 A professional website built for a law firm during my internship at **RSTDEV S.R.L.** (Aug–Sep 2023).  
 I was responsible for both the **design** and the **full implementation**, managing the project independently with guidance from mentors.  
-You can access it [here](https://davidvladuca.github.io/indexRO.html)
+> **2026 update:** In 2026, I deployed an updated version of this website at [infoavocati.ro](https://infoavocati.ro/) and introduced several improvements. The screenshots below show the original version developed during my 2023 internship. Its source code is preserved in the [internship-2023 branch](https://github.com/DavidVladuca/davidvladuca.github.io/tree/internship-2023).
 
 ---
 
